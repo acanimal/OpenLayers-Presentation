@@ -1,5 +1,5 @@
-OpenLayers 
-----------
+OpenLayers Presentation 2012
+----------------------------
 
 After writting the [OpenLayers Cookbook](http://www.packtpub.com/openlayers-create-gis-web-applications-cookbook/book)
 I have the pleasure to make a presentation for the [GeoInquiets](http://www.geoinquiets.cat/) on December 2012.
