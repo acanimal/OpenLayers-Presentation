@@ -3,76 +3,78 @@
 <!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
 <!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	
-	<title>Once Upon a Time... OpenLayers</title>
-	
-	<meta name="description" content="Once Upon a Time... OpenLayers. An in depth introduction to the OpenLayers web mapping framework.">
-	<meta name="author" content="Antonio Santiago">
-	<meta name="viewport" content="width=1024, user-scalable=no">
-	
-	<!-- Core and extension CSS files -->
-	<link rel="stylesheet" href="deckjs/core/deck.core.css">
-	<link rel="stylesheet" href="deckjs/extensions/goto/deck.goto.css">
-	<link rel="stylesheet" href="deckjs/extensions/menu/deck.menu.css">
-	<link rel="stylesheet" href="deckjs/extensions/navigation/deck.navigation.css">
-	<link rel="stylesheet" href="deckjs/extensions/status/deck.status.css">
-	<link rel="stylesheet" href="deckjs/extensions/hash/deck.hash.css">
-	<link rel="stylesheet" href="deckjs/extensions/scale/deck.scale.css">
-	
-	<!-- Style theme. More available in /themes/style/ or create your own. -->
-	<link rel="stylesheet" href="deckjs/themes/style/neon.css">
-	
-	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
-	<link rel="stylesheet" href="deckjs/themes/transition/horizontal-slide.css">
-	
-	<script src="deckjs/modernizr.custom.js"></script>
-</head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-<body class="deck-container">
+        <title>Once Upon a Time... OpenLayers</title>
 
-<!-- Begin slides -->
-<section class="slide" id="title-slide">
-	<h1>Once Upon a Time... OpenLayers</h1>
-</section>
+        <meta name="description" content="Once Upon a Time... OpenLayers. An in depth introduction to the OpenLayers web mapping framework.">
+        <meta name="author" content="Antonio Santiago">
+        <meta name="viewport" content="width=1024, user-scalable=no">
 
-<section class="slide" id="how-to-overview">
-	<h2>History</h2>
-	<ol>
-		<li>
-			<h3>Google Maps</h3>
-			<p>Announced on February 2005</p>
-			<p>Look mom !!!</p>
-<!-- 
-Google Maps was is IMO one of the most relevant application on the 2000 decade.
-It brings to the masses the possibility to explore the world and open the door
-to the explosion of GIS.
--->
-		</li>
+        <!-- Core and extension CSS files -->
+        <link rel="stylesheet" href="deckjs/core/deck.core.css">
+        <link rel="stylesheet" href="deckjs/extensions/goto/deck.goto.css">
+        <link rel="stylesheet" href="deckjs/extensions/menu/deck.menu.css">
+        <link rel="stylesheet" href="deckjs/extensions/navigation/deck.navigation.css">
+        <link rel="stylesheet" href="deckjs/extensions/status/deck.status.css">
+        <link rel="stylesheet" href="deckjs/extensions/hash/deck.hash.css">
+        <link rel="stylesheet" href="deckjs/extensions/scale/deck.scale.css">
+        <link rel="stylesheet" href="deckjs/extensions/codemirror/deck.codemirror.css">
 
-		<li>
-			<h3>OpenLayers</h3>
-			<p>Open alternative to Google Maps and Bing made by a group of MetaCarta employees</p>
-			<p>First release on June 2006</p>
-			<p>On 2007 <a href="http://www.openstreetmap.org/">OpenStreeMap</a> starts using it on the <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map_MediaWiki_Extension">Slippy Map</a></p>
-		</li>
-	</ol>
+        <!-- Codemirror theme -->
+        <link rel="stylesheet" href="deckjs/extensions/codemirror/themes/default.css">
 
-	<ul>
-		<li>
-			<h3>References</h3>
-			<p><a href="http://trac.osgeo.org/openlayers/wiki/History">OpenLayers Wiki</a></p>
-			<p><a href="http://en.wikipedia.org/wiki/OpenLayers">Wikipedia</a></p>
-		</li>
-	</ul>
-</section>
+        <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+        <link rel="stylesheet" href="deckjs/themes/transition/horizontal-slide.css">
 
-<section class="slide" id="markup">
-	<h2>The Markup</h2>
-	<p>Slides are just HTML elements with a class of <code>slide</code>.</p>
-	<pre><code>&lt;section class=&quot;slide&quot;&gt;
+        <!-- Style theme. More available in /themes/style/ or create your own. -->
+        <link rel="stylesheet" href="deckjs/themes/style/olpresentation.css">
+
+        <script src="deckjs/modernizr.custom.js"></script>
+    </head>
+
+    <body class="deck-container">
+
+        <!-- Begin slides -->
+        <section class="slide" id="title-slide">
+            <h1>Once Upon a Time... <span class="openlayers">OpenLayers</span></h1>
+        </section>
+
+        <section class="slide" id="history-slide">
+            <h2>History</h2>
+        
+                    <h3>Google Maps</h3>
+                    
+                    <ul>
+                        <li>Announced on February 2005</li>
+                        <li>IMO, one of the most unfluencial application on the 2000 decade</li>
+                        <li>Brings to the masses the possibility to explore the world</li>
+                        <li>Firestarter for the GIS explosion</li>
+                    </ul>
+                    
+                    <h3>OpenLayers</h3>
+                    
+                    <ul>
+                        <li>First release on June 2006</li>
+                        <li>Open alternative to Google Maps and Bing made by a group of MetaCarta employees</li>
+                        <li>On 2007 <a href="http://www.openstreetmap.org/">OpenStreeMap</a> starts using it on 
+                            the <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map_MediaWiki_Extension">Slippy Map</a></li>
+                    </ul>
+             
+            <div class="references">
+                <h3>References</h3>
+                <p>OpenLayers Wiki <a href="http://trac.osgeo.org/openlayers/wiki/History">here</a>, 
+                    Wikipedia entry <a href="http://en.wikipedia.org/wiki/OpenLayers">here</a></p>
+            </div>
+
+        </section>
+
+        <section class="slide" id="markup">
+            <h2>The Markup</h2>
+            <p>Slides are just HTML elements with a class of <code>slide</code>.</p>
+            <pre><code>&lt;section class=&quot;slide&quot;&gt;
    &lt;h2&gt;How to Make a Deck&lt;/h2&gt;
    &lt;ol&gt;
       &lt;li&gt;
@@ -86,54 +88,54 @@ to the explosion of GIS.
       &hellip;
    &lt;/ol&gt;
 &lt;/section&gt;</code></pre>
-</section>
+        </section>
 
-<section class="slide" id="themes">
-	<h2>Style Themes</h2>
-	<p>Customizes the colors, typography, and layout of slide&nbsp;content.</p>
-	<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/style-theme.css&quot;&gt;</code></pre>
-	<h2>Transition Themes</h2>
-	<p>Defines transitions between slides using CSS3 transitions.  Less capable browsers fall back to cutaways. But <strong>you</strong> aren&rsquo;t using <em>those</em> browsers to give your presentations, are&nbsp;you&hellip;</p>
-	<pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/transition-theme.css&quot;&gt;</code></pre>
-</section>
+        <section class="slide" id="themes">
+            <h2>Style Themes</h2>
+            <p>Customizes the colors, typography, and layout of slide&nbsp;content.</p>
+            <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/style-theme.css&quot;&gt;</code></pre>
+            <h2>Transition Themes</h2>
+            <p>Defines transitions between slides using CSS3 transitions.  Less capable browsers fall back to cutaways. But <strong>you</strong> aren&rsquo;t using <em>those</em> browsers to give your presentations, are&nbsp;you&hellip;</p>
+            <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/transition-theme.css&quot;&gt;</code></pre>
+        </section>
 
-<section class="slide" id="extensions">
-	<h2>Extensions</h2>
-	<p>Core gives you basic slide functionality with left and right arrow navigation, but you may want more. Here are the ones included in this&nbsp;deck:</p>
-	
-	<ul>
-		<li class="slide" id="extensions-goto">
-			<strong>deck.goto</strong>: Adds a shortcut key to jump to any slide number.  Hit g, type in the slide number, and hit&nbsp;enter.
-		</li>
-		
-		<li class="slide" id="extensions-hash">
-			<strong>deck.hash</strong>: Enables internal linking within slides, deep linking to individual slides, and updates the address bar &amp; a permalink anchor with each slide&nbsp;change.
-		</li>
+        <section class="slide" id="extensions">
+            <h2>Extensions</h2>
+            <p>Core gives you basic slide functionality with left and right arrow navigation, but you may want more. Here are the ones included in this&nbsp;deck:</p>
 
-		<li class="slide" id="extensions-menu">
-			<strong>deck.menu</strong>: Adds a menu view, letting you see all slides in a grid. Hit m to toggle to menu view, continue navigating your deck, and hit m to return to normal view. Touch devices can double-tap the deck to switch between&nbsp;views.
-		</li>
+            <ul>
+                <li class="slide" id="extensions-goto">
+                    <strong>deck.goto</strong>: Adds a shortcut key to jump to any slide number.  Hit g, type in the slide number, and hit&nbsp;enter.
+                </li>
 
-		<li class="slide" id="extensions-navigation">
-			<strong>deck.navigation</strong>: Adds clickable left and right buttons for the less keyboard&nbsp;inclined.
-		</li>
+                <li class="slide" id="extensions-hash">
+                    <strong>deck.hash</strong>: Enables internal linking within slides, deep linking to individual slides, and updates the address bar &amp; a permalink anchor with each slide&nbsp;change.
+                </li>
 
-		<li class="slide" id="extensions-status">
-			<strong>deck.status</strong>: Adds a page number indicator. (current/total)
-		</li>
+                <li class="slide" id="extensions-menu">
+                    <strong>deck.menu</strong>: Adds a menu view, letting you see all slides in a grid. Hit m to toggle to menu view, continue navigating your deck, and hit m to return to normal view. Touch devices can double-tap the deck to switch between&nbsp;views.
+                </li>
 
-		<li class="slide" id="extensions-scale">
-			<strong>deck.scale</strong>: Scales each slide to fit within the deck container using CSS Transforms for those browsers that support them.
-		</li>
-	</ul>
-	
-	<p class="slide" id="extension-folders">Each extension folder in the download package contains the necessary JavaScript, CSS, and HTML&nbsp;files. For a complete list of extension modules included in deck.js, check out the&nbsp;<a href="http://imakewebthings.github.com/deck.js/docs">documentation</a>.</p>
-</section>
+                <li class="slide" id="extensions-navigation">
+                    <strong>deck.navigation</strong>: Adds clickable left and right buttons for the less keyboard&nbsp;inclined.
+                </li>
 
-<section class="slide" id="nested">
-	<h2>Nested Slides</h2>
-	<p>That last slide had a few steps.  To create substeps in slides, just nest them:</p>
-	<pre><code>&lt;section class=&quot;slide&quot;&gt;
+                <li class="slide" id="extensions-status">
+                    <strong>deck.status</strong>: Adds a page number indicator. (current/total)
+                </li>
+
+                <li class="slide" id="extensions-scale">
+                    <strong>deck.scale</strong>: Scales each slide to fit within the deck container using CSS Transforms for those browsers that support them.
+                </li>
+            </ul>
+
+            <p class="slide" id="extension-folders">Each extension folder in the download package contains the necessary JavaScript, CSS, and HTML&nbsp;files. For a complete list of extension modules included in deck.js, check out the&nbsp;<a href="http://imakewebthings.github.com/deck.js/docs">documentation</a>.</p>
+        </section>
+
+        <section class="slide" id="nested">
+            <h2>Nested Slides</h2>
+            <p>That last slide had a few steps.  To create substeps in slides, just nest them:</p>
+            <pre><code>&lt;section class=&quot;slide&quot;&gt;
   &lt;h2&gt;Extensions&lt;/h2&gt;
   &lt;p&gt;Core gives you basic slide functionality...&lt;/p&gt;		
   &lt;ul&gt;
@@ -146,83 +148,99 @@ to the explosion of GIS.
      &lt;li class=&quot;slide&quot;&gt;...&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/section&gt;</code></pre>
-</section>
+        </section>
 
-<section class="slide" id="elements-images">
-	<h2>Other Elements: Images</h2>
-	<img src="http://placekitten.com/600/375" alt="Kitties">
-	<pre><code>&lt;img src=&quot;http://placekitten.com/600/375&quot; alt=&quot;Kitties&quot;&gt;</code></pre>
-</section>
+        <section class="slide" id="elements-images">
+            <h2>Other Elements: Images</h2>
+            <img src="http://placekitten.com/600/375" alt="Kitties">
+            <pre><code>&lt;img src=&quot;http://placekitten.com/600/375&quot; alt=&quot;Kitties&quot;&gt;</code></pre>
+        </section>
 
-<section class="slide" id="elements-blockquotes">
-	<h2>Other Elements: Blockquotes</h2>
-	<blockquote cite="http://example.org">
-		<p>Food is an important part of a balanced diet.</p>
-		<p><cite>Fran Lebowitz</cite></p>
-	</blockquote>
-	<pre><code>&lt;blockquote cite=&quot;http://example.org&quot;&gt;
+        <section class="slide" id="elements-blockquotes">
+            <h2>Other Elements: Blockquotes</h2>
+            <blockquote cite="http://example.org">
+                <p>Food is an important part of a balanced diet.</p>
+                <p><cite>Fran Lebowitz</cite></p>
+            </blockquote>
+            <pre><code>&lt;blockquote cite=&quot;http://example.org&quot;&gt;
   &lt;p&gt;Food is an important part of a balanced diet.&lt;/p&gt;
   &lt;p&gt;&lt;cite&gt;Fran Lebowitz&lt;/cite&gt;&lt;/p&gt;
 &lt;/blockquote&gt;</code></pre>
-</section>
+        </section>
 
 
-<section class="slide" id="elements-videos">
-	<h2>Other Elements: Video Embeds</h2>
-	<p>Embed videos from your favorite online video service or with an HTML5 video&nbsp;element.</p>
-	
-	<iframe src="http://player.vimeo.com/video/1063136?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0"></iframe>
-	
-	<pre><code>&lt;iframe src=&quot;http://player.vimeo.com/video/1063136?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;400&quot; height=&quot;225&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</code></pre>
-</section>
+        <section class="slide" id="elements-videos">
+            <h2>Other Elements: Video Embeds</h2>
+            <p>Embed videos from your favorite online video service or with an HTML5 video&nbsp;element.</p>
 
-<section class="slide" id="digging-deeper">
-	<h2>Digging Deeper</h2>
-	<p>If you want to learn about making your own themes, extending deck.js, and more, check out the&nbsp;<a href="../docs/">documentation</a>.</p>
-</section>
+            <iframe src="http://player.vimeo.com/video/1063136?title=0&amp;byline=0&amp;portrait=0" width="400" height="225" frameborder="0"></iframe>
 
-<!-- deck.navigation snippet -->
-<a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
-<a href="#" class="deck-next-link" title="Next">&#8594;</a>
+            <pre><code>&lt;iframe src=&quot;http://player.vimeo.com/video/1063136?title=0&amp;amp;byline=0&amp;amp;portrait=0&quot; width=&quot;400&quot; height=&quot;225&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</code></pre>
+        </section>
 
-<!-- deck.status snippet -->
-<p class="deck-status">
-	<span class="deck-status-current"></span>
-	/
-	<span class="deck-status-total"></span>
-</p>
+        <section class="slide" id="digging-deeper">
+            <h2>Digging Deeper</h2>
+            <p>If you want to learn about making your own themes, extending deck.js, and more, check out the&nbsp;<a href="../docs/">documentation</a>.</p>
+        </section>
 
-<!-- deck.goto snippet -->
-<form action="." method="get" class="goto-form">
-	<label for="goto-slide">Go to slide:</label>
-	<input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
-	<datalist id="goto-datalist"></datalist>
-	<input type="submit" value="Go">
-</form>
+        <!-- deck.navigation snippet -->
+        <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+        <a href="#" class="deck-next-link" title="Next">&#8594;</a>
 
-<!-- deck.hash snippet -->
-<a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+        <!-- deck.status snippet -->
+        <p class="deck-status">
+            <span class="deck-status-current"></span>
+            /
+            <span class="deck-status-total"></span>
+        </p>
+
+        <!-- deck.goto snippet -->
+        <form action="." method="get" class="goto-form">
+            <label for="goto-slide">Go to slide:</label>
+            <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+            <datalist id="goto-datalist"></datalist>
+            <input type="submit" value="Go">
+        </form>
+
+        <!-- deck.hash snippet -->
+        <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
 
 
-<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="deckjs/jquery-1.7.2.min.js"><\/script>')</script>
+        <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="deckjs/jquery-1.7.2.min.js"><\/script>')</script>
 
-<!-- Deck Core and extensions -->
-<script src="deckjs/core/deck.core.js"></script>
-<script src="deckjs/extensions/hash/deck.hash.js"></script>
-<script src="deckjs/extensions/menu/deck.menu.js"></script>
-<script src="deckjs/extensions/goto/deck.goto.js"></script>
-<script src="deckjs/extensions/status/deck.status.js"></script>
-<script src="deckjs/extensions/navigation/deck.navigation.js"></script>
-<script src="deckjs/extensions/scale/deck.scale.js"></script>
+        <!-- Deck Core and extensions -->
+        <script src="deckjs/core/deck.core.js"></script>
+        <script src="deckjs/extensions/hash/deck.hash.js"></script>
+        <script src="deckjs/extensions/menu/deck.menu.js"></script>
+        <script src="deckjs/extensions/goto/deck.goto.js"></script>
+        <script src="deckjs/extensions/status/deck.status.js"></script>
+        <script src="deckjs/extensions/navigation/deck.navigation.js"></script>
+        <script src="deckjs/extensions/scale/deck.scale.js"></script>
 
-<!-- Initialize the deck -->
-<script>
-$(function() {
-	$.deck('.slide');
-});
-</script>
+        <!-- Base codemiror code -->
+        <script src="deckjs/extensions/codemirror/codemirror.js"></script>
 
-</body>
+        <!-- Syntax highlighting Modes -->
+
+        <!-- javascript -->
+        <script src="deckjs/extensions/codemirror/mode/javascript/javascript.js"></script>
+
+        <!-- html mode (note html mode requires xml, css and javascript) -->
+        <script src="deckjs/extensions/codemirror/mode/xml/xml.js"></script>
+        <script src="deckjs/extensions/codemirror/mode/css/css.js"></script>
+        <script src="deckjs/extensions/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+
+        <!-- Plugin code -->
+        <script src="deckjs/extensions/codemirror/deck.codemirror.js"></script>
+
+        <!-- Initialize the deck -->
+        <script>
+            $(function() {
+                $.deck('.slide');
+            });
+        </script>
+
+    </body>
 </html>
