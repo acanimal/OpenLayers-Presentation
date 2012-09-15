@@ -93,32 +93,47 @@
         </section>
 
         <section class="slide" id="map-example-slide">
-            <h2>The Map: Example</h2>
-            <p>Creation of a very simple map</p>
-            <div>
-                <textarea class="code" mode="javascript" style="display: none;" runnable="true" theme="xq-dark" globals="OpenLayers">
+            <h2>The Map</h2>
+            <p>This sample shows how to create a very simple <span class="spotlight">map</span> with a <span class="spotlight">layer</span> and some <span class="spotlight">controls</span>:</p>
+            <div class="samplecode">
+                <script type="codemirror" data-selector="#map_example_code">
+                    if(P.map_example) P.map_example.destroy();
+                </script>
+                <script type="codemirror/cleanup" data-selector="#map_example_code">
+                    P.map_example = map_example;
+                </script>
+                <textarea id="map_example_code" class="code" mode="javascript" style="display: none;" runnable="true" theme="xq-dark" globals="OpenLayers,P">
 // Create a map and add OSM raster layer as the base layer
-var map1 = new OpenLayers.Map("map-sample");
-var osm1 = new OpenLayers.Layer.OSM();
-map1.addLayer(osm1);
+map_example = new OpenLayers.Map("map_example");
+var osm = new OpenLayers.Layer.OSM();
+map_example.addLayer(osm);
 
-// Initial view location
-var center = new OpenLayers.LonLat(2, 40);
-center.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
-map1.setCenter(center, 6);
-// Add a LayerSwitcher control
-map1.addControl(new OpenLayers.Control.LayerSwitcher());
-map1.addControl(new OpenLayers.Control.ScaleLine());
-map1.addControl(new OpenLayers.Control.Scale());
-map1.addControl(new OpenLayers.Control.MousePosition());
+// Add some controls
+map_example.addControl(new OpenLayers.Control.LayerSwitcher());
+map_example.addControl(new OpenLayers.Control.ScaleLine());
+map_example.addControl(new OpenLayers.Control.Scale());
+map_example.addControl(new OpenLayers.Control.MousePosition());
+
+// Show the whole map layer
+map_example.zoomToMaxExtent();
                 </textarea>
             </div>
 
             <div class="mapwrapper">
-                <div id="map-sample"></div>
+                <div id="map_example"></div>
             </div>
         </section>
 
+        <section class="slide" id="base-layers-slide">
+            <h2>Base Layers</h2>
+            <p>Explain diferences between base layers and overlays</p>
+            
+            <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/style-theme.css&quot;&gt;</code></pre>
+            <h2>Transition Themes</h2>
+            <p>Defines transitions between slides using CSS3 transitions.  Less capable browsers fall back to cutaways. But <strong>you</strong> aren&rsquo;t using <em>those</em> browsers to give your presentations, are&nbsp;you&hellip;</p>
+            <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/transition-theme.css&quot;&gt;</code></pre>
+        </section>
+        
         <section class="slide" id="themes">
             <h2>Style Themes</h2>
             <p>Customizes the colors, typography, and layout of slide&nbsp;content.</p>
@@ -257,6 +272,9 @@ map1.addControl(new OpenLayers.Control.MousePosition());
 
         <!-- OpenLayers -->
         <script src="ol2.12/OpenLayers.js"></script>
+        <script>
+            P = {};
+        </script>
 
         <!-- Initialize the deck -->
         <script>

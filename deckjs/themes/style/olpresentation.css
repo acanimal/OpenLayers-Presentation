@@ -189,7 +189,7 @@
 .deck-container .deck-prev-link:visited, .deck-container .deck-next-link, 
 .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus, 
 .deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
-    color: #599;
+    color: #999;
 }
 .deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, 
 .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus {
@@ -265,27 +265,22 @@
     text-decoration: underline;
 }
 
-/* ------------------------- */
+div.samplecode {
+    font-size: 0.8em;
+}
 div.mapwrapper {
-    border: 1px solid #aaa;
+    border: 1px solid #ddd;
     -webkit-box-shadow:  5px 5px 5px 0px rgba(0, 0, 0, 0.5);
     box-shadow:  5px 5px 5px 0px rgba(0, 0, 0, 0.5);
     -webkit-border-radius: 7px;
     border-radius: 7px;
-    width: 70%;
-    margin: 20px 15%;
+    width: 80%;
+    margin: 20px 10%;
     height: 300px;
     color: #333;
-}
-.mapwrapper a, .mapwrapper a:hover, div.mapwrapper a, div.mapwrapper a:hover, a:visited {
-    text-decoration: none;
-    color: red;
 }
 div.mapwrapper .olMap {
     width: 100%;
     height: 100%;
 }
-div.mapwrapper div.olMap .olTileImage {
-    max-width: 256px;
-    max-height: 256px;
-}
+
