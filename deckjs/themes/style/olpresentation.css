@@ -8,7 +8,7 @@
     background: -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
     background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
     background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
-    
+
     color: #666;
 }
 .deck-container > .slide {
@@ -26,20 +26,24 @@
 .deck-container > .slide .deck-before, .deck-container > .slide .deck-previous {
     opacity: 0.4;
 }
-.deck-container > .slide .deck-before:not(.deck-child-current) .deck-before, .deck-container > .slide .deck-before:not(.deck-child-current) .deck-previous, .deck-container > .slide .deck-previous:not(.deck-child-current) .deck-before, .deck-container > .slide .deck-previous:not(.deck-child-current) .deck-previous {
+.deck-container > .slide .deck-before:not(.deck-child-current) .deck-before, 
+.deck-container > .slide .deck-before:not(.deck-child-current) .deck-previous, 
+.deck-container > .slide .deck-previous:not(.deck-child-current) .deck-before, 
+.deck-container > .slide .deck-previous:not(.deck-child-current) .deck-previous {
     opacity: 1;
 }
 .deck-container > .slide .deck-child-current {
     opacity: 1;
 }
-.deck-container .slide h1, .deck-container .slide h2, .deck-container .slide h3, .deck-container .slide h4, .deck-container .slide h5, .deck-container .slide h6 {
+.deck-container .slide h1, .deck-container .slide h2, .deck-container .slide h3, 
+.deck-container .slide h4, .deck-container .slide h5, .deck-container .slide h6 {
     font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
 }
 .deck-container .slide h1 {
     color: #333;
 }
 .deck-container .slide h2 {
-    color: #4fa2e9;
+    color: #aaa;
     border-bottom: 0;
 }
 .cssreflections .deck-container .slide h2 {
@@ -48,7 +52,7 @@
 .deck-container .slide h3 {
     color: #444;
 }
-.deck-container .slide pre {
+/*.deck-container .slide pre {
     border-color: #cde;
     background: #fff;
     position: relative;
@@ -99,16 +103,17 @@
 }
 .deck-container .slide code {
     color: #789;
-}
+}*/
 .deck-container .slide blockquote {
     font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
     font-style: italic;
-    font-size: 2em;
+    font-size: 1.1em;
+    margin: 1em;
     padding: 1em 2em .5em 2em;
-    color: #000;
+    color: #333;
     background: #fff;
     position: relative;
-    border: 1px solid #cde;
+    border: 1px solid #ddd;
     z-index: auto;
 }
 .borderradius .deck-container .slide blockquote {
@@ -154,9 +159,9 @@
     position: absolute;
     top: 0;
     left: 0;
-    font-size: 5em;
+    font-size: 2.5em;
     line-height: 1;
-    color: #ccf0f0;
+    color: #666;
     z-index: 1;
 }
 .deck-container .slide ::-moz-selection {
@@ -167,7 +172,8 @@
     background: #08455f;
     color: #fff;
 }
-.deck-container .slide a, .deck-container .slide a:hover, .deck-container .slide a:focus, .deck-container .slide a:active, .deck-container .slide a:visited {
+.deck-container .slide a, .deck-container .slide a:hover, .deck-container .slide a:focus, 
+.deck-container .slide a:active, .deck-container .slide a:visited {
     color: #92d72f;
     text-decoration: none;
 }
@@ -178,15 +184,22 @@
     background: #fff;
     opacity: 0.5;
 }
-.deck-container .deck-prev-link, .deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-prev-link:active, .deck-container .deck-prev-link:visited, .deck-container .deck-next-link, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus, .deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
+.deck-container .deck-prev-link, .deck-container .deck-prev-link:hover, 
+.deck-container .deck-prev-link:focus, .deck-container .deck-prev-link:active, 
+.deck-container .deck-prev-link:visited, .deck-container .deck-next-link, 
+.deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus, 
+.deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
     color: #599;
 }
-.deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, .deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus {
+.deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, 
+.deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus {
     opacity: 1;
     text-decoration: none;
 }
 .deck-container .deck-status {
     font-size: 0.6666em;
+    color: #fff;
+    text-shadow: #aaa 0px 1px 0px,rgba(0, 0, 0, 0.2) 0 4px 4px;
 }
 .deck-container.deck-menu .slide {
     background: transparent;
@@ -197,7 +210,8 @@
 .rgba .deck-container.deck-menu .slide {
     background: rgba(0, 0, 0, 0.1);
 }
-.deck-container.deck-menu .slide.deck-current, .rgba .deck-container.deck-menu .slide.deck-current, .no-touch .deck-container.deck-menu .slide:hover {
+.deck-container.deck-menu .slide.deck-current, .rgba .deck-container.deck-menu .slide.deck-current, 
+.no-touch .deck-container.deck-menu .slide:hover {
     background: #fff;
 }
 .deck-container .goto-form {
@@ -216,14 +230,22 @@
     -webkit-box-sizing: padding-box;
     -moz-box-sizing: padding-box;
     box-sizing: padding-box;
-    width: 92%;
-    margin: 20px 50px;
+    width: 80%;
+    margin: 5% 10%;
 }
 
+
 .openlayers {
+    color: #0055cc;
+    text-shadow: #aaa 0px 1px 0px,rgba(0, 0, 0, 0.2) 0 28px 26px;
+}
+.spotlight {
     color: #4fa2e9;
 }
-.deck-container .references {
+.olclass {
+    color: #0055cc;
+}
+.references {
     margin-top: 40px;
     border: 1px solid #999;
     padding: 10px;
@@ -231,14 +253,39 @@
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
-.deck-container .references h3 {
+.references h3 {
     color: #ccc;
 }
-.deck-container .references a, .deck-container .references a:hover, 
-.deck-container .references a:focus, .deck-container .references a:active, .deck-container .references a:visited {
+.references a, .references a:hover, 
+.references a:focus, .references a:active, .references a:visited {
     color: #fb9f25;
     text-decoration: none;
 }
-.deck-container .references a:hover, .deck-container .references a:focus {
+.references a:hover, .references a:focus {
     text-decoration: underline;
+}
+
+/* ------------------------- */
+div.mapwrapper {
+    border: 1px solid #aaa;
+    -webkit-box-shadow:  5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+    box-shadow:  5px 5px 5px 0px rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+    width: 70%;
+    margin: 20px 15%;
+    height: 300px;
+    color: #333;
+}
+.mapwrapper a, .mapwrapper a:hover, div.mapwrapper a, div.mapwrapper a:hover, a:visited {
+    text-decoration: none;
+    color: red;
+}
+div.mapwrapper .olMap {
+    width: 100%;
+    height: 100%;
+}
+div.mapwrapper div.olMap .olTileImage {
+    max-width: 256px;
+    max-height: 256px;
 }

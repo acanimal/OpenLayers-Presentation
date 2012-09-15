@@ -21,10 +21,10 @@
         <link rel="stylesheet" href="deckjs/extensions/status/deck.status.css">
         <link rel="stylesheet" href="deckjs/extensions/hash/deck.hash.css">
         <link rel="stylesheet" href="deckjs/extensions/scale/deck.scale.css">
-        <link rel="stylesheet" href="deckjs/extensions/codemirror/deck.codemirror.css">
+        <link rel="stylesheet" href="deckjs/extensions/codemirror/deck.codemirror.css">       
 
         <!-- Codemirror theme -->
-        <link rel="stylesheet" href="deckjs/extensions/codemirror/themes/default.css">
+        <link rel="stylesheet" href="deckjs/extensions/codemirror/themes/xq-dark.css">
 
         <!-- Transition theme. More available in /themes/transition/ or create your own. -->
         <link rel="stylesheet" href="deckjs/themes/transition/horizontal-slide.css">
@@ -32,37 +32,37 @@
         <!-- Style theme. More available in /themes/style/ or create your own. -->
         <link rel="stylesheet" href="deckjs/themes/style/olpresentation.css">
 
+        <!-- OpenLayers theme -->
+        <link rel="stylesheet" href="ol2.12/theme/default/deck.openlayers.style.css">
+
         <script src="deckjs/modernizr.custom.js"></script>
     </head>
 
     <body class="deck-container">
 
-        <!-- Begin slides -->
         <section class="slide" id="title-slide">
             <h1>Once Upon a Time... <span class="openlayers">OpenLayers</span></h1>
         </section>
 
         <section class="slide" id="history-slide">
             <h2>History</h2>
-        
-                    <h3>Google Maps</h3>
-                    
-                    <ul>
-                        <li>Announced on February 2005</li>
-                        <li>IMO, one of the most unfluencial application on the 2000 decade</li>
-                        <li>Brings to the masses the possibility to explore the world</li>
-                        <li>Firestarter for the GIS explosion</li>
-                    </ul>
-                    
-                    <h3>OpenLayers</h3>
-                    
-                    <ul>
-                        <li>First release on June 2006</li>
-                        <li>Open alternative to Google Maps and Bing made by a group of MetaCarta employees</li>
-                        <li>On 2007 <a href="http://www.openstreetmap.org/">OpenStreeMap</a> starts using it on 
-                            the <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map_MediaWiki_Extension">Slippy Map</a></li>
-                    </ul>
-             
+
+            <h3>Google Maps</h3>
+            <ul>
+                <li>Announced on February 2005</li>
+                <li>IMO, one of the most influential applications on the 2000 decade</li>
+                <li>Brings to the masses the possibility to explore the world</li>
+                <li>Fire starter for the current GIS explosion</li>
+            </ul>
+
+            <h3>OpenLayers</h3>
+            <ul>
+                <li>First release on June 2006</li>
+                <li>Open alternative to Google Maps and Bing made by a group of MetaCarta employees</li>
+                <li>On 2007 <a href="http://www.openstreetmap.org/">OpenStreeMap</a> starts using it on 
+                    the <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map_MediaWiki_Extension">Slippy Map</a></li>
+            </ul>
+
             <div class="references">
                 <h3>References</h3>
                 <p>OpenLayers Wiki <a href="http://trac.osgeo.org/openlayers/wiki/History">here</a>, 
@@ -71,23 +71,52 @@
 
         </section>
 
-        <section class="slide" id="markup">
-            <h2>The Markup</h2>
-            <p>Slides are just HTML elements with a class of <code>slide</code>.</p>
-            <pre><code>&lt;section class=&quot;slide&quot;&gt;
-   &lt;h2&gt;How to Make a Deck&lt;/h2&gt;
-   &lt;ol&gt;
-      &lt;li&gt;
-         &lt;h3&gt;Write Slides&lt;/h3&gt;
-         &lt;p&gt;Slide content is simple HTML.&lt;/p&gt;
-      &lt;/li&gt;
-      &lt;li&gt;
-         &lt;h3&gt;Choose Themes&lt;/h3&gt;
-         &lt;p&gt;One for slide styles and one for deck transitions.&lt;/p&gt;
-      &lt;/li&gt;
-      &hellip;
-   &lt;/ol&gt;
-&lt;/section&gt;</code></pre>
+        <section class="slide" id="map-title-slide">
+            <h1>The <span class="openlayers">Map</span></h1>
+        </section>
+
+        <section class="slide" id="map-slide">
+            <h2>The Map</h2>
+            <p>The <span class="spotlight">map</span> is the central piece on a web mapping application
+                and is represented by instances of the <span class="olclass">OpenLayers.Map</span> class.</p>
+
+            <ul>
+                <li>The <span class="spotlight">map</span> has some important properties: projection, 
+                    zoom levels (resolutions), units, etc</li>
+                <li>A <span class="spotlight">map</span> contains one or more <span class="spotlight">layers</span></li>
+                <li>A <span class="spotlight">map</span> can contain one or more <span class="spotlight">controls</span></li>
+            </ul>
+
+            <blockquote>An application can have one or more maps but instances of layers and controls
+                attached to a map can't be used on another one</blockquote>
+
+        </section>
+
+        <section class="slide" id="map-example-slide">
+            <h2>The Map: Example</h2>
+            <p>Creation of a very simple map</p>
+            <div>
+                <textarea class="code" mode="javascript" style="display: none;" runnable="true" theme="xq-dark" globals="OpenLayers">
+// Create a map and add OSM raster layer as the base layer
+var map1 = new OpenLayers.Map("map-sample");
+var osm1 = new OpenLayers.Layer.OSM();
+map1.addLayer(osm1);
+
+// Initial view location
+var center = new OpenLayers.LonLat(2, 40);
+center.transform(new OpenLayers.Projection("EPSG:4326"), new OpenLayers.Projection("EPSG:900913"));
+map1.setCenter(center, 6);
+// Add a LayerSwitcher control
+map1.addControl(new OpenLayers.Control.LayerSwitcher());
+map1.addControl(new OpenLayers.Control.ScaleLine());
+map1.addControl(new OpenLayers.Control.Scale());
+map1.addControl(new OpenLayers.Control.MousePosition());
+                </textarea>
+            </div>
+
+            <div class="mapwrapper">
+                <div id="map-sample"></div>
+            </div>
         </section>
 
         <section class="slide" id="themes">
@@ -221,19 +250,13 @@
 
         <!-- Base codemiror code -->
         <script src="deckjs/extensions/codemirror/codemirror.js"></script>
-
-        <!-- Syntax highlighting Modes -->
-
-        <!-- javascript -->
+        <!-- JavaScript Syntax highlighting Mode -->
         <script src="deckjs/extensions/codemirror/mode/javascript/javascript.js"></script>
-
-        <!-- html mode (note html mode requires xml, css and javascript) -->
-        <script src="deckjs/extensions/codemirror/mode/xml/xml.js"></script>
-        <script src="deckjs/extensions/codemirror/mode/css/css.js"></script>
-        <script src="deckjs/extensions/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-
         <!-- Plugin code -->
         <script src="deckjs/extensions/codemirror/deck.codemirror.js"></script>
+
+        <!-- OpenLayers -->
+        <script src="ol2.12/OpenLayers.js"></script>
 
         <!-- Initialize the deck -->
         <script>
