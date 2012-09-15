@@ -18,7 +18,7 @@ This HTML presentation makes use of the tools:
 * [deck.js-codemirror](https://github.com/iros/deck.js-codemirror) extension: Allows you to embed codemirror code snippets in your slides
 * [OpenLayers 2.12](http://openlayers.org/): The framework we are talking about.
 
-Note: I have been to modify slightly the original OpenLayers style.css into deck.openlayers.style.css to avoid
+> **Note**: I have been to modify slightly the original OpenLayers `style.css` into `deck.openlayers.style.css` to avoid
 issues between OpenLayers and deckjs styles.
 
 
