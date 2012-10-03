@@ -40,11 +40,11 @@
 
     <body class="deck-container">
 
-        <section class="slide" id="title-slide">
+        <section class="slide">
             <h1>Once Upon a Time... <span class="openlayers">OpenLayers</span></h1>
         </section>
 
-        <section class="slide" id="history-slide">
+        <section class="slide">
             <h2>History</h2>
 
             <h3>Google Maps</h3>
@@ -71,51 +71,61 @@
 
         </section>
 
-        <section class="slide" id="map-title-slide">
+        <section class="slide">
             <h1>The <span class="openlayers">Map</span></h1>
         </section>
 
-        <section class="slide" id="map-slide">
+        <section class="slide">
             <h2>The Map</h2>
             <p>The <span class="spotlight">map</span> is the central piece on a web mapping application
                 and is represented by instances of the <span class="olclass">OpenLayers.Map</span> class.</p>
+
+            <!-- yUML 
+            [Map|projection;units;...]-*>[Layers]
+            [Map|projection;units;...]-*>[Controls]
+            -->
+
+            <img src="images/uml_map.png" alt="Map UML class diagram"/>
 
             <ul>
                 <li>The <span class="spotlight">map</span> has some important properties: projection, 
                     zoom levels (resolutions), units, etc</li>
                 <li>A <span class="spotlight">map</span> contains one or more <span class="spotlight">layers</span></li>
                 <li>A <span class="spotlight">map</span> can contain one or more <span class="spotlight">controls</span></li>
+                <li>An application can have one or more maps but instances of <em><strong>layers and controls attached to a map 
+                            can't be used on another one</strong></em></li>
             </ul>
 
-            <blockquote>An application can have one or more maps but instances of layers and controls
-                attached to a map can't be used on another one</blockquote>
+            <blockquote class="slide">The source code is the best place to learn</blockquote>
 
         </section>
 
-        <section class="slide" id="map-example-slide">
+        <section class="slide">
             <h2>The Map</h2>
+            <h3>Code Example</h3>
+
             <p>This sample shows how to create a very simple <span class="spotlight">map</span> with a <span class="spotlight">layer</span> and some <span class="spotlight">controls</span>:</p>
             <div class="samplecode">
                 <script type="codemirror" data-selector="#map_example_code">
                     if(P.map_example) P.map_example.destroy();
                 </script>
                 <script type="codemirror/cleanup" data-selector="#map_example_code">
-                    P.map_example = map_example;
+                    P.map_example = map;
                 </script>
                 <textarea id="map_example_code" class="code" mode="javascript" style="display: none;" runnable="true" theme="xq-dark" globals="OpenLayers,P">
 // Create a map and add OSM raster layer as the base layer
-map_example = new OpenLayers.Map("map_example");
+var map = new OpenLayers.Map("map_example");
 var osm = new OpenLayers.Layer.OSM();
-map_example.addLayer(osm);
+map.addLayer(osm);
 
 // Add some controls
-map_example.addControl(new OpenLayers.Control.LayerSwitcher());
-map_example.addControl(new OpenLayers.Control.ScaleLine());
-map_example.addControl(new OpenLayers.Control.Scale());
-map_example.addControl(new OpenLayers.Control.MousePosition());
+map.addControl(new OpenLayers.Control.LayerSwitcher());
+map.addControl(new OpenLayers.Control.ScaleLine());
+map.addControl(new OpenLayers.Control.Scale());
+map.addControl(new OpenLayers.Control.MousePosition());
 
 // Show the whole map layer
-map_example.zoomToMaxExtent();
+map.zoomToMaxExtent();
                 </textarea>
             </div>
 
@@ -124,16 +134,197 @@ map_example.zoomToMaxExtent();
             </div>
         </section>
 
-        <section class="slide" id="base-layers-slide">
-            <h2>Base Layers</h2>
-            <p>Explain diferences between base layers and overlays</p>
-            
-            <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/style-theme.css&quot;&gt;</code></pre>
-            <h2>Transition Themes</h2>
-            <p>Defines transitions between slides using CSS3 transitions.  Less capable browsers fall back to cutaways. But <strong>you</strong> aren&rsquo;t using <em>those</em> browsers to give your presentations, are&nbsp;you&hellip;</p>
-            <pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;/path/to/css/transition-theme.css&quot;&gt;</code></pre>
+        <section class="slide">
+            <h1>The <span class="openlayers">Layers</span></h1>
         </section>
         
+        <section class="slide">
+            <h2>Layers</h2>
+
+            <p>The concept of <span class="spotlight">Layer</span> allows us to group/classify the elements that
+                must be rendered on the <span class="spotlight">Map</span></p>
+
+            <p>All layers inherits from the base class <span class="olclass">OpenLayers.Layer</span>, which
+                defines some common properties for all subclasses:</p>
+            <ul>
+                <li><span class="olproperty"><code>name</code></span> Every has a name (that is used in the LayerSwitcher control</li>
+                <li><span class="olproperty"><code>opacity</code></span> A value in the range 0..1 that determines its opacity</li>
+                <li><span class="olproperty"><code>projection</code></span> The projection of the data contained in the layer</li>
+                <li><span class="olproperty"><code>maxExtent</code></span> The maximum extent of the data</li>
+                <li><span class="olproperty"><code>resolutions</code></span> A list of map resolutions (map units per pixel) in descending order</li>
+                <li>...</li>                    
+            </ul>
+
+            <!-- yUML code
+            [Layer|isBaseLayer;projection;units;resolutions;...]
+            -->
+            <img src="images/layer.png" alt="Layer class"/>
+
+            <blockquote class="slide">Remember, the source code is the best place to learn</blockquote>
+
+        </section>
+
+        <section class="slide">
+            <h2>Base Layers and Overlays</h2>
+
+            <p>OpenLayers differentiates two kinds of layers: <span class="spotlight">Base layers</span> and 
+                <span class="spotlight">Overlays</span>.</p>
+
+            <ul>
+                <li><span class="spotlight">Base layers</span> controls several aspects of the map (<em>like the projection 
+                        used by the <span class="spotlight">Map</span></em>)</li>
+                <li><span class="spotlight">Base layers</span> are mutually exclusive, only one can be shown at a time</li>
+                <li>There could be any number of <span class="spotlight">Overlays</span></li>
+                <li>The <span class="olproperty"><code>isBaseLayer</code></span> property inherited from 
+                    <span class="olclass">OpenLayers.Layer</span> determines the kind of layer.</li>
+                <li>The <span class="olproperty"><code>allOverlays</code></span> property of the 
+                    <span class="olclass">OpenLayers.Map</span> class allows all layers works as overlays.</li>
+            </ul>
+
+            <!-- yUML code
+            [Layer]^-[BaseLayer]
+            [Layer]^-[Overlay]
+            -->
+            <img src="images/baselayer_overlay.png" alt="Base layer vs overlays" />
+
+            <blockquote class="slide">Did I say the source code is the best place to learn ?</blockquote>
+
+        </section>
+
+        <section class="slide">
+            <h2>Base Layers and Overlays</h2>
+            <h3>Code Example</h3>
+
+            <p>This example shows a map with a couple of WMS layers, one acting as base layer
+                and the other as overlay:</p>
+
+            <div class="samplecode">
+                <script type="codemirror" data-selector="#layers_example_code">
+                    if(P.layers_example) P.layers_example.destroy();
+                </script>
+                <script type="codemirror/cleanup" data-selector="#layers_example_code">
+                    P.layers_example = map;
+                </script>
+                <textarea id="layers_example_code" class="code" mode="javascript" style="display: none;" runnable="true" theme="xq-dark" globals="OpenLayers,P">
+// Create a map and add OSM raster layer as the base layer
+var map = new OpenLayers.Map("layers_example");
+
+// Add a WMS layer
+var wms = new OpenLayers.Layer.WMS("WMS Base", "http://vmap0.tiles.osgeo.org/wms/vmap0",
+{
+    layers: 'basic'
+});
+
+// Add Nexrad WMS layer
+var nexrad = new OpenLayers.Layer.WMS("Nexrad", "http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi",
+{
+    layers: "nexrad-n0r",
+    transparent: true,
+    format: 'image/png'
+},
+{
+    isBaseLayer: false
+});
+
+map.addLayers([wms, nexrad]);
+
+// Add some controls
+map.addControl(new OpenLayers.Control.LayerSwitcher());
+
+// Set the center of the view
+map.setCenter(new OpenLayers.LonLat(-90,40), 4);
+
+// Change the nexrad layer opacity
+nexrad.setOpacity(0.3);
+                </textarea>
+            </div>
+
+            <div class="mapwrapper">
+                <div id="layers_example"></div>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h2>Types of layers</h2>
+
+            <p>There are two main types of layers: <span class="spotlight">Raster</span> (imagery) and
+            <span class="spotlight">Vector</span> (features).</p>
+
+            <!-- yUML code
+            [Layer]^-[Raster Layer]
+            [Raster Layer]^-[WMS]
+            [Raster Layer]^-[Google]
+            [Raster Layer]^-[OSM]
+            [Raster Layer]^-[XYZ]
+            [Layer]^-[Vector Layer]
+            [Vector Layer]^-[WFS]
+            [Vector Layer]^-[GeoJSON]
+            [Vector Layer]^-[KML]
+            -->
+            <img src="images/raster_vector_layers.png" alt="Raster and vector layers" />
+
+        </section>
+
+        <section class="slide">
+            <h1><span class="openlayers">Raster</span> Layers</h1>
+        </section>
+        
+        <section class="slide">
+            <h2>Raster layers</h2>
+
+            <ul>
+                <li><span class="spotlight">Raster</span> layers shows imagery from different service provider: 
+                    Google, Bing, a WMS server, OSM, etc</li>
+
+                <li>All <span class="spotlight">Raster</span> layers inherits from 
+                    the base class <span class="olclass">OpenLayers.Layer</span></li>
+
+                <li>The <span class="olclass">OpenLayers.Layer.Grid</span> class allows to work with a lattice of tiles
+
+            </ul>
+
+            <!--
+            [OpenLayers.Layer]^-[OpenLayers.Layer.HTTPRequest]
+            [OpenLayers.Layer.HTTPRequest]^-[OpenLayers.Layer.Grid]
+            [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.WMS]
+            [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.WMTS]
+            [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.XYZ]
+            [OpenLayers.Layer.XYZ]^-[OpenLayers.Layer.OSM]
+            [OpenLayers.Layer.XYZ]^-[OpenLayers.Layer.Bing]
+            -->
+
+            <table>
+                <tr>
+                    <td>
+                        <img src="images/raster_hierarchy_01.png" alt="OpenLayers raster layers hierarchy" />
+                    </td>
+                    <td>
+                        <img src="images/raster_hierarchy_02.png" alt="OpenLayers raster layers hierarchy" />            
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+        
+        <section class="slide">
+            <h2>Raster layers</h2>
+            <p>Example working with WMS projection and opacity</p>
+            
+        </section>
+
+        <section class="slide">
+            <h1><span class="openlayers">Vector</span> Layers</h1>
+        </section>
+        
+        <section class="slide">
+            <h2>Vector layers</h2>
+
+            <p>Describe features, renderers, strategies, protocols, etc</p>
+
+        </section>
+
+
         <section class="slide" id="themes">
             <h2>Style Themes</h2>
             <p>Customizes the colors, typography, and layout of slide&nbsp;content.</p>
@@ -272,8 +463,9 @@ map_example.zoomToMaxExtent();
 
         <!-- OpenLayers -->
         <script src="ol2.12/OpenLayers.js"></script>
+
         <script>
-            P = {};
+            var P = {};
         </script>
 
         <!-- Initialize the deck -->

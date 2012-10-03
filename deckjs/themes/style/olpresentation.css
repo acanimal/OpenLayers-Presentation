@@ -243,7 +243,10 @@
     color: #4fa2e9;
 }
 .olclass {
-    color: #0055cc;
+    color: #fb9f25;
+}
+.olproperty {
+    color: #ae81ff;
 }
 .references {
     margin-top: 40px;
@@ -267,6 +270,7 @@
 
 div.samplecode {
     font-size: 0.8em;
+    height: 200px;
 }
 div.mapwrapper {
     border: 1px solid #ddd;
@@ -275,7 +279,7 @@ div.mapwrapper {
     -webkit-border-radius: 7px;
     border-radius: 7px;
     width: 80%;
-    margin: 20px 10%;
+    margin: 40px 10%;
     height: 300px;
     color: #333;
 }
