@@ -137,7 +137,7 @@ map.zoomToMaxExtent();
         <section class="slide">
             <h1>The <span class="openlayers">Layers</span></h1>
         </section>
-        
+
         <section class="slide">
             <h2>Layers</h2>
 
@@ -249,7 +249,7 @@ nexrad.setOpacity(0.3);
             <h2>Types of layers</h2>
 
             <p>There are two main types of layers: <span class="spotlight">Raster</span> (imagery) and
-            <span class="spotlight">Vector</span> (features).</p>
+                <span class="spotlight">Vector</span> (features).</p>
 
             <!-- yUML code
             [Layer]^-[Raster Layer]
@@ -269,19 +269,19 @@ nexrad.setOpacity(0.3);
         <section class="slide">
             <h1><span class="openlayers">Raster</span> Layers</h1>
         </section>
-        
+
         <section class="slide">
             <h2>Raster layers</h2>
 
             <ul>
                 <li><span class="spotlight">Raster</span> layers shows imagery from different service provider: 
                     Google, Bing, a WMS server, OSM, etc</li>
-
                 <li>All <span class="spotlight">Raster</span> layers inherits from 
                     the base class <span class="olclass">OpenLayers.Layer</span></li>
-
-                <li>The <span class="olclass">OpenLayers.Layer.Grid</span> class allows to work with a lattice of tiles
-
+                <li>The <span class="olclass">OpenLayers.Layer.Grid</span> class decomposes the map viewport in 
+                    a lattice of tiles and offers the basic functionalities for the rest of layers</li>
+                <li>The <span class="olclass">OpenLayers.Layer.Google</span> class is a bit... special and
+                does not inherits from <span class="olclass">OpenLayers.Layer.Grid</span></li>
             </ul>
 
             <!--
@@ -306,21 +306,34 @@ nexrad.setOpacity(0.3);
             </table>
 
         </section>
-        
+
         <section class="slide">
             <h2>Raster layers</h2>
             <p>Example working with WMS projection and opacity</p>
-            
+            <p>Add maps from opengeo and osgeo and sentences to play with projection, opacity, layer name, etc.</p>
+
         </section>
 
         <section class="slide">
-            <h1><span class="openlayers">Vector</span> Layers</h1>
+            <h1><span class="openlayers">Vector</span> Layers</h1>            
         </section>
-        
+
         <section class="slide">
             <h2>Vector layers</h2>
 
             <p>Describe features, renderers, strategies, protocols, etc</p>
+
+            <!--
+            [OpenLayers.Layer]^-[OpenLayers.Layer.Vector]
+            [OpenLayers.Layer]^-[OpenLayers.Layer.Markers]
+            [OpenLayers.Layer.Markers]^-[OpenLayers.Layer.Text]
+            -->
+            <img src="images/vector_hierarchy.png" alt="OpenLayers vector layers hierarchy" />    
+
+            <h3>Notes</h3>
+            <ul>
+                <li>WFS was deprecated on OpenLayers 2.12. You can do the same simply using Vector class</li>
+            </ul>
 
         </section>
 
