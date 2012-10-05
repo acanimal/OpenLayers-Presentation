@@ -195,8 +195,8 @@ map.zoomToMaxExtent();
             <h2>Base Layers and Overlays</h2>
             <h3>Code Example</h3>
 
-            <p>This example shows a map with a couple of WMS layers, one acting as base layer
-                and the other as overlay:</p>
+            <p>This example shows a map with a couple of WMS layers, one acting as <span class="spotlight">base layer</span>
+                and the other as <span class="spotlight">overlay</span>:</p>
 
             <div class="samplecode">
                 <script type="codemirror" data-selector="#layers_example_code">
@@ -235,7 +235,7 @@ map.addControl(new OpenLayers.Control.LayerSwitcher());
 map.setCenter(new OpenLayers.LonLat(-90,40), 4);
 
 // Change the nexrad layer opacity
-nexrad.setOpacity(0.3);
+nexrad.setOpacity(0.5);
                 </textarea>
             </div>
 
@@ -246,10 +246,66 @@ nexrad.setOpacity(0.3);
         </section>
 
         <section class="slide">
-            <h2>Types of layers</h2>
+            <h2>Base Layers and Overlays</h2>
+            <h3>Code Example</h3>
 
-            <p>There are two main types of layers: <span class="spotlight">Raster</span> (imagery) and
-                <span class="spotlight">Vector</span> (features).</p>
+            <p>This example shows a map working in <span class="olproperty"><code>allOverlays</code></span> mode:</p>
+
+            <div class="samplecode">
+                <script type="codemirror" data-selector="#layers2_example_code">
+                    if(P.layers2_example) P.layers2_example.destroy();
+                </script>
+                <script type="codemirror/cleanup" data-selector="#layers2_example_code">
+                    P.layers2_example = map;
+                </script>
+                <textarea id="layers2_example_code" class="code" mode="javascript" style="display: none;" runnable="true" theme="xq-dark" globals="OpenLayers,P">
+// Create a map and add OSM raster layer as the base layer
+var map = new OpenLayers.Map("layers2_example", {
+    allOverlays: true
+});
+
+// Add a WMS layer
+var wms = new OpenLayers.Layer.WMS("WMS Base", "http://vmap0.tiles.osgeo.org/wms/vmap0",
+{
+    layers: 'basic'
+});
+
+// Add Nexrad WMS layer
+var nexrad = new OpenLayers.Layer.WMS("Nexrad", "http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi",
+{
+    layers: "nexrad-n0r",
+    transparent: true,
+    format: 'image/png'
+});
+
+map.addLayers([wms, nexrad]);
+
+// Add some controls
+map.addControl(new OpenLayers.Control.LayerSwitcher());
+
+// Set the center of the view
+map.setCenter(new OpenLayers.LonLat(-90,40), 4);
+
+// Change the nexrad layer opacity
+nexrad.setOpacity(0.5);
+                </textarea>
+            </div>
+
+            <div class="mapwrapper">
+                <div id="layers2_example"></div>
+            </div>
+
+        </section>
+
+
+        <section class="slide">
+            <h2>Layers' Hierarchy</h2>
+
+            <p>There are two main types of layers:</p>
+            <ul>
+                <li><span class="spotlight">Raster</span> (imagery) and</li>
+                <li><span class="spotlight">Vector</span> (features).</li>
+            </ul>
 
             <!-- yUML code
             [Layer]^-[Raster Layer]
@@ -274,33 +330,68 @@ nexrad.setOpacity(0.3);
             <h2>Raster layers</h2>
 
             <ul>
-                <li><span class="spotlight">Raster</span> layers shows imagery from different service provider: 
+                <li><span class="spotlight">Raster</span> layers shows imagery from different service providers: 
                     Google, Bing, a WMS server, OSM, etc</li>
                 <li>All <span class="spotlight">Raster</span> layers inherits from 
                     the base class <span class="olclass">OpenLayers.Layer</span></li>
-                <li>The <span class="olclass">OpenLayers.Layer.Grid</span> class decomposes the map viewport in 
-                    a lattice of tiles and offers the basic functionalities for the rest of layers</li>
-                <li>The <span class="olclass">OpenLayers.Layer.Google</span> class is a bit... special and
-                does not inherits from <span class="olclass">OpenLayers.Layer.Grid</span></li>
             </ul>
 
             <!--
+            [OpenLayers.Layer]^-[OpenLayers.Layer.Image]
             [OpenLayers.Layer]^-[OpenLayers.Layer.HTTPRequest]
             [OpenLayers.Layer.HTTPRequest]^-[OpenLayers.Layer.Grid]
             [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.WMS]
             [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.WMTS]
             [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.XYZ]
             [OpenLayers.Layer.XYZ]^-[OpenLayers.Layer.OSM]
-            [OpenLayers.Layer.XYZ]^-[OpenLayers.Layer.Bing]
             -->
+
+            <div class="slide">
+                <table>
+                    <tr>
+                        <td>
+                            <img src="images/raster_hierarchy_01.png" alt="OpenLayers raster layers hierarchy" />
+                        </td>
+                        <td>
+                            <img src="images/raster_hierarchy_02.png" alt="OpenLayers raster layers hierarchy" />            
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="slide">
+                <ul>
+                    <li>The <span class="olclass">OpenLayers.Layer.Grid</span> class decomposes the map viewport in 
+                        a lattice of tiles and offers the basic functionalities for the rest of layers</li>
+                    <li>The <span class="olclass">OpenLayers.Layer.Image</span> class allows to create a layer
+                        from s single image file</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h2>Raster layers</h2>
 
             <table>
                 <tr>
                     <td>
-                        <img src="images/raster_hierarchy_01.png" alt="OpenLayers raster layers hierarchy" />
+                        <h4>Google Maps</h4>
+                        <img src="images/raster_layer_gmaps.png" alt="OpenLayers raster Google layer" />
                     </td>
                     <td>
-                        <img src="images/raster_hierarchy_02.png" alt="OpenLayers raster layers hierarchy" />            
+                        <h4>Bing</h4>
+                        <img src="images/raster_layer_bing.png" alt="OpenLayers raster Bing layer" />            
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>OpenStreetMap</h4>
+                        <img src="images/raster_layer_osm.png" alt="OpenLayers raster OSM layer" />
+                    </td>
+                    <td>
+                        <h4>WMS servers</h4>
+                        <img src="images/raster_layer_wms.png" alt="OpenLayers raster WMS layer" />            
                     </td>
                 </tr>
             </table>
@@ -309,6 +400,8 @@ nexrad.setOpacity(0.3);
 
         <section class="slide">
             <h2>Raster layers</h2>
+            <h3>Code Example</h3>
+
             <p>Example working with WMS projection and opacity</p>
             <p>Add maps from opengeo and osgeo and sentences to play with projection, opacity, layer name, etc.</p>
 
@@ -337,6 +430,11 @@ nexrad.setOpacity(0.3);
 
         </section>
 
+        <section class="slide">
+            <h2>Sample Vector layers</h2>
+
+            <p>PUT HERE !!!</p>
+        </section>
 
         <section class="slide" id="themes">
             <h2>Style Themes</h2>
