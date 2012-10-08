@@ -231,7 +231,7 @@
     -moz-box-sizing: padding-box;
     box-sizing: padding-box;
     width: 90%;
-    margin: 2.5% 5%;
+    margin: 0% 5%;
 }
 
 /* 
@@ -270,6 +270,11 @@ OL Presentacion
     text-decoration: underline;
 }
 
+
+/**
+ * NOTE:
+ * Only required for deck.codemirror plugin.
+ */
 div.samplecode {
     font-size: 0.8em;
     height: 200px;
