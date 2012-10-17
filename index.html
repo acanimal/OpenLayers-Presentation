@@ -97,14 +97,6 @@
         </section>
 
         <section class="slide">
-            <h2>The Map</h2>
-            <h3>Recommended examples from OpenLayers Cookbook source code</h3>
-
-            <p>This sample shows how to create a very simple <span class="spotlight">map</span> with a <span class="spotlight">layer</span> and some <span class="spotlight">controls</span>:</p>
-           
-        </section>
-
-        <section class="slide">
             <h1>The <span class="openlayers">Layers</span></h1>
         </section>
 
@@ -135,51 +127,6 @@
         </section>
 
         <section class="slide">
-            <h2>Base Layers and Overlays</h2>
-
-            <p>OpenLayers differentiates two kinds of layers: <span class="spotlight">Base layers</span> and 
-                <span class="spotlight">Overlays</span>.</p>
-
-            <ul>
-                <li><span class="spotlight">Base layers</span> controls several aspects of the map (<em>like the projection 
-                        used by the <span class="spotlight">Map</span></em>)</li>
-                <li><span class="spotlight">Base layers</span> are mutually exclusive, only one can be shown at a time</li>
-                <li>There could be any number of <span class="spotlight">Overlays</span></li>
-                <li>The <span class="olproperty"><code>isBaseLayer</code></span> property inherited from 
-                    <span class="olclass">OpenLayers.Layer</span> determines the kind of layer.</li>
-                <li>The <span class="olproperty"><code>allOverlays</code></span> property of the 
-                    <span class="olclass">OpenLayers.Map</span> class allows all layers works as overlays.</li>
-            </ul>
-
-            <!-- yUML code
-            [Layer]^-[BaseLayer]
-            [Layer]^-[Overlay]
-            -->
-            <img src="images/baselayer_overlay.png" alt="Base layer vs overlays" />
-
-            <blockquote class="slide">Did I say the source code is the best place to learn ?</blockquote>
-
-        </section>
-
-        <section class="slide">
-            <h2>Base Layers and Overlays</h2>
-            <h3>Code Example</h3>
-
-            <p>This example shows a map with a couple of WMS layers, one acting as <span class="spotlight">base layer</span>
-                and the other as <span class="spotlight">overlay</span>:</p>
-
-        </section>
-
-        <section class="slide">
-            <h2>Base Layers and Overlays</h2>
-            <h3>Code Example</h3>
-
-            <p>This example shows a map working in <span class="olproperty"><code>allOverlays</code></span> mode:</p>
-
-        </section>
-
-
-        <section class="slide">
             <h2>Layers' Hierarchy</h2>
 
             <p>There are two main types of layers:</p>
@@ -202,6 +149,70 @@
             <img src="images/raster_vector_layers.png" alt="Raster and vector layers" />
 
         </section>
+
+        <section class="slide">
+            <h2>Base Layers and Overlays</h2>
+
+            <p>OpenLayers differentiates two kinds of layers: <span class="spotlight">Base layers</span> and 
+                <span class="spotlight">Overlays</span>.</p>
+
+            <!-- yUML code
+            [Layer]^-[BaseLayer]
+            [Layer]^-[Overlay]
+            -->
+            <img src="images/baselayer_overlay.png" alt="Base layer vs overlays" />
+
+            <ul>
+                <li><span class="spotlight">Base layers</span> controls several aspects of the map (<em>like the projection 
+                        used by the <span class="spotlight">Map</span></em>)</li>
+                <li><span class="spotlight">Base layers</span> are mutually exclusive, only one can be shown at a time</li>
+                <li>There could be any number of <span class="spotlight">Overlays</span></li>
+                <li>The <span class="olproperty"><code>isBaseLayer</code></span> property inherited from 
+                    <span class="olclass">OpenLayers.Layer</span> determines the kind of layer.</li>
+                <li>The <span class="olproperty"><code>allOverlays</code></span> property of the 
+                    <span class="olclass">OpenLayers.Map</span> class allows all layers works as overlays.</li>
+            </ul>
+
+            <blockquote class="slide">Did I say the source code is the best place to learn ?</blockquote>
+
+        </section>
+
+        <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Examples...</h2>
+
+            <p>...from the chapter 1 of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook" target="_blank">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+            
+            <ul>
+                <li>
+                    <em>Creating simple map</em>: 
+                    <span class="olsampledescription">Basic example on how to create an 
+                        <span class="olclass">OpenLayers.Map</span> instance.</span>
+                </li>
+                <li>
+                    <em>Base and non-base layers</em>: 
+                    <span class="olsampledescription">This example plays with the 
+                        <span class="olclass">OpenLayers.Layer</span> <span class="olproperty">isBaseLayer</span> property
+                    </span>
+                </li>
+                <li>
+                    <em>Avoiding base layers</em>:
+                    <span class="olsampledescription">This example shows how to force all layers to act
+                        as overlays using the 
+                        <span class="olclass">OpenLayers.Map</span> <span class="olproperty">allOverlays</span> property
+                    </span>
+                </li>
+            </ul>
+
+        </section>
+
 
         <section class="slide">
             <h1><span class="openlayers">Raster</span> Layers</h1>
@@ -317,16 +328,16 @@
             <p>PUT HERE !!!</p>
         </section>
 
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
         <section class="slide">
             <h1>References</h1>
         </section>
-        
+
         <section class="slide">
             <h2>References</h2>
             <ul>
@@ -336,17 +347,17 @@
                 <li>OpenLayers API documentation</li>
             </ul>
         </section>
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
+
+
+
+
+
         <section class="slide" id="themes">
             <h2>Style Themes</h2>
             <p>Customizes the colors, typography, and layout of slide&nbsp;content.</p>

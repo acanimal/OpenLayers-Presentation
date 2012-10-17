@@ -250,6 +250,10 @@ OL Presentacion
 .olproperty {
     color: #ae81ff;
 }
+span.olsampledescription {
+    font-size: 0.85em;
+    color: #aaa;
+}
 .references {
     margin-top: 40px;
     border: 1px solid #999;
@@ -270,11 +274,10 @@ OL Presentacion
     text-decoration: underline;
 }
 
-
 /**
  * NOTE:
  * Only required for deck.codemirror plugin.
- */
+*/
 div.samplecode {
     font-size: 0.8em;
     height: 200px;
