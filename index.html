@@ -41,6 +41,27 @@
         </section>
 
         <section class="slide">
+            <h2>About me...</h2>
+            <ul>
+                <li class="slide">Computer Science (as profession and hobby)</li>
+                <li class="slide">No matter if you consider me a Software Engineering, Software Developer or a Programmer</li>
+                <li class="slide">Currently working at <a href="http://www.meteo.cat">Servei Meteorològic de Catalunya</a></li>
+                <li class="slide">In the past I worked as freelance for some companies mainly related with GIS</li>
+                <li class="slide">
+                    I am the author of the <a href="http://acuriousanimal.com/blog/2012/09/02/openlayers-cookbook-is-out/">OpenLayers Cookbook</a>
+                    <br/>
+                    <img src="images/7843OS_OpenLayer_Cookbook_cov_0.jpg" alt="OpenLayers Cookbook"/>
+                </li>
+            </ul>
+
+            <blockquote class="slide">I have a secret... I am <a href="http://acuriousanimal.com/">A Curious Animal</a> !!!</blockquote>
+        </section>
+
+        <section class="slide">
+            <h1><span class="openlayers">OpenLayers</span></h1>
+        </section>
+        
+        <section class="slide">
             <h2>History</h2>
 
             <h3>Google Maps</h3>
@@ -184,12 +205,12 @@
         <section class="slide">
             <h2>Examples...</h2>
 
-            <p>...from the chapter 1 of the
+            <p>...from the <strong><em>Chapter 1 - Mapping Basics</em></strong> of the
                 <a href="https://github.com/acanimal/Openlayers-Cookbook" target="_blank">OpenLayers Cookbook</a> 
                 source code:</p>
 
             <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
-            
+
             <ul>
                 <li>
                     <em>Creating simple map</em>: 
@@ -225,7 +246,15 @@
                 <li><span class="spotlight">Raster</span> layers shows imagery from different service providers: 
                     Google, Bing, a WMS server, OSM, etc</li>
                 <li>All <span class="spotlight">Raster</span> layers inherits from 
-                    the base class <span class="olclass">OpenLayers.Layer</span></li>
+                    the base class <span class="olclass">OpenLayers.Layer</span>. There are two main subclasses: 
+
+                    <ol class="slide">
+                        <li><span class="olclass">OpenLayers.Layer.Image</span> class allows to create a layer
+                            from s single image file</li>
+                        <li><span class="olclass">OpenLayers.Layer.Grid</span> class decomposes the map viewport in 
+                            a lattice of tiles and offers the basic functionalities for the rest of layers</li>
+                    </ol>
+                </li>
             </ul>
 
             <!--
@@ -238,52 +267,17 @@
             [OpenLayers.Layer.XYZ]^-[OpenLayers.Layer.OSM]
             -->
 
-            <div class="slide">
-                <table>
-                    <tr>
-                        <td>
-                            <img src="images/raster_hierarchy_01.png" alt="OpenLayers raster layers hierarchy" />
-                        </td>
-                        <td>
-                            <img src="images/raster_hierarchy_02.png" alt="OpenLayers raster layers hierarchy" />            
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="slide">
-                <ul>
-                    <li>The <span class="olclass">OpenLayers.Layer.Grid</span> class decomposes the map viewport in 
-                        a lattice of tiles and offers the basic functionalities for the rest of layers</li>
-                    <li>The <span class="olclass">OpenLayers.Layer.Image</span> class allows to create a layer
-                        from s single image file</li>
-                </ul>
-            </div>
-
-        </section>
-
-        <section class="slide">
-            <h2>Raster layers</h2>
-
             <table>
                 <tr>
-                    <td class="slide">
-                        <h4>Google Maps</h4>
-                        <img src="images/raster_layer_gmaps.png" alt="OpenLayers raster Google layer" />
+                    <td>
+                        <div class="slide">
+                            <img src="images/raster_hierarchy_01.png" alt="OpenLayers raster layers hierarchy" />
+                        </div>
                     </td>
-                    <td class="slide">
-                        <h4>Bing</h4>
-                        <img src="images/raster_layer_bing.png" alt="OpenLayers raster Bing layer" />            
-                    </td>
-                </tr>
-                <tr>
-                    <td class="slide">
-                        <h4>OpenStreetMap</h4>
-                        <img src="images/raster_layer_osm.png" alt="OpenLayers raster OSM layer" />
-                    </td>
-                    <td class="slide">
-                        <h4>WMS servers</h4>
-                        <img src="images/raster_layer_wms.png" alt="OpenLayers raster WMS layer" />            
+                    <td>
+                        <div class="slide">
+                            <img src="images/raster_hierarchy_02.png" alt="OpenLayers raster layers hierarchy" />            
+                        </div>
                     </td>
                 </tr>
             </table>
@@ -292,10 +286,74 @@
 
         <section class="slide">
             <h2>Raster layers</h2>
-            <h3>Code Example</h3>
 
-            <p>Example working with WMS projection and opacity</p>
-            <p>Add maps from opengeo and osgeo and sentences to play with projection, opacity, layer name, etc.</p>
+            <table>
+                <tr>
+                    <td>
+                        <h4>Google Maps</h4>
+                        <img src="images/raster_layer_gmaps.png" alt="OpenLayers raster Google layer" />
+                    </td>
+                    <td>
+                        <h4>Bing</h4>
+                        <img src="images/raster_layer_bing.png" alt="OpenLayers raster Bing layer" />            
+                    </td>
+                    <td>
+                        <h4>OpenStreetMap</h4>
+                        <img src="images/raster_layer_osm.png" alt="OpenLayers raster OSM layer" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>WMS servers</h4>
+                        <img src="images/raster_layer_wms.png" alt="OpenLayers raster WMS layer" />            
+                    </td>
+                    <td>
+                        <h4>MapQuest</h4>
+                        <img src="images/raster_layer_mapquest.png" alt="OpenLayers raster MapQuest layer" />
+                    </td>
+                    <td>
+                        <h4>Image file</h4>
+                        <img src="images/raster_layer_image.png" alt="OpenLayers raster layer from image file" />            
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
+        
+        <section class="slide">
+            <h2>Examples...</h2>
+
+            <p>...from the <strong><em>Chapter 2 - Raster Layers</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook" target="_blank">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>Using Goole Maps imagery</em>: 
+                    <span class="olsampledescription">Shows how to work with Google Maps API v3 
+                        <span class="olclass">OpenLayers.Map</span> instance.</span>
+                </li>
+                <li>
+                    <em>Base and non-base layers</em>: 
+                    <span class="olsampledescription">This example plays with the 
+                        <span class="olclass">OpenLayers.Layer</span> <span class="olproperty">isBaseLayer</span> property
+                    </span>
+                </li>
+                <li>
+                    <em>Avoiding base layers</em>:
+                    <span class="olsampledescription">This example shows how to force all layers to act
+                        as overlays using the 
+                        <span class="olclass">OpenLayers.Map</span> <span class="olproperty">allOverlays</span> property
+                    </span>
+                </li>
+            </ul>
+
 
         </section>
 
