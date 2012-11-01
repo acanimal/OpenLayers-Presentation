@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <!--        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
 
         <title>Once Upon a Time... OpenLayers</title>
 
@@ -60,7 +60,7 @@
         <section class="slide">
             <h1><span class="openlayers">OpenLayers</span></h1>
         </section>
-        
+
         <section class="slide">
             <h2>History</h2>
 
@@ -206,7 +206,7 @@
             <h2>Examples...</h2>
 
             <p>...from the <strong><em>Chapter 1 - Mapping Basics</em></strong> of the
-                <a href="https://github.com/acanimal/Openlayers-Cookbook" target="_blank">OpenLayers Cookbook</a> 
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
                 source code:</p>
 
             <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
@@ -243,7 +243,8 @@
             <h2>Raster layers</h2>
 
             <ul>
-                <li><span class="spotlight">Raster</span> layers shows imagery from different service providers: 
+                <li><span class="spotlight">Raster</span> layers shows imagery (or a <a href="http://en.wikipedia.org/wiki/Bitmap">bitmap</a>) from 
+                    different service providers: 
                     Google, Bing, a WMS server, OSM, etc</li>
                 <li>All <span class="spotlight">Raster</span> layers inherits from 
                     the base class <span class="olclass">OpenLayers.Layer</span>. There are two main subclasses: 
@@ -323,12 +324,12 @@
         <section class="slide">
             <h1>Time for action...</h1>
         </section>
-        
+
         <section class="slide">
             <h2>Examples...</h2>
 
             <p>...from the <strong><em>Chapter 2 - Raster Layers</em></strong> of the
-                <a href="https://github.com/acanimal/Openlayers-Cookbook" target="_blank">OpenLayers Cookbook</a> 
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
                 source code:</p>
 
             <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
@@ -354,7 +355,6 @@
                 </li>
             </ul>
 
-
         </section>
 
         <section class="slide">
@@ -362,23 +362,52 @@
         </section>
 
         <section class="slide">
+
             <h2>Vector layers</h2>
 
-            <p>Describe features, renderers, strategies, protocols, etc</p>
+            <ul>
+                <li><span class="spotlight">Vector</span> layers allows us to work 
+                    with <span class="spotlight">features</span></li>
+                <li>A <span class="spotlight">feature</span> is digital representation 
+                    of something in the real world: <em>city, river, mountain, ...</em></li>
+                <li>A <span class="spotlight">feature</span> can have <span class="spotlight">attributes</span> 
+                    attached to it: <em>city name, population, etc</em></li>
+            </ul>
 
             <!--
             [OpenLayers.Layer]^-[OpenLayers.Layer.Vector]
             [OpenLayers.Layer]^-[OpenLayers.Layer.Markers]
             [OpenLayers.Layer.Markers]^-[OpenLayers.Layer.Text]
+            [OpenLayers.Layer.Vector]^-[OpenLayers.Layer.WFS]
+            [OpenLayers.Layer.Markers]^-[OpenLayers.Layer.WFS]
             -->
-            <img src="images/vector_hierarchy.png" alt="OpenLayers vector layers hierarchy" />    
+
+            <img src="images/vector_hierarchy.png" height="300" alt="OpenLayers vector layers hierarchy" />    
 
             <h3>Notes</h3>
             <ul>
-                <li>WFS was deprecated on OpenLayers 2.12. You can do the same simply using Vector class</li>
+                <li><span class="olclass">OpenLayers.Layer.WFS</span> was deprecated on OpenLayers 2.12. You can do the same simply using Vector class</li>
             </ul>
 
         </section>
+
+        <section class="slide">
+            <h2>Vector layers</h2>
+
+            <span style="color: red">TODO: Hierarchy with OpenLayers.Feature and OpenLayers.Feature.Vector</span>
+            
+            <h3>Feature relationships</h3>
+            <ul>
+                <li>A <span class="spotlight">feature</span> is represented by a <span class="spotlight">geometry</span> instance</li>
+                <li>A <span class="spotlight">feature</span> is represented by a <span class="spotlight">geometry</span> instance</li>
+            </ul>
+
+            <span style="color: red">TODO: Describe features, renderers, strategies, protocols, etc</span>
+            
+
+        </section>
+
+
 
         <section class="slide">
             <h2>Sample Vector layers</h2>
