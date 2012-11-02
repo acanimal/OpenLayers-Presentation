@@ -17,6 +17,7 @@ This HTML presentation makes use of the tools:
 * [deck.js](https://github.com/imakewebthings/deck.js): A JavaScript library for building modern HTML presentations.
 * [deck.js-codemirror](https://github.com/iros/deck.js-codemirror) extension: Allows you to embed codemirror code snippets in your slides
 * [OpenLayers 2.12](http://openlayers.org/): The framework we are talking about.
+* All UML class diagrams have been made with the free and online [yUML](http://yuml.me/diagram/scruffy/class/draw) tool.
 
 > **Note**: I have been to modify slightly the original OpenLayers `style.css` into `deck.openlayers.style.css` to avoid
 issues between OpenLayers and deckjs styles.
