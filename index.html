@@ -64,28 +64,33 @@
         <section class="slide">
             <h2>History</h2>
 
-            <h3>Google Maps</h3>
-            <ul>
-                <li>Announced on February 2005</li>
-                <li>IMO, one of the most influential applications on the 2000 decade</li>
-                <li>Brings to the masses the possibility to explore the world</li>
-                <li>Fire starter for the current GIS explosion</li>
-            </ul>
-
-            <h3>OpenLayers</h3>
-            <ul>
-                <li>First release on June 2006</li>
-                <li>Open alternative to Google Maps and Bing made by a group of MetaCarta employees</li>
-                <li>On 2007 <a href="http://www.openstreetmap.org/">OpenStreeMap</a> starts using it on 
-                    the <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map_MediaWiki_Extension">Slippy Map</a></li>
-            </ul>
-
-            <div class="references">
-                <h3>References</h3>
-                <p>OpenLayers Wiki <a href="http://trac.osgeo.org/openlayers/wiki/History">here</a>, 
-                    Wikipedia entry <a href="http://en.wikipedia.org/wiki/OpenLayers">here</a></p>
+            <div class="slide">
+                <h3>Google Maps</h3>
+                <ul>
+                    <li>Announced on February 2005</li>
+                    <li>IMO, one of the most influential applications on the 2000 decade</li>
+                    <li>Brings to the masses the possibility to explore the world</li>
+                    <li>Fire starter for the current GIS explosion</li>
+                </ul>
             </div>
 
+            <div class="slide">
+                <h3>OpenLayers</h3>
+                <ul>
+                    <li>First release on June 2006</li>
+                    <li>Open alternative to Google Maps and Bing made by a group of MetaCarta employees</li>
+                    <li>On 2007 <a href="http://www.openstreetmap.org/">OpenStreeMap</a> starts using it on 
+                        the <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map_MediaWiki_Extension">Slippy Map</a></li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <div class="references">
+                    <h3>References</h3>
+                    <p>OpenLayers Wiki <a href="http://trac.osgeo.org/openlayers/wiki/History">here</a>, 
+                        Wikipedia entry <a href="http://en.wikipedia.org/wiki/OpenLayers">here</a></p>
+                </div>
+            </div>
         </section>
 
         <section class="slide">
@@ -94,17 +99,12 @@
 
         <section class="slide">
             <h2>The Map</h2>
-            <p>The <span class="spotlight">map</span> is the central piece on a web mapping application
+
+            <p class="slide">The <span class="spotlight">map</span> is the central piece on a web mapping application
                 and is represented by instances of the <span class="olclass">OpenLayers.Map</span> class.</p>
 
-            <!-- yUML 
-            [Map|projection;units;...]-*>[Layers]
-            [Map|projection;units;...]-*>[Controls]
-            -->
 
-            <img src="images/uml_map.png" alt="Map UML class diagram"/>
-
-            <ul>
+            <ul class="slide">
                 <li>The <span class="spotlight">map</span> has some important properties: projection, 
                     zoom levels (resolutions), units, etc</li>
                 <li>A <span class="spotlight">map</span> contains one or more <span class="spotlight">layers</span></li>
@@ -113,8 +113,13 @@
                             can't be used on another one</strong></em></li>
             </ul>
 
-            <blockquote class="slide">The source code is the best place to learn</blockquote>
+            <!-- yUML 
+            [Map|projection;units;...]-*>[Layers]
+            [Map|projection;units;...]-*>[Controls]
+            -->
+            <img class="slide" src="images/uml_map.png" alt="Map UML class diagram"/>
 
+            <blockquote class="slide">The source code is the best place to learn</blockquote>
         </section>
 
         <section class="slide">
@@ -124,36 +129,29 @@
         <section class="slide">
             <h2>Layers</h2>
 
-            <p>The concept of <span class="spotlight">Layer</span> allows us to group/classify the elements that
+            <p class="slide">The concept of <span class="spotlight">Layer</span> allows us to group/classify the elements that
                 must be rendered on the <span class="spotlight">Map</span></p>
 
-            <p>All layers inherits from the base class <span class="olclass">OpenLayers.Layer</span>, which
+            <p class="slide">All layers inherits from the base class <span class="olclass">OpenLayers.Layer</span>, which
                 defines some common properties for all subclasses:</p>
-            <ul>
+            <ul class="slide">
                 <li><span class="olproperty"><code>name</code></span> Every has a name (that is used in the LayerSwitcher control</li>
                 <li><span class="olproperty"><code>opacity</code></span> A value in the range 0..1 that determines its opacity</li>
                 <li><span class="olproperty"><code>projection</code></span> The projection of the data contained in the layer</li>
                 <li><span class="olproperty"><code>maxExtent</code></span> The maximum extent of the data</li>
                 <li><span class="olproperty"><code>resolutions</code></span> A list of map resolutions (map units per pixel) in descending order</li>
-                <li>...</li>                    
             </ul>
 
-            <!-- yUML code
-            [Layer|isBaseLayer;projection;units;resolutions;...]
-            -->
-            <img src="images/layer.png" alt="Layer class"/>
-
             <blockquote class="slide">Remember, the source code is the best place to learn</blockquote>
-
         </section>
 
         <section class="slide">
             <h2>Layers' Hierarchy</h2>
 
-            <p>There are two main types of layers:</p>
-            <ul>
-                <li><span class="spotlight">Raster</span> (imagery) and</li>
-                <li><span class="spotlight">Vector</span> (features).</li>
+            <p class="slide">There are two main types of layers:</p>
+            <ul class="slide">
+                <li><span class="spotlight">Raster</span> (<em>imagery</em>) and</li>
+                <li><span class="spotlight">Vector</span> (<em>features</em>)</li>
             </ul>
 
             <!-- yUML code
@@ -167,23 +165,25 @@
             [Vector Layer]^-[GeoJSON]
             [Vector Layer]^-[KML]
             -->
-            <img src="images/raster_vector_layers.png" alt="Raster and vector layers" />
+            <img class="slide" src="images/raster_vector_layers.png" alt="Raster and vector layers" />
 
         </section>
 
         <section class="slide">
             <h2>Base Layers and Overlays</h2>
 
-            <p>OpenLayers differentiates two kinds of layers: <span class="spotlight">Base layers</span> and 
-                <span class="spotlight">Overlays</span>.</p>
+            <div class="slide">
+                <p>OpenLayers differentiates two kinds of layers: <span class="spotlight">Base layers</span> and 
+                    <span class="spotlight">Overlays</span>.</p>
 
-            <!-- yUML code
-            [Layer]^-[BaseLayer]
-            [Layer]^-[Overlay]
-            -->
-            <img src="images/baselayer_overlay.png" alt="Base layer vs overlays" />
+                <!-- yUML code
+                [Layer]^-[BaseLayer]
+                [Layer]^-[Overlay]
+                -->
+                <img src="images/baselayer_overlay.png" alt="Base layer vs overlays" />
+            </div>
 
-            <ul>
+            <ul class="slide">
                 <li><span class="spotlight">Base layers</span> controls several aspects of the map (<em>like the projection 
                         used by the <span class="spotlight">Map</span></em>)</li>
                 <li><span class="spotlight">Base layers</span> are mutually exclusive, only one can be shown at a time</li>
@@ -242,8 +242,8 @@
         <section class="slide">
             <h2>Raster layers</h2>
 
-            <ul>
-                <li><span class="spotlight">Raster</span> layers shows imagery (or a <a href="http://en.wikipedia.org/wiki/Bitmap">bitmap</a>) from 
+            <ul class="slide">
+                <li><span class="spotlight">Raster</span> layers shows imagery (or <a href="http://en.wikipedia.org/wiki/Bitmap">bitmaps</a>) from 
                     different service providers: 
                     Google, Bing, a WMS server, OSM, etc</li>
                 <li>All <span class="spotlight">Raster</span> layers inherits from 
@@ -362,17 +362,16 @@
         </section>
 
         <section class="slide">
-
             <h2>Vector layers</h2>
 
-            <ul>
-                <li><span class="spotlight">Vector</span> layers allows us to work 
-                    with <span class="spotlight">features</span></li>
-                <li>A <span class="spotlight">feature</span> is digital representation 
-                    of something in the real world: <em>city, river, mountain, ...</em></li>
-                <li>A <span class="spotlight">feature</span> can have <span class="spotlight">attributes</span> 
-                    attached to it: <em>city name, population, etc</em></li>
-            </ul>
+            <p>
+                <span class="spotlight">Vector</span> layers allows us to work 
+                with <span class="spotlight">features</span> loaded from a 
+                <span class="spotlight">data source</span>...
+            </p>
+
+            <blockquote>A <span class="spotlight">feature</span> is digital representation 
+                of something in the real world: <em>city, river, mountain, ...</em></blockquote>
 
             <!--
             [OpenLayers.Layer]^-[OpenLayers.Layer.Vector]
@@ -386,7 +385,7 @@
 
             <h3>Notes</h3>
             <ul>
-                <li><span class="olclass">OpenLayers.Layer.WFS</span> was deprecated on OpenLayers 2.12. You can do the same simply using Vector class</li>
+                <li><span class="olclass">OpenLayers.Layer.WFS</span> was <strong>DEPRECATED !!!</strong> on OpenLayers 2.12. You can do the same simply using Vector class</li>
             </ul>
 
         </section>
@@ -394,31 +393,168 @@
         <section class="slide">
             <h2>Vector layers</h2>
 
-            <span style="color: red">TODO: Hierarchy with OpenLayers.Feature and OpenLayers.Feature.Vector</span>
-            
-            <h3>Feature relationships</h3>
-            <ul>
-                <li>A <span class="spotlight">feature</span> is represented by a <span class="spotlight">geometry</span> instance</li>
-                <li>A <span class="spotlight">feature</span> is represented by a <span class="spotlight">geometry</span> instance</li>
-            </ul>
-
-            <span style="color: red">TODO: Describe features, renderers, strategies, protocols, etc</span>
-            
-
+            <p style="color:red;">PLACE SAMPLES !!!</p>
         </section>
-
 
 
         <section class="slide">
-            <h2>Sample Vector layers</h2>
+            <h2>Features</h2>
 
-            <p>PUT HERE !!!</p>
+            <ul>
+                <li>A <span class="spotlight">feature</span> can have <span class="spotlight">attributes</span> 
+                    attached to it: <em>city name, population, etc</em></li>
+                <li>A <span class="spotlight">feature</span> can have a visual 
+                    <span class="spotlight">style</span> attached: <em>pointRadius, lineWidth, ...</em> (See the
+                    <span class="olproperty">OpenLayers.Feature.Vector.style</span> constant)</li>
+            </ul>
+
+            <!--
+            [OpenLayers.Feature|id;...]^-[OpenLayers.Feature.Vector|fid;attributes;style;bounds;geometry]
+            -->
+
+            <img src="images/feature_hierarchy.png" alt="OpenLayers feature's hierarchy" />
+
+            <h3>Notes</h3>
+            <ul>
+                <li><span class="olclass">OpenLayers.Feature</span> class defines the basics of a <span class="spotlight">feature</span></li>
+                <li><span class="olclass">OpenLayers.Feature.Vector</span> class is what we really use on <span class="spotlight">vector layers</span></li>
+            </ul>
+
+            <blockquote class="slide">The source code is the best place to learn</blockquote>
+
+        </section>
+
+        <section class="slide">
+            <h2>Geometries</h2>
+
+            <ul>
+                <li>A <span class="spotlight">feature</span> is represented by a 
+                    <span class="spotlight">geometry</span> instance: <em>point, line, polygon, ...</em>
+                    which must be an instance of some subclass of <span class="olclass">OpenLayers.Geometry</span></li>
+            </ul>
+
+            <!--
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Collection]
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Point]
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Rectangle]
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Surface]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.Polygon]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.MultiLineString]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.MultiPoint]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.MultiPolygon]
+
+           [OpenLayers.Geometry.MultiPoint]^-[OpenLayers.Geometry.Curve]
+           [OpenLayers.Geometry.Curve]^-[OpenLayers.Geometry.LineString]
+           [OpenLayers.Geometry.LineString]^-[OpenLayers.Geometry.LinearRing]
+            -->
+            <img src="images/geometry_hierarchy.png" alt="OpenLayers geometry's hierarchy" />
+
+            <h3>Note</h3>
+            <ul>
+                <li>The <span class="spotlight">geometry</span> is rendered using the style indicated on the <span class="spotlight">feature</span> or
+                    in the <span class="spotlight">vector layer</span> style if not exists</li>
+            </ul>
+        </section>
+
+        <section class="slide">
+            <h2>Renderers</h2>
+
+            <p>There exists different technologies to draw graphics in the browser (mainly
+                HTML5 <a href="http://en.wikipedia.org/wiki/Canvas_element">Canvas</a> element 
+                and <a hred="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a>)</p>
+
+            <p>A renderer abstracts the way a vector layer renders features (geometries)
+                in the browser without worry on the technology to use.</p>
+
+
+            <!--
+            [OpenLayers.Renderer]^-[OpenLayers.Renderer.Canvas]
+            [OpenLayers.Renderer]^-[OpenLayers.Renderer.Elements]
+            [OpenLayers.Renderer.Elements]^-[OpenLayers.Renderer.SVG]
+            [OpenLayers.Renderer.Elements]^-[OpenLayers.Renderer.NG]
+            [OpenLayers.Renderer.NG]^-[OpenLayers.Renderer.SVG2]
+            -->
+            <img src="images/renderer_hierarchy.png" width="550" alt="OpenLayers renderer's hierarchy" />
+
+        </section>
+
+        <section class="slide">
+            <h2>Protocols & Formats</h2>
+
+            <p>
+                A <span class="spotlight">vector</span> layer can load data from many
+                <span class="spotlight">data source</span> (<em>HTTP, WFS, SOS, ...</em>) and with many 
+                <span class="spotlight">data formats</span> (<em>GeoJSON, GML, KML, ...</em>)
+            </p>
+
+            <ul>
+                <li>
+                    The <span class="spotlight">protocol</span> determines the way a vector layer
+                    communicates with a data source. It must be an instance of some of the 
+                    <span class="olclass">OpenLayers.Protocol</span> subclasses
+                </li>
+                <li>
+                    The <span class="spotlight">format</span> determines how features must
+                    be read or written. It must be an instance of some of the 
+                    <span class="olclass">OpenLayers.Format</span> subclasses
+                </li>
+            </ul>
+
+            <table>
+                <tr>
+                    <td>
+                        <!--
+                        [OpenLayers.Protocol]^-[OpenLayers.Protocol.HTTP]
+                        [OpenLayers.Protocol]^-[OpenLayers.Protocol.WFS]
+                        [OpenLayers.Protocol]^-[OpenLayers.Protocol.SOS]
+                        -->
+                        <img src="images/protocol_hierarchy.png" alt="OpenLayers protocol's hierarchy" />
+                    </td>
+                    <td>
+                        <!--
+                        [OpenLayers.Format]^-[OpenLayers.Format.JSON]
+                        [OpenLayers.Format.JSON]^-[OpenLayers.Format.GeoJSON]
+                        [OpenLayers.Format]^-[OpenLayers.Format.XML]
+                        [OpenLayers.Format.XML]^-[OpenLayers.Format.GML]
+                        [OpenLayers.Format.GML]^-[OpenLayers.Format.WFS]
+                        [OpenLayers.Format.XML]^-[OpenLayers.Format.GeoRSS]
+                        -->
+                        <img src="images/format_hierarchy.png" alt="OpenLayers format's hierarchy" />
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="slide">
+            <h2>Styles, Filters & Rules</h2>
+
+            <p></p>
+
+        </section>
+
+        <section class="slide">
+            <h2>Strategies</h2>
+
+            <p></p>
+
         </section>
 
 
+        <section class="slide">
+            <h2>Summary</h2>
 
+            <p>What is the typical workflow when a vector layer is drawn in the map?</p>
 
+            <ul>
+                <li>The layer calls the protocol so it can load the data</li>
+                <li>The protocol communicates with the data source and reads the data</li>
+                <li>The protocol uses the specified format to transform the data into features and add to the layer</li>
+                <li>The layer delegates to the renderer the task to render the features</li>
+                <li>The renderer draws each feature using the appropriate geometry and with the appropriate style</li>
+            </ul>
 
+        </section>
 
 
         <section class="slide">
