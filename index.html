@@ -395,7 +395,29 @@
         <section class="slide">
             <h2>Vector layers</h2>
 
-            <p style="color:red;">PLACE SAMPLES !!!</p>
+            <table>
+                <tr>
+                    <td>
+                        <h4>WFS</h4>
+                        <img src="images/vector_layer_wfs.png" alt="OpenLayers vector layer WFS" />
+                    </td>
+                    <td>
+                        <h4>KML</h4>
+                        <img src="images/vector_layer_kml.png" alt="OpenLayers vector layer KML" />            
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Features</h4>
+                        <img src="images/vector_layer_features.png" alt="OpenLayers vector layer features" />            
+                    </td>
+                    <td>
+                        <h4>Clusters</h4>
+                        <img src="images/vector_layer_cluster.png" alt="OpenLayers vector layer with clustering" />
+                    </td>
+                </tr>
+            </table>
+
         </section>
 
 
@@ -456,7 +478,7 @@
                 <ul>
                     <li>The <span class="spotlight">geometry</span> is rendered using the style indicated on the <span class="spotlight">feature</span> or
                         in the <span class="spotlight">vector layer</span> style if not exists</li>
-                    <li>OpenLayers implements the <a hred="http://en.wikipedia.org/wiki/Simple_feature_access">Simple Feature Access</a>
+                    <li>OpenLayers implements the <a href="http://en.wikipedia.org/wiki/Simple_feature_access">Simple Feature Access</a>
                         standard, which is a common storage model of geographical data.</li>
                 </ul>
             </div>
@@ -467,7 +489,7 @@
 
             <p class="slide">There exists different technologies to draw graphics in the browser (mainly
                 HTML5 <a href="http://en.wikipedia.org/wiki/Canvas_element">Canvas</a> element 
-                and <a hred="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a>)</p>
+                and <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a>)</p>
 
             <p class="slide">A renderer abstracts the way a vector layer renders features (geometries)
                 in the browser without worry on the technology to use.</p>
@@ -533,16 +555,25 @@
         </section>
 
         <section class="slide">
-            <h2>Styles, Filters & Rules</h2>
+            <h2>Styles, Rules & Filters</h2>
 
             <p>There are different ways to style a <span class="spotlight">feature</span>:</p>
-            <ul>
-                <li>Applying a <span class="spotlight">symbolizer hash</span> directly on the feature.</li>
-                <li>Applying a <span class="spotlight">symbolizer hash</span> to the layer 
-                    in the <span class="olproperty">style</span> property.</li>
-                <li>Create a complex StyleMap object and attach it to the layer 
-                    in the <span class="olproperty">styleMap</span> property</li>
+            <ul class="slide">
+                <li>Applying a <span class="spotlight">symbolizer hash</span> directly on the feature</li>
+                <li>Applying a <span class="spotlight">symbolizer hash</span> to the layer, 
+                    in the <span class="olproperty">style</span> property</li>
+                <li>Create a complex <span class="olclass">OpenLayers.StyleMap</span> object and attach it to the layer, 
+                    in the <span class="olproperty">styleMap</span> property:</li>
             </ul>
+
+            <!--
+            [OpenLayers.StyleMap]->*[OpenLayers.Style]
+            [OpenLayers.Style]->*[OpenLayers.Rules]
+            [OpenLayers.Style]->1[defaultStyle]
+            [OpenLayers.Rules]->1[OpenLayers.Filter]
+            [OpenLayers.Rules]->1[symbolizer]
+            -->
+            <img class="slide" height="420" src="images/style_classes.png" alt="OpenLayers styles, rules and filters" />
 
         </section>
 
@@ -553,13 +584,29 @@
 
         </section>
 
-
         <section class="slide">
-            <h2>Summary</h2>
+            <h2>Challenge !!! To make a summary...</h2>
 
-            <p>What is the typical workflow when a vector layer is drawn in the map?</p>
+            <table>
+                <tr>
+                    <td>
+                        <img src="images/challenge_accepted.png" alt="Challenge Accepted" />
+                    </td>
+                    <td>
+                        <!--
+                        [OpenLayers.Layer.Vector]->1[OpenLayers.Renderer]
+                        [OpenLayers.Layer.Vector]->1[OpenLayers.StyleMap]
+                        [OpenLayers.Layer.Vector]++-has>*[OpenLayers.Feature.Vector]
+                        [OpenLayers.Feature.Vector]->1[OpenLayers.Geometry]
+                        [OpenLayers.Layer.Vector]->1[OpenLayers.Protocol]
+                        [OpenLayers.Protocol]->1[OpenLayers.Format]
+                        -->
+                        <img class="slide" src="images/vector_layers_summary_classes.png" alt="Vector layer summary set of classes" />
+                    </td>
+                </tr>
+            </table>
 
-            <ul>
+            <ul class="slide">
                 <li>The layer calls the protocol so it can load the data</li>
                 <li>The protocol communicates with the data source and reads the data</li>
                 <li>The protocol uses the specified format to transform the data into features and add to the layer</li>
@@ -569,7 +616,39 @@
 
         </section>
 
+        <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
 
+        <section class="slide">
+            <h2>Examples...</h2>
+
+            <p>...from the <strong><em>Chapter 3 - Vector Layers</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>Using Goole Maps imagery</em>: 
+                    <span class="olsampledescription">Shows how to work with Google Maps API v3 
+                        <span class="olclass">OpenLayers.Map</span> instance.</span>
+                </li>
+            </ul>
+            
+            <span style="color:red;">PLACE SAMPLES !!!</span>
+        </section>
+
+        <section class="slide">
+            <h1>Events</h1>
+        </section>
+        
+        <section class="slide">
+            <h1>Controls</h1>
+        </section>
+        
+        
         <section class="slide">
             <h1>References</h1>
         </section>
