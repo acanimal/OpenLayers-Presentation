@@ -580,12 +580,33 @@
         <section class="slide">
             <h2>Strategies</h2>
 
-            <p></p>
-
+            <p><span class="spotlight">Strategies</span> allows us to determine some aspects of the vector layer's behavior</p>
+            <ul class="slide">
+                <li>A <span class="spotlight">vector layer</span> can have any number 
+                    of <span class="spotlight">Strategies</span> attached</li>
+                <li><span class="spotlight">Strategies</span> must be added to 
+                    the <span class="olproperty">strategies</span> array property of 
+                    the <span class="olclass">OpenLayers.Layer.Vector</span> class
+                    <ul class="slide">
+                        <li><span class="olclass">OpenLayers.Strategy.Refresh</span> refresh a layer automatically</li>
+                        <li><span class="olclass">OpenLayers.Strategy.Cluster</span> makes groups of features to avoid collisions</li>
+                        <li><span class="olclass">OpenLayers.Strategy.Fixed</span> loads layer's data only once</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <!--
+            [OpenLayers.Layer.Vector]->*[OpenLayers.Strategy]
+            [OpenLayers.Strategy]^-[OpenLayers.Strategy.BBOX]
+            [OpenLayers.Strategy]^-[OpenLayers.Strategy.Cluster]
+            [OpenLayers.Strategy]^-[OpenLayers.Strategy.Refresh]
+            -->
+            <img class="slide" height="300" src="images/vector_layer_strategies_hierarchy.png" alt="OpenLayers strategies hierarchy" />
+            
         </section>
 
         <section class="slide">
-            <h2>Challenge !!! To make a summary...</h2>
+            <h2>Let's make a summary...</h2>
 
             <table>
                 <tr>
