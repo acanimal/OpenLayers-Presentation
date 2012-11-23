@@ -59,7 +59,26 @@
                 </li>
             </ul>
 
-            <blockquote class="slide">I have a secret... I am <a href="http://acuriousanimal.com/">A Curious Animal</a> !!!</blockquote>
+            <h3 class="slide">I have a secret...</h3>
+            <h2 class="slide">I am <a href="http://acuriousanimal.com/">A Curious Animal</a> !!!</h2>
+        </section>
+
+        <section class="slide">
+            <h2>About this presentation...</h2>
+            <ul>
+                <li class="slide">You can download this presentation from:<br/>
+                    <a href="https://github.com/acanimal/OpenLayers-Presentation">https://github.com/acanimal/OpenLayers-Presentation</a></li>
+
+                <li class="slide">You can download this OpenLayers Cookbook source code 
+                    samples from:<br/>
+                    <a href="https://github.com/acanimal/Openlayers-Cookbook">https://github.com/acanimal/Openlayers-Cookbook</a></li>
+            </ul>
+
+            <div class="slide">
+                <blockquote>Both works are open !!! <br/>
+                Feel free to download the presentation or source code and 
+                contribute to it !!!</blockquote>
+            </div>
         </section>
 
         <section class="slide">
@@ -99,6 +118,17 @@
         </section>
 
         <section class="slide">
+            <h1>Before to continue...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Remember...</h2>
+
+            <blockquote class="slide">The source code is the best place to learn</blockquote>
+        </section>
+
+
+        <section class="slide">
             <h1>The <span class="openlayers">Map</span></h1>
         </section>
 
@@ -124,7 +154,16 @@
             -->
             <img class="slide" src="images/uml_map.png" alt="Map UML class diagram"/>
 
-            <blockquote class="slide">The source code is the best place to learn</blockquote>
+            <div class="slide">
+                <h3>Example</h3>
+                Create a HTML element for the map:
+                <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">
+<div id="myMap"></div></textarea>
+                Create a OpenLayers.Map instance:
+                <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var map = new OpenLayers.Map("myMap");</textarea>
+            </div>
+            
         </section>
 
         <section class="slide">
@@ -478,16 +517,15 @@
             -->
             <img class="slide" src="images/geometry_hierarchy.png" alt="OpenLayers geometry's hierarchy" />
 
-            <div class="slide">
-                <h3>Note</h3>
-                <ul>
-                    <li>The <span class="spotlight">geometry</span> is rendered using the style indicated on the <span class="spotlight">feature</span> or
-                        in the <span class="spotlight">vector layer</span> style if not exists</li>
-                    <li>OpenLayers implements the <a href="http://en.wikipedia.org/wiki/Simple_feature_access">Simple Feature Access</a>
-                        standard, which is a common storage model of geographical data.</li>
-                </ul>
-            </div>
-        </section>
+            <div class="slide">                 <h3>Note</h3>
+<ul>                     <li>The <span class="spotlight">geometry</span> is
+rendered using the style indicated on the <span class="spotlight">feature</span>
+or                         in the <span class="spotlight">vector layer</span>
+style if not exists</li>                     <li>OpenLayers implements the <a
+href="http://en.wikipedia.org/wiki/Simple_feature_access">Simple Feature
+Access</a>                         standard, which is a common storage model of
+geographical data.</li>                 </ul>             </div>
+</section>
 
         <section class="slide">
             <h2>Renderers</h2>
@@ -711,7 +749,7 @@ map.addLayer(osm);</textarea>
         <section class="slide">
             <h2>Events</h2>
 
-            <h4>Events are like the nerves in our applications (action / reaction)</h4>
+            <p><span class="spotlight">Events</span> are like the nerves in our applications (action -> reaction)</p>
             <ul>
                 <li>HTML elements can trigger events: <em>click</em>, <em>mouse enter</em>, etc</li>
                 <li>Most of the OpenLayers components triggers events:
@@ -732,8 +770,23 @@ map.addLayer(osm);</textarea>
                 </li>
             </ul>
 
+            <p class="slide">How listen for DOM element events?</p>
+            <div class="slide">
+                <p>
+                Given next HTML button:
+                <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">
+<button id="myButton"></button></textarea>
+                </p>
 
-            <span style="color:red;">PLACE CODE TO REGISTER EVENTS !!!</span>
+                <p>
+                We can use this JavaScript code:
+                <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var element = document.getElementById("myButton"); 
+element.addEventListener("click", function (event) {
+    // Do something
+});</textarea>
+                </p>
+            </div>
 
         </section>
 
@@ -744,10 +797,100 @@ map.addLayer(osm);</textarea>
         <section class="slide">
             <h2>Controls</h2>
 
-            <p>Controls allows to interact with the map.</p>
-            <p>A control can be something visible like a button or something not visible
-                like the navigation</p>
+            <p><span class="spotlight">Controls</span> allows to interact with the <span class="spotlight">Map</span>...</p>
+            <div class="slide">
+                <blockquote>
+                    Controls can range from visible widgets (like a buttons) to actions (like the navigation or zoom controls)
+                </blockquote>
+            </div>
+                
+            <p class="slide">All <span class="spotlight">controls</span> inherits 
+                from base class <span class="olclass">OpenLayers.Control</span>:</p>
+
+            <div class="slide">
+                <!--
+                [OpenLayers.Control]^-[OpenLayers.Control.Navigation]
+                [OpenLayers.Control]^-[OpenLayers.Control.LayerSwitcher]
+                [OpenLayers.Control]^-[OpenLayers.Control.DrawFeature]
+                -->
+                <img src="images/controls_hierarchy.png" alt="OpenLayers control hierarchy"/>
+            </div>
+
         </section>
+
+
+        <section class="slide">
+            <h2>Controls</h2>
+
+            <ul>
+                <li class="slide">A <span class="spotlight">Control</span> is added to (or removed from) the <span class="spotlight">Map</span>
+
+                    <div class="slide">
+                        <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var map = new OpenLayers.Map('map', { 
+    controls: [] 
+});
+var layerSwitcher = new OpenLayers.Control.LayerSwitcher();
+
+// Add the control
+map.addControl(layerSwitcher);
+
+// Remove the control
+map.removeControl(layerSwitcher);</textarea>
+                    </div>
+                </li>
+                
+                <li class="slide">A <span class="spotlight">Control</span> can be <span class="olproperty">activaded</span> or <span class="olproperty">deactivated</span>
+
+                    <div class="slide">
+                        <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+// Enable the control
+layerSwitcher.activate();
+
+// Disable the control
+layerSwitcher.deactivate();</textarea>
+                    </div>
+                </li>
+
+                <li class="slide">A <span class="spotlight">Control</span> can be placed
+                    outside the <span class="spotlight">Map</span> if you specify 
+                    a DOM element to hold it
+
+                    <div class="slide">
+                        <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">
+Position: <div id="mouseposition" style="font-size: smaller;"></div></textarea>
+
+                        <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var mousePosition = new OpenLayers.Control.MousePosition({
+    div: document.getElementById('mouseposition') 
+});</textarea>
+                    </div>
+                </li>
+
+            </ul>
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         <section class="slide">
             <h1>References</h1>
@@ -762,16 +905,17 @@ map.addLayer(osm);</textarea>
                 <li>OpenLayers API documentation</li>
                 <li>http://docs.openlayers.org/library/index.html</li>
             </ul>
+        </section>  
+
+        <section class="slide">
+            <h2>Thanks for coming !!!</h2>
+
+            <img src="images/well_done_sir.gif" width="60%" alt="OpenLayers Presentation Weel Done Sir"/>
         </section>
 
-
-
-
-
-
-
-
-
+        <section class="slide">
+            <h1>Questions ???</h1>
+        </section>
 
         <!-- deck.navigation snippet -->
         <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
