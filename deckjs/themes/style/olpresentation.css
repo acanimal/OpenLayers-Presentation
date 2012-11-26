@@ -253,6 +253,9 @@ OL Presentacion
 .olproperty {
     color: #ae81ff;
 }
+.olmethod {
+    color: #9Fcc55;
+}
 span.olsampledescription {
     font-size: 0.85em;
     color: #aaa;

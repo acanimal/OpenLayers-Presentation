@@ -49,7 +49,7 @@
             <h2>About me...</h2>
             <ul>
                 <li class="slide">Computer Science (as profession and hobby)</li>
-                <li class="slide">No matter if you consider me a Software Engineering, Software Developer or a Programmer</li>
+                <li class="slide">I love programming and learning</li>
                 <li class="slide">Currently working at <a href="http://www.meteo.cat">Servei Meteorològic de Catalunya</a></li>
                 <li class="slide">In the past I worked as freelance for some companies mainly related with GIS</li>
                 <li class="slide">
@@ -69,15 +69,14 @@
                 <li class="slide">You can download this presentation from:<br/>
                     <a href="https://github.com/acanimal/OpenLayers-Presentation">https://github.com/acanimal/OpenLayers-Presentation</a></li>
 
-                <li class="slide">You can download this OpenLayers Cookbook source code 
+                <li class="slide">You can download the last version of OpenLayers Cookbook source code 
                     samples from:<br/>
                     <a href="https://github.com/acanimal/Openlayers-Cookbook">https://github.com/acanimal/Openlayers-Cookbook</a></li>
             </ul>
 
             <div class="slide">
                 <blockquote>Both works are open !!! <br/>
-                Feel free to download the presentation or source code and 
-                contribute to it !!!</blockquote>
+                Feel free to download and contribute to it !!!</blockquote>
             </div>
         </section>
 
@@ -124,9 +123,12 @@
         <section class="slide">
             <h2>Remember...</h2>
 
-            <blockquote class="slide">The source code is the best place to learn</blockquote>
-        </section>
+            <div class="slide">
+                <blockquote>The source code is the best place to learn</blockquote>
 
+                <img src="images/doubletake.gif" width="40%" alt="The code is the best place to learn"/>
+            </div>
+        </section>
 
         <section class="slide">
             <h1>The <span class="openlayers">Map</span></h1>
@@ -140,13 +142,15 @@
 
 
             <ul class="slide">
-                <li>The <span class="spotlight">map</span> has some important properties: projection, 
-                    zoom levels (resolutions), units, etc</li>
+                <li>The <span class="spotlight">map</span> has some important properties: 
+                    <span class="olproperty">projection</span>, 
+                    <span class="olproperty">resolutions</span>(zoom levels), <span class="olproperty">units</span>, etc</li>
                 <li>A <span class="spotlight">map</span> contains one or more <span class="spotlight">layers</span></li>
                 <li>A <span class="spotlight">map</span> can contain one or more <span class="spotlight">controls</span></li>
-                <li>An application can have one or more maps but instances of <em><strong>layers and controls attached to a map 
-                            can't be used on another one</strong></em></li>
             </ul>
+            <div class="slide">
+                <blockquote>An application can have one or more maps but instances of <em><strong>layers and controls attached to a map can't be used on another one</strong></em></blockquote>
+            </div>
 
             <!-- yUML 
             [Map|projection;units;...]-*>[Layers]
@@ -167,6 +171,95 @@ var map = new OpenLayers.Map("myMap");</textarea>
         </section>
 
         <section class="slide">
+            <h2>The Map</h2>
+
+            <h3>The Methods</h3>
+            <p>The <span class="spotlight">map</span> has plenty of methods to deal with:</p>
+
+            <ul>
+                <li class="slide">
+                    <p><span class="spotlight">Layers</span></p>
+
+                    <p>
+                       <span class="olmethod">addLayer()</span>, 
+                       <span class="olmethod">getLayer()</span>, 
+                       <span class="olmethod">removeLayer()</span>, ...
+                   </p>
+                </li>
+
+                <li class="slide">
+                    <p><span class="spotlight">Controls</span></p>
+
+                    <p>
+                       <span class="olmethod">addControl()</span>, 
+                       <span class="olmethod">getControl()</span>, 
+                       <span class="olmethod">removeCotnrol()</span>, ...
+                   </p>
+                </li>
+
+                <li class="slide">
+                    <p>To move around:</p>
+                    <p>
+                        <span class="olmethod">zoomTo()</span>, 
+                        <span class="olmethod">zoomIn()</span>, 
+                        <span class="olmethod">zoomOut()</span>, 
+                        <span class="olmethod">pan()</span>, 
+                        <span class="olmethod">panTo()</span>, ...
+                    </p>
+                </li>
+
+                <li class="slide">
+                    <p>Current properties value:</p>
+                    <p>
+                        <span class="olmethod">getZoom()</span>, 
+                        <span class="olmethod">getCenter()</span>, 
+                        <span class="olmethod">getUnits()</span>, 
+                        <span class="olmethod">getScale()</span>, 
+                        <span class="olmethod">getProjection()</span>, ...
+                    </p>
+                </li>
+            </ul>
+            
+        </section>
+
+                <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Examples...</h2>
+
+            <p>...from the <strong><em>Chapter 1 - Mapping Basics</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>Creating simple map</em>: 
+                    <span class="olsampledescription">How to create a very simple map</span>
+                </li>
+
+                <li>
+                    <em>Playing with map options</em>: 
+                    <span class="olsampledescription">How to use some map properties</span>
+                </li>
+
+                <li>
+                    <em>Managing map's stack layers</em>: 
+                    <span class="olsampledescription">How to manage layers withint the map</span>
+                </li>
+
+                <li>
+                    <em>Moving around the map view</em>: 
+                    <span class="olsampledescription">How to manage the map's viewport</span>
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
             <h1>The <span class="openlayers">Layers</span></h1>
         </section>
 
@@ -178,24 +271,31 @@ var map = new OpenLayers.Map("myMap");</textarea>
 
             <p class="slide">All layers inherits from the base class <span class="olclass">OpenLayers.Layer</span>, which
                 defines some common properties for all subclasses:</p>
-            <ul class="slide">
-                <li><span class="olproperty"><code>name</code></span> Every has a name (that is used in the LayerSwitcher control</li>
-                <li><span class="olproperty"><code>opacity</code></span> A value in the range 0..1 that determines its opacity</li>
-                <li><span class="olproperty"><code>projection</code></span> The projection of the data contained in the layer</li>
-                <li><span class="olproperty"><code>maxExtent</code></span> The maximum extent of the data</li>
-                <li><span class="olproperty"><code>resolutions</code></span> A list of map resolutions (map units per pixel) in descending order</li>
-            </ul>
+            
+            <div class="slide">
+                <ul>
+                    <li><span class="olproperty"><code>name</code></span> Every has a name (that is used in the LayerSwitcher control</li>
+                    <li><span class="olproperty"><code>opacity</code></span> A value in the range 0..1 that determines its opacity</li>
+                    <li><span class="olproperty"><code>projection</code></span> The projection of the data contained in the layer</li>
+                    <li><span class="olproperty"><code>maxExtent</code></span> The maximum extent of the data</li>
+                    <li><span class="olproperty"><code>resolutions</code></span> A list of map resolutions (map units per pixel) in descending order</li>
+                </ul>
 
-            <blockquote class="slide">Remember, the source code is the best place to learn</blockquote>
+                <!-- 
+                [OpenLayers.Layer|name;opacity;projection;resolutions;...]
+                -->
+                <img src="images/uml_layer.png" alt="Layer UML class diagram"/>
+            </div>
+
         </section>
 
         <section class="slide">
             <h2>Layers' Hierarchy</h2>
 
-            <p class="slide">There are two main types of layers:</p>
+            <p class="slide">We can classify layers in two main categories:</p>
             <ul class="slide">
-                <li><span class="spotlight">Raster</span> (<em>imagery</em>) and</li>
-                <li><span class="spotlight">Vector</span> (<em>features</em>)</li>
+                <li><span class="spotlight">Raster</span> (for <em>imagery</em>) and</li>
+                <li><span class="spotlight">Vector</span> (for <em>features</em>)</li>
             </ul>
 
             <!-- yUML code
@@ -238,8 +338,6 @@ var map = new OpenLayers.Map("myMap");</textarea>
                     <span class="olclass">OpenLayers.Map</span> class allows all layers works as overlays.</li>
             </ul>
 
-            <blockquote class="slide">Did I say the source code is the best place to learn ?</blockquote>
-
         </section>
 
         <section class="slide">
@@ -277,7 +375,6 @@ var map = new OpenLayers.Map("myMap");</textarea>
             </ul>
 
         </section>
-
 
         <section class="slide">
             <h1><span class="openlayers">Raster</span> Layers</h1>
@@ -386,14 +483,23 @@ var map = new OpenLayers.Map("myMap");</textarea>
                 </li>
                 <li>
                     <em>Adding WMS layer </em>: 
-                    <span class="olsampledescription">This example show how to create <span class="olclass">OpenLayers.Layer.WMS</span> layers
-                        and play with <span class="olproperty">isBaseLayer</span> property
-                    </span>
+                    <span class="olsampledescription">This example show how to create 
+                        <span class="olclass">OpenLayers.Layer.WMS</span> layers
+                        and play with <span class="olproperty">isBaseLayer</span> property</span>
                 </li>
                 <li>
                     <em>Changing layer opacity</em>:
-                    <span class="olsampledescription">To see how to change a layers <span class="olproperty">opacity</span> property
-                    </span>
+                    <span class="olsampledescription">To see how to change a layers <span class="olproperty">opacity</span> 
+                    property</span>
+                </li>
+                <li>
+                    <em>Using WMS with singleTile mode</em>:
+                    <span class="olsampledescription">This example shows how to work in <span class="olproperty">singleTile</span> mode on WMS layers</span>
+                </li>
+                <li>
+                    <em>Buffering the layer data</em>:
+                    <span class="olsampledescription">Shows how to improve navigation preloading tiles using the
+                        <span class="olproperty">buffer</span> property</span>
                 </li>
             </ul>
 
@@ -424,7 +530,7 @@ var map = new OpenLayers.Map("myMap");</textarea>
             [OpenLayers.Layer.Markers]^-[OpenLayers.Layer.WFS]
             -->
 
-            <img class="slide" src="images/vector_hierarchy.png" height="300" alt="OpenLayers vector layers hierarchy" />    
+            <img class="slide" src="images/vector_hierarchy.png" height="350" alt="OpenLayers vector layers hierarchy" />    
 
             <div class="slide">
                 <h3>Notes</h3>
@@ -464,7 +570,6 @@ var map = new OpenLayers.Map("myMap");</textarea>
 
         </section>
 
-
         <section class="slide">
             <h2>Features</h2>
 
@@ -488,7 +593,6 @@ var map = new OpenLayers.Map("myMap");</textarea>
                     <li><span class="olclass">OpenLayers.Feature.Vector</span> class is what we really use on <span class="spotlight">vector layers</span></li>
                 </ul>
             </div>
-            <blockquote class="slide">The source code is the best place to learn</blockquote>
 
         </section>
 
@@ -517,15 +621,21 @@ var map = new OpenLayers.Map("myMap");</textarea>
             -->
             <img class="slide" src="images/geometry_hierarchy.png" alt="OpenLayers geometry's hierarchy" />
 
-            <div class="slide">                 <h3>Note</h3>
-<ul>                     <li>The <span class="spotlight">geometry</span> is
-rendered using the style indicated on the <span class="spotlight">feature</span>
-or                         in the <span class="spotlight">vector layer</span>
-style if not exists</li>                     <li>OpenLayers implements the <a
-href="http://en.wikipedia.org/wiki/Simple_feature_access">Simple Feature
-Access</a>                         standard, which is a common storage model of
-geographical data.</li>                 </ul>             </div>
-</section>
+            <div class="slide">                 
+                <h3>Note</h3>
+                <ul>                     
+                    <li>The <span class="spotlight">geometry</span> is
+                    rendered using the style indicated on the <span class="spotlight">feature</span>
+                    or in the <span class="spotlight">vector layer</span>
+                    style if not exists</li>             
+
+                    <li>OpenLayers implements the <a
+                    href="http://en.wikipedia.org/wiki/Simple_feature_access">Simple Feature
+                    Access</a> standard, which is a common storage model of
+                    geographical data.</li>                 
+                </ul>             
+            </div>
+        </section>
 
         <section class="slide">
             <h2>Renderers</h2>
@@ -601,22 +711,33 @@ geographical data.</li>                 </ul>             </div>
             <h2>Styles, Rules & Filters</h2>
 
             <p>There are different ways to style a <span class="spotlight">feature</span>:</p>
-            <ul class="slide">
-                <li>Applying a <span class="spotlight">symbolizer hash</span> directly on the feature</li>
-                <li>Applying a <span class="spotlight">symbolizer hash</span> to the layer, 
-                    in the <span class="olproperty">style</span> property</li>
-                <li>Create a complex <span class="olclass">OpenLayers.StyleMap</span> object and attach it to the layer, 
-                    in the <span class="olproperty">styleMap</span> property:</li>
-            </ul>
+            <ul>
+                <li class="slide">Applying a <span class="spotlight">symbolizer hash</span> in the feature's
+                    <span class="olproperty">style</span> property:
+                                    <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var myStyle = {
+    fillColor: "#ee9900",
+    fillOpacity: 0.4, 
+    strokeWidth: 1,
+    fontColor: "#000000"
+};</textarea>
+                </li>
+                <li class="slide">Applying a <span class="spotlight">symbolizer hash</span> to layer's 
+                    <span class="olproperty">style</span> property</li>
+                <li class="slide">Create a complex <span class="olclass">OpenLayers.StyleMap</span> object 
+                    and attach it to the layer, in the <span class="olproperty">styleMap</span> property:
 
-            <!--
-            [OpenLayers.StyleMap]->*[OpenLayers.Style]
-            [OpenLayers.Style]->*[OpenLayers.Rules]
-            [OpenLayers.Style]->1[defaultStyle]
-            [OpenLayers.Rules]->1[OpenLayers.Filter]
-            [OpenLayers.Rules]->1[symbolizer]
-            -->
-            <img class="slide" height="420" src="images/style_classes.png" alt="OpenLayers styles, rules and filters" />
+                    <!--
+                    [OpenLayers.StyleMap]->*[OpenLayers.Style]
+                    [OpenLayers.Style]->*[OpenLayers.Rules]
+                    [OpenLayers.Style]->1[defaultStyle]
+                    [OpenLayers.Rules]->1[OpenLayers.Filter]
+                    [OpenLayers.Rules]->1[symbolizer]
+                    -->
+                    <img src="images/style_classes.png" alt="OpenLayers styles, rules and filters" />
+
+                </li>
+            </ul>
 
         </section>
 
@@ -630,11 +751,6 @@ geographical data.</li>                 </ul>             </div>
                 <li><span class="spotlight">Strategies</span> must be added to 
                     the <span class="olproperty">strategies</span> array property of 
                     the <span class="olclass">OpenLayers.Layer.Vector</span> class
-                    <ul class="slide">
-                        <li><span class="olclass">OpenLayers.Strategy.Refresh</span> refresh a layer automatically</li>
-                        <li><span class="olclass">OpenLayers.Strategy.Cluster</span> makes groups of features to avoid collisions</li>
-                        <li><span class="olclass">OpenLayers.Strategy.Fixed</span> loads layer's data only once</li>
-                    </ul>
                 </li>
             </ul>
 
@@ -645,6 +761,15 @@ geographical data.</li>                 </ul>             </div>
             [OpenLayers.Strategy]^-[OpenLayers.Strategy.Refresh]
             -->
             <img class="slide" height="300" src="images/vector_layer_strategies_hierarchy.png" alt="OpenLayers strategies hierarchy" />
+
+            <div class="slide">
+                <h4>Some common <span class="olproperty">Strategies</span>...</h4>
+                <ul>
+                    <li><span class="olclass">OpenLayers.Strategy.Refresh</span> refresh a layer automatically</li>
+                    <li><span class="olclass">OpenLayers.Strategy.Cluster</span> makes groups of features to avoid collisions</li>
+                    <li><span class="olclass">OpenLayers.Strategy.Fixed</span> loads layer's data only once</li>
+                </ul>
+            </div>
 
         </section>
 
@@ -670,13 +795,21 @@ geographical data.</li>                 </ul>             </div>
                 </tr>
             </table>
 
-            <ul class="slide">
-                <li>The layer calls the protocol so it can load the data</li>
-                <li>The protocol communicates with the data source and reads the data</li>
-                <li>The protocol uses the specified format to transform the data into features and add to the layer</li>
-                <li>The layer delegates to the renderer the task to render the features</li>
-                <li>The renderer draws each feature using the appropriate geometry and with the appropriate style</li>
-            </ul>
+            <div class="slide">
+                <p>When a layer must be drawn:</p>
+            
+                <ul>
+                    <li class="slide">The layer calls the <span class="olproperty">protocol</span> so it can load the data</li>
+                    <li class="slide">The <span class="olproperty">protocol</span> communicates with the data source 
+                        and reads the data</li>
+                    <li class="slide">The <span class="olproperty">protocol</span> uses the specified <span class="olproperty">format</span>
+                     to transform the data into <span class="olproperty">features</span> and add them to the layer</li>
+                    <li class="slide">The layer delegates to the <span class="olproperty">renderer</span> the task to 
+                        render the <span class="olproperty">features</span></li>
+                    <li class="slide">The <span class="olproperty">renderer</span> draws each feature using the appropriate 
+                        <span class="olproperty">geometry</span> and with the appropriate <span class="olproperty">style</span></li>
+                </ul>
+            </div>
 
         </section>
 
@@ -695,13 +828,33 @@ geographical data.</li>                 </ul>             </div>
 
             <ul>
                 <li>
-                    <em>Using Goole Maps imagery</em>: 
-                    <span class="olsampledescription">Shows how to work with Google Maps API v3 
-                        <span class="olclass">OpenLayers.Map</span> instance.</span>
+                    <em>Adding a GML layer</em>: 
+                    <span class="olsampledescription">Basic usage of a vector layer loading GML data</span>
+                </li>
+                <li>
+                    <em>Creates features programmatically</em>: 
+                    <span class="olsampledescription">Show how we can create new features without the need to read them</span>
+                </li>
+                <li>
+                    <em>Reading and creating features from a WKT</em>: 
+                    <span class="olsampledescription">How to get features using 
+                        <span class="olclass">OpenLayers.Format</span> directly</span>
+                </li>
+                <li>
+                    <em>Reading data using Potocols directly</em>: 
+                    <span class="olsampledescription">How to get features using 
+                        <span class="olclass">OpenLayers.Format</span> directly</span>
+                </li>
+                <li>
+                    <em>Using the cluster strategy</em>: 
+                    <span class="olsampledescription">Example on how to use the cluster strategy</span>
+                    <blockquote>A nice implementation of cluster strategy with 
+                        <a href="http://acuriousanimal.com/code/animatedCluster/">animations</a> on zoom change 
+                        can be found in the <a href="https://github.com/acanimal/AnimatedCluster">acanimal</a> 
+                        GitHub repository.</blockquote>
                 </li>
             </ul>
 
-            <span style="color:red;">PLACE SAMPLES !!!</span>
         </section>
 
         <section class="slide">
@@ -751,8 +904,8 @@ map.addLayer(osm);</textarea>
 
             <p><span class="spotlight">Events</span> are like the nerves in our applications (action -> reaction)</p>
             <ul>
-                <li>HTML elements can trigger events: <em>click</em>, <em>mouse enter</em>, etc</li>
-                <li>Most of the OpenLayers components triggers events:
+                <li class="slide">HTML elements can trigger events: <em>click</em>, <em>mouse enter</em>, etc</li>
+                <li class="slide">Most of the OpenLayers components triggers events:
                     <ul>
                         <li><span class="olclass">OpenLayers.Map</span>: <em>
                                 <span class="olproperty">move</span>, 
@@ -767,10 +920,28 @@ map.addLayer(osm);</textarea>
                                 <span class="olproperty">featureremoved</span>, 
                                 <span class="olproperty">vertexmodified</span>, ...</em></li>
                     </ul>
+                    <div class="slide">
+                        <blockquote>Check the API documentation (or source code) to know the available events
+                            on each OpenLayers class</blockquote>
+                    </div>
                 </li>
             </ul>
 
-            <p class="slide">How listen for DOM element events?</p>
+            <h4 class="slide">...and how OpenLayers components implements <span class="spotlight">events</span> ?</h4>
+            <ul>
+                <li class="slide">Many of the OpenLayers classes has an <span class="olproperty">event</span> property which 
+                    is an <span class="olclass">OpenLayers.Events</span> instance</li>
+                <li class="slide">The <span class="olclass">OpenLayers.Events</span> is a helper class which allows to 
+                    register listeners and trigger events to notify them</li>
+                <li class="slide">Events are triggered as <span class="olclass">OpenLayers.Event</span> instances</li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h2>Listening...</h2>
+
+            <h4 class="slide">How listen for DOM element events?</h4>
             <div class="slide">
                 <p>
                 Given next HTML button:
@@ -788,6 +959,51 @@ element.addEventListener("click", function (event) {
                 </p>
             </div>
 
+            <h4 class="slide">How listen for OpenLayers events?</h4>
+
+            <ul>
+                <li class="slide">Using the <span class="olmethod">events.on()</span> method:
+                    <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var map = new OpenLayers.Map("someDivId");
+mapa.events.on({
+    "zoomend": function (event) {
+        // Some code here
+    }
+});</textarea>
+                </li>
+                <li class="slide">Using the <span class="olmethod">events.register()</span> method:
+                    <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var map = new OpenLayers.Map("someDivId");
+map.events.register("zoomend", null, function (event) {
+    // Some code here
+});</textarea>
+                </li>
+            </ul>
+
+            <div class="slide">
+                <blockquote>Remember to unregister your listeners !!!</blockquote>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Examples...</h2>
+
+            <p>...from the <strong><em>Chapter 4 - Events</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>Creating a side by side map comparator</em>: 
+                    <span class="olsampledescription">Listening for Map events and synchronize two maps</span>
+                </li>
+            </ul>
         </section>
 
         <section class="slide">
