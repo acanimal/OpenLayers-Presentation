@@ -820,11 +820,11 @@ var myStyle = {
         <section class="slide">
             <h2>Examples...</h2>
 
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
             <p>...from the <strong><em>Chapter 3 - Vector Layers</em></strong> of the
                 <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
                 source code:</p>
-
-            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
 
             <ul>
                 <li>
@@ -852,6 +852,36 @@ var myStyle = {
                         <a href="http://acuriousanimal.com/code/animatedCluster/">animations</a> on zoom change 
                         can be found in the <a href="https://github.com/acanimal/AnimatedCluster">acanimal</a> 
                         GitHub repository.</blockquote>
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h2>More examples...</h2>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <p>...from the <strong><em>Chapter 7 - Stylings</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <ul>
+                <li>
+                    <em>Styling features using symbolizers</em>: 
+                    <span class="olsampledescription">Basic usage of hash symbolizers</span>
+                </li>
+                <li>
+                    <em>Working with unique value rules</em>: 
+                    <span class="olsampledescription">A way to style features depending on its attribute values</span>
+                </li>
+                <li>
+                    <em>Defining custom rules to style features</em>: 
+                    <span class="olsampledescription">A sample working with styles, rules and filters</span>
+                </li>
+                <li>
+                    <em>Improving style using StyleMap and feature's attributes replacement</em>: 
+                    <span class="olsampledescription">Improving styling using the attribute replacement capabilities</span>
                 </li>
             </ul>
 
@@ -965,7 +995,7 @@ element.addEventListener("click", function (event) {
                 <li class="slide">Using the <span class="olmethod">events.on()</span> method:
                     <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
 var map = new OpenLayers.Map("someDivId");
-mapa.events.on({
+map.events.on({
     "zoomend": function (event) {
         // Some code here
     }
@@ -1003,6 +1033,22 @@ map.events.register("zoomend", null, function (event) {
                     <em>Creating a side by side map comparator</em>: 
                     <span class="olsampledescription">Listening for Map events and synchronize two maps</span>
                 </li>
+
+                <li>
+                    <em>Implementing a work in progress indicator for map layers</em>: 
+                    <span class="olsampledescription">Practical use for listening on layer events</span>
+                </li>
+
+                <li>
+                    <em>Listening for vector layer features' events</em>: 
+                    <span class="olsampledescription">Working with events on vector layers</span>
+                </li>
+
+                <li>
+                    <em>Listening for non OpenLayers events</em>: 
+                    <span class="olsampledescription">Shows the use of <span class="olmethod">OpenLayers.Event.observe()</span> 
+                        method to listeningfor non OpenLayers components.</span>
+                </li>
             </ul>
         </section>
 
@@ -1019,21 +1065,29 @@ map.events.register("zoomend", null, function (event) {
                     Controls can range from visible widgets (like a buttons) to actions (like the navigation or zoom controls)
                 </blockquote>
             </div>
-                
-            <p class="slide">All <span class="spotlight">controls</span> inherits 
-                from base class <span class="olclass">OpenLayers.Control</span>:</p>
 
-            <div class="slide">
-                <!--
-                [OpenLayers.Control]^-[OpenLayers.Control.Navigation]
-                [OpenLayers.Control]^-[OpenLayers.Control.LayerSwitcher]
-                [OpenLayers.Control]^-[OpenLayers.Control.DrawFeature]
-                -->
-                <img src="images/controls_hierarchy.png" alt="OpenLayers control hierarchy"/>
-            </div>
-
+            <ul>
+                <li class="slide">
+                    <span class="openlayers">OpenLayers</span> offers <span class="spotlight">controls</span> for 
+                    almost any required action: <em>navigation</em>, <em>zoom</em>, <em>feature selection</em>,
+                    <em>feature edition</em>, etc
+                </li>
+                <li class="slide">
+                    All <span class="spotlight">controls</span> inherits 
+                    from base class <span class="olclass">OpenLayers.Control</span>:
+                    <br/>
+                    <br/>
+                    <p class="slide">
+                        <!--
+                        [OpenLayers.Control]^-[OpenLayers.Control.Navigation]
+                        [OpenLayers.Control]^-[OpenLayers.Control.LayerSwitcher]
+                        [OpenLayers.Control]^-[OpenLayers.Control.DrawFeature]
+                        -->
+                        <img src="images/controls_hierarchy.png" width="90%" alt="OpenLayers control hierarchy"/>
+                    </p>
+                </li>
+            </ul>
         </section>
-
 
         <section class="slide">
             <h2>Controls</h2>
@@ -1070,12 +1124,16 @@ layerSwitcher.deactivate();</textarea>
 
                 <li class="slide">A <span class="spotlight">Control</span> can be placed
                     outside the <span class="spotlight">Map</span> if you specify 
-                    a DOM element to hold it
+                    a DOM element to hold it:
 
                     <div class="slide">
+                        <br/>
+                        Given this HTML code:
                         <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">
 Position: <div id="mouseposition" style="font-size: smaller;"></div></textarea>
-
+                
+                        <br/>
+                        We can use next JavaScript code:
                         <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
 var mousePosition = new OpenLayers.Control.MousePosition({
     div: document.getElementById('mouseposition') 
@@ -1087,26 +1145,39 @@ var mousePosition = new OpenLayers.Control.MousePosition({
 
         </section>
 
+        <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
 
+        <section class="slide">
+            <h2>Examples...</h2>
 
+            <p>...from the <strong><em>Chapter 5 - Controls</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
 
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <ul>
+                <li>
+                    <em>Adding and removing controls</em>: 
+                    <span class="olsampledescription">Example on how to add and remove controls dynamically</span>
+                </li>
+                <li>
+                    <em>Adding a navigation history control</em>: 
+                    <span class="olsampledescription">Show usage for the navigation history control</span>
+                </li>
+                <li>
+                    <em>Editing features on multiple vector layers</em>: 
+                    <span class="olsampledescription">How to create features in vector layers with
+                        the <span class="olclass">OpenLayers.Control.EditingToolbar</span> control</span>
+                </li>
+                <li>
+                    <em>Getting feature information from data source</em>: 
+                    <span class="olsampledescription">usage of the <span class="olclass">OpenLayers.Control.GetFeature</span> control to get feature data from any source</span>
+                </li>
+            </ul>
+        </section>
 
         <section class="slide">
             <h1>References</h1>
