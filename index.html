@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <!--        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+        <title>Once Upon a Time... OpenLayers</title>
+
+        <meta name="description" content="Once Upon a Time... OpenLayers. An in depth introduction to the OpenLayers web mapping framework.">
+        <meta name="author" content="Antonio Santiago">
+        <meta name="viewport" content="width=1024, user-scalable=no">
+
+        <!-- Core and extension CSS files -->
+        <link rel="stylesheet" href="deckjs/core/deck.core.css">
+        <link rel="stylesheet" href="deckjs/extensions/goto/deck.goto.css">
+        <link rel="stylesheet" href="deckjs/extensions/menu/deck.menu.css">
+        <link rel="stylesheet" href="deckjs/extensions/navigation/deck.navigation.css">
+        <link rel="stylesheet" href="deckjs/extensions/status/deck.status.css">
+        <link rel="stylesheet" href="deckjs/extensions/hash/deck.hash.css">
+        <link rel="stylesheet" href="deckjs/extensions/scale/deck.scale.css"> 
+        <link rel="stylesheet" href="deckjs/extensions/codemirror/deck.codemirror.css"> 
+
+        <!-- Codemirror theme -->
+        <link rel="stylesheet" href="deckjs/extensions/codemirror/themes/default.css">
+        <link rel="stylesheet" href="deckjs/extensions/codemirror/themes/xq-dark.css">
+
+        <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+        <link rel="stylesheet" href="deckjs/themes/transition/horizontal-slide.css">
+
+        <!-- Style theme. More available in /themes/style/ or create your own. -->
+        <link rel="stylesheet" href="deckjs/themes/style/olpresentation.css">
+
+        <script src="deckjs/modernizr.custom.js"></script>
+    </head>
+
+    <body class="deck-container">
+
+        <section class="slide">
+            <h1>Once Upon a Time... <span class="openlayers">OpenLayers</span></h1>
+        </section>
+
+        <section class="slide">
+            <h2>About me...</h2>
+            <ul>
+                <li class="slide">Computer Science (as profession and hobby)</li>
+                <li class="slide">I love programming and learning</li>
+                <li class="slide">Currently working at <a href="http://www.meteo.cat">Servei Meteorològic de Catalunya</a></li>
+                <li class="slide">In the past I worked as freelance for some companies mainly related with GIS</li>
+                <li class="slide">
+                    I am the author of the <a href="http://acuriousanimal.com/blog/2012/09/02/openlayers-cookbook-is-out/">OpenLayers Cookbook</a>
+                    <br/>
+                    <img src="images/7843OS_OpenLayer_Cookbook_cov_0.jpg" alt="OpenLayers Cookbook"/>
+                </li>
+            </ul>
+
+            <h3 class="slide">I have a secret...</h3>
+            <h2 class="slide">I am <a href="http://acuriousanimal.com/">A Curious Animal</a> !!!</h2>
+        </section>
+
+        <section class="slide">
+            <h2>About this presentation...</h2>
+            <ul>
+                <li class="slide">You can download this presentation from:<br/>
+                    <a href="https://github.com/acanimal/OpenLayers-Presentation">https://github.com/acanimal/OpenLayers-Presentation</a></li>
+
+                <li class="slide">You can download the last version of OpenLayers Cookbook source code 
+                    samples from:<br/>
+                    <a href="https://github.com/acanimal/Openlayers-Cookbook">https://github.com/acanimal/Openlayers-Cookbook</a></li>
+            </ul>
+
+            <div class="slide">
+                <blockquote>Both works are open !!! <br/>
+                Feel free to download and contribute to it !!!</blockquote>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h1><span class="openlayers">OpenLayers</span></h1>
+        </section>
+
+        <section class="slide">
+            <h2>History</h2>
+
+            <div class="slide">
+                <h3>Google Maps</h3>
+                <ul>
+                    <li>Announced on February 2005</li>
+                    <li>IMO, one of the most influential applications on the 2000 decade</li>
+                    <li>Brings to the masses the possibility to explore the world</li>
+                    <li>Fire starter for the current GIS explosion</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h3>OpenLayers</h3>
+                <ul>
+                    <li>First release on June 2006</li>
+                    <li>Open alternative to Google Maps and Bing made by a group of MetaCarta employees</li>
+                    <li>On 2007 <a href="http://www.openstreetmap.org/">OpenStreeMap</a> starts using it on 
+                        the <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map_MediaWiki_Extension">Slippy Map</a></li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <div class="references">
+                    <h3>References</h3>
+                    <p>OpenLayers Wiki <a href="http://trac.osgeo.org/openlayers/wiki/History">here</a>, 
+                        Wikipedia entry <a href="http://en.wikipedia.org/wiki/OpenLayers">here</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h1>Before to continue...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Remember...</h2>
+
+            <div class="slide">
+                <blockquote>The source code is the best place to learn</blockquote>
+
+                <img src="images/doubletake.gif" width="40%" alt="The code is the best place to learn"/>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h1>The <span class="openlayers">Map</span></h1>
+        </section>
+
+        <section class="slide">
+            <h2>The Map</h2>
+
+            <p class="slide">The <span class="spotlight">map</span> is the central piece on a web mapping application
+                and is represented by instances of the <span class="olclass">OpenLayers.Map</span> class.</p>
+
+
+            <ul class="slide">
+                <li>The <span class="spotlight">map</span> has some important properties: 
+                    <span class="olproperty">projection</span>, 
+                    <span class="olproperty">resolutions</span>(zoom levels), <span class="olproperty">units</span>, etc</li>
+                <li>A <span class="spotlight">map</span> contains one or more <span class="spotlight">layers</span></li>
+                <li>A <span class="spotlight">map</span> can contain one or more <span class="spotlight">controls</span></li>
+            </ul>
+            <div class="slide">
+                <blockquote>An application can have one or more maps but instances of <em><strong>layers and controls attached to a map can't be used on another one</strong></em></blockquote>
+            </div>
+
+            <!-- yUML 
+            [Map|projection;units;...]-*>[Layers]
+            [Map|projection;units;...]-*>[Controls]
+            -->
+            <img class="slide" src="images/uml_map.png" alt="Map UML class diagram"/>
+
+            <div class="slide">
+                <h3>Example</h3>
+                Create a HTML element for the map:
+                <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">
+<div id="myMap"></div></textarea>
+                Create a OpenLayers.Map instance:
+                <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var map = new OpenLayers.Map("myMap");</textarea>
+            </div>
+            
+        </section>
+
+        <section class="slide">
+            <h2>The Map</h2>
+
+            <h3>The Methods</h3>
+            <p>The <span class="spotlight">map</span> has plenty of methods to deal with:</p>
+
+            <ul>
+                <li class="slide">
+                    <p><span class="spotlight">Layers</span></p>
+
+                    <p>
+                       <span class="olmethod">addLayer()</span>, 
+                       <span class="olmethod">getLayer()</span>, 
+                       <span class="olmethod">removeLayer()</span>, ...
+                   </p>
+                </li>
+
+                <li class="slide">
+                    <p><span class="spotlight">Controls</span></p>
+
+                    <p>
+                       <span class="olmethod">addControl()</span>, 
+                       <span class="olmethod">getControl()</span>, 
+                       <span class="olmethod">removeCotnrol()</span>, ...
+                   </p>
+                </li>
+
+                <li class="slide">
+                    <p>To move around:</p>
+                    <p>
+                        <span class="olmethod">zoomTo()</span>, 
+                        <span class="olmethod">zoomIn()</span>, 
+                        <span class="olmethod">zoomOut()</span>, 
+                        <span class="olmethod">pan()</span>, 
+                        <span class="olmethod">panTo()</span>, ...
+                    </p>
+                </li>
+
+                <li class="slide">
+                    <p>Current properties value:</p>
+                    <p>
+                        <span class="olmethod">getZoom()</span>, 
+                        <span class="olmethod">getCenter()</span>, 
+                        <span class="olmethod">getUnits()</span>, 
+                        <span class="olmethod">getScale()</span>, 
+                        <span class="olmethod">getProjection()</span>, ...
+                    </p>
+                </li>
+            </ul>
+            
+        </section>
+
+                <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Examples...</h2>
+
+            <p>...from the <strong><em>Chapter 1 - Mapping Basics</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>Creating simple map</em>: 
+                    <span class="olsampledescription">How to create a very simple map</span>
+                </li>
+
+                <li>
+                    <em>Playing with map options</em>: 
+                    <span class="olsampledescription">How to use some map properties</span>
+                </li>
+
+                <li>
+                    <em>Managing map's stack layers</em>: 
+                    <span class="olsampledescription">How to manage layers withint the map</span>
+                </li>
+
+                <li>
+                    <em>Moving around the map view</em>: 
+                    <span class="olsampledescription">How to manage the map's viewport</span>
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1>The <span class="openlayers">Layers</span></h1>
+        </section>
+
+        <section class="slide">
+            <h2>Layers</h2>
+
+            <p class="slide">The concept of <span class="spotlight">Layer</span> allows us to group/classify the elements that
+                must be rendered on the <span class="spotlight">Map</span></p>
+
+            <p class="slide">All layers inherits from the base class <span class="olclass">OpenLayers.Layer</span>, which
+                defines some common properties for all subclasses:</p>
+            
+            <div class="slide">
+                <ul>
+                    <li><span class="olproperty"><code>name</code></span> Every has a name (that is used in the LayerSwitcher control</li>
+                    <li><span class="olproperty"><code>opacity</code></span> A value in the range 0..1 that determines its opacity</li>
+                    <li><span class="olproperty"><code>projection</code></span> The projection of the data contained in the layer</li>
+                    <li><span class="olproperty"><code>maxExtent</code></span> The maximum extent of the data</li>
+                    <li><span class="olproperty"><code>resolutions</code></span> A list of map resolutions (map units per pixel) in descending order</li>
+                </ul>
+
+                <!-- 
+                [OpenLayers.Layer|name;opacity;projection;resolutions;...]
+                -->
+                <img src="images/uml_layer.png" alt="Layer UML class diagram"/>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h2>Layers' Hierarchy</h2>
+
+            <p class="slide">We can classify layers in two main categories:</p>
+            <ul class="slide">
+                <li><span class="spotlight">Raster</span> (for <em>imagery</em>) and</li>
+                <li><span class="spotlight">Vector</span> (for <em>features</em>)</li>
+            </ul>
+
+            <!-- yUML code
+            [Layer]^-[Raster Layer]
+            [Raster Layer]^-[WMS]
+            [Raster Layer]^-[Google]
+            [Raster Layer]^-[OSM]
+            [Raster Layer]^-[XYZ]
+            [Layer]^-[Vector Layer]
+            [Vector Layer]^-[WFS]
+            [Vector Layer]^-[GeoJSON]
+            [Vector Layer]^-[KML]
+            -->
+            <img class="slide" src="images/raster_vector_layers.png" alt="Raster and vector layers" />
+
+        </section>
+
+        <section class="slide">
+            <h2>Base Layers and Overlays</h2>
+
+            <div class="slide">
+                <p>OpenLayers differentiates two kinds of layers: <span class="spotlight">Base layers</span> and 
+                    <span class="spotlight">Overlays</span>.</p>
+
+                <!-- yUML code
+                [Layer]^-[BaseLayer]
+                [Layer]^-[Overlay]
+                -->
+                <img src="images/baselayer_overlay.png" alt="Base layer vs overlays" />
+            </div>
+
+            <ul class="slide">
+                <li><span class="spotlight">Base layers</span> controls several aspects of the map (<em>like the projection 
+                        used by the <span class="spotlight">Map</span></em>)</li>
+                <li><span class="spotlight">Base layers</span> are mutually exclusive, only one can be shown at a time</li>
+                <li>There could be any number of <span class="spotlight">Overlays</span></li>
+                <li>The <span class="olproperty"><code>isBaseLayer</code></span> property inherited from 
+                    <span class="olclass">OpenLayers.Layer</span> determines the kind of layer.</li>
+                <li>The <span class="olproperty"><code>allOverlays</code></span> property of the 
+                    <span class="olclass">OpenLayers.Map</span> class allows all layers works as overlays.</li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Examples...</h2>
+
+            <p>...from the <strong><em>Chapter 1 - Mapping Basics</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>Creating simple map</em>: 
+                    <span class="olsampledescription">Basic example on how to create an 
+                        <span class="olclass">OpenLayers.Map</span> instance.</span>
+                </li>
+                <li>
+                    <em>Base and non-base layers</em>: 
+                    <span class="olsampledescription">This example plays with the 
+                        <span class="olclass">OpenLayers.Layer</span> <span class="olproperty">isBaseLayer</span> property
+                    </span>
+                </li>
+                <li>
+                    <em>Avoiding base layers</em>:
+                    <span class="olsampledescription">This example shows how to force all layers to act
+                        as overlays using the 
+                        <span class="olclass">OpenLayers.Map</span> <span class="olproperty">allOverlays</span> property
+                    </span>
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1><span class="openlayers">Raster</span> Layers</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Raster layers</h2>
+
+            <ul class="slide">
+                <li><span class="spotlight">Raster</span> layers shows imagery (or <a href="http://en.wikipedia.org/wiki/Bitmap">bitmaps</a>) from 
+                    different service providers: 
+                    Google, Bing, a WMS server, OSM, etc</li>
+                <li>All <span class="spotlight">Raster</span> layers inherits from 
+                    the base class <span class="olclass">OpenLayers.Layer</span>. There are two main subclasses: 
+
+                    <ol class="slide">
+                        <li><span class="olclass">OpenLayers.Layer.Image</span> class allows to create a layer
+                            from s single image file</li>
+                        <li><span class="olclass">OpenLayers.Layer.Grid</span> class decomposes the map viewport in 
+                            a lattice of tiles and offers the basic functionalities for the rest of layers</li>
+                    </ol>
+                </li>
+            </ul>
+
+            <!--
+            [OpenLayers.Layer]^-[OpenLayers.Layer.Image]
+            [OpenLayers.Layer]^-[OpenLayers.Layer.HTTPRequest]
+            [OpenLayers.Layer.HTTPRequest]^-[OpenLayers.Layer.Grid]
+            [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.WMS]
+            [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.WMTS]
+            [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.XYZ]
+            [OpenLayers.Layer.XYZ]^-[OpenLayers.Layer.OSM]
+            -->
+
+            <table>
+                <tr>
+                    <td>
+                        <div class="slide">
+                            <img src="images/raster_hierarchy_01.png" alt="OpenLayers raster layers hierarchy" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="slide">
+                            <img src="images/raster_hierarchy_02.png" alt="OpenLayers raster layers hierarchy" />            
+                        </div>
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="slide">
+            <h2>Raster layers</h2>
+
+            <table>
+                <tr>
+                    <td>
+                        <h4>Google Maps</h4>
+                        <img src="images/raster_layer_gmaps.png" alt="OpenLayers raster Google layer" />
+                    </td>
+                    <td>
+                        <h4>Bing</h4>
+                        <img src="images/raster_layer_bing.png" alt="OpenLayers raster Bing layer" />            
+                    </td>
+                    <td>
+                        <h4>OpenStreetMap</h4>
+                        <img src="images/raster_layer_osm.png" alt="OpenLayers raster OSM layer" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>WMS servers</h4>
+                        <img src="images/raster_layer_wms.png" alt="OpenLayers raster WMS layer" />            
+                    </td>
+                    <td>
+                        <h4>MapQuest</h4>
+                        <img src="images/raster_layer_mapquest.png" alt="OpenLayers raster MapQuest layer" />
+                    </td>
+                    <td>
+                        <h4>Image file</h4>
+                        <img src="images/raster_layer_image.png" alt="OpenLayers raster layer from image file" />            
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Examples...</h2>
+
+            <p>...from the <strong><em>Chapter 2 - Raster Layers</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>Using Goole Maps imagery</em>: 
+                    <span class="olsampledescription">Shows how to work with Google Maps API v3 
+                        <span class="olclass">OpenLayers.Map</span> instance.</span>
+                </li>
+                <li>
+                    <em>Adding WMS layer </em>: 
+                    <span class="olsampledescription">This example show how to create 
+                        <span class="olclass">OpenLayers.Layer.WMS</span> layers
+                        and play with <span class="olproperty">isBaseLayer</span> property</span>
+                </li>
+                <li>
+                    <em>Changing layer opacity</em>:
+                    <span class="olsampledescription">To see how to change a layers <span class="olproperty">opacity</span> 
+                    property</span>
+                </li>
+                <li>
+                    <em>Using WMS with singleTile mode</em>:
+                    <span class="olsampledescription">This example shows how to work in <span class="olproperty">singleTile</span> mode on WMS layers</span>
+                </li>
+                <li>
+                    <em>Buffering the layer data</em>:
+                    <span class="olsampledescription">Shows how to improve navigation preloading tiles using the
+                        <span class="olproperty">buffer</span> property</span>
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1><span class="openlayers">Vector</span> Layers</h1>            
+        </section>
+
+        <section class="slide">
+            <h2>Vector layers</h2>
+
+            <div class="slide">
+                <p>
+                    <span class="spotlight">Vector</span> layers allows us to work 
+                    with <span class="spotlight">features</span> loaded from a 
+                    <span class="spotlight">data source</span>...
+                </p>
+
+                <blockquote>A <span class="spotlight">feature</span> is digital representation 
+                    of something in the real world: <em>city, river, mountain, ...</em></blockquote>
+            </div>
+            <!--
+            [OpenLayers.Layer]^-[OpenLayers.Layer.Vector]
+            [OpenLayers.Layer]^-[OpenLayers.Layer.Markers]
+            [OpenLayers.Layer.Markers]^-[OpenLayers.Layer.Text]
+            [OpenLayers.Layer.Vector]^-[OpenLayers.Layer.WFS]
+            [OpenLayers.Layer.Markers]^-[OpenLayers.Layer.WFS]
+            -->
+
+            <img class="slide" src="images/vector_hierarchy.png" height="350" alt="OpenLayers vector layers hierarchy" />    
+
+            <div class="slide">
+                <h3>Notes</h3>
+                <ul>
+                    <li><span class="olclass">OpenLayers.Layer.WFS</span> was <strong>DEPRECATED !!!</strong> 
+                        in OpenLayers 2.12. You can do the same simply 
+                        using the <span class="olclass">OpenLayers.Layer.Vector</span> class</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h2>Vector layers</h2>
+
+            <table>
+                <tr>
+                    <td>
+                        <h4>WFS</h4>
+                        <img src="images/vector_layer_wfs.png" alt="OpenLayers vector layer WFS" />
+                    </td>
+                    <td>
+                        <h4>KML</h4>
+                        <img src="images/vector_layer_kml.png" alt="OpenLayers vector layer KML" />            
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Features</h4>
+                        <img src="images/vector_layer_features.png" alt="OpenLayers vector layer features" />            
+                    </td>
+                    <td>
+                        <h4>Clusters</h4>
+                        <img src="images/vector_layer_cluster.png" alt="OpenLayers vector layer with clustering" />
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="slide">
+            <h2>Features</h2>
+
+            <ul class="slide">
+                <li>A <span class="spotlight">feature</span> can have <span class="spotlight">attributes</span> 
+                    attached to it: <em>city name, population, etc</em></li>
+                <li>A <span class="spotlight">feature</span> can have a visual 
+                    <span class="spotlight">style</span> attached: <em>pointRadius, lineWidth, ...</em> (See the
+                    <span class="olproperty">OpenLayers.Feature.Vector.style</span> constant)</li>
+            </ul>
+
+            <!--
+            [OpenLayers.Feature|id;...]^-[OpenLayers.Feature.Vector|fid;attributes;style;bounds;geometry]
+            -->
+
+            <div class="slide">
+                <img src="images/feature_hierarchy.png" alt="OpenLayers feature's hierarchy" />
+
+                <ul>
+                    <li><span class="olclass">OpenLayers.Feature</span> class defines the basics of a <span class="spotlight">feature</span></li>
+                    <li><span class="olclass">OpenLayers.Feature.Vector</span> class is what we really use on <span class="spotlight">vector layers</span></li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h2>Geometries</h2>
+
+            <ul  class="slide">
+                <li>A <span class="spotlight">feature</span> is represented by a 
+                    <span class="spotlight">geometry</span> instance: <em>point, line, polygon, ...</em>
+                    which must be an instance of some subclass of <span class="olclass">OpenLayers.Geometry</span></li>
+            </ul>
+
+            <!--
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Collection]
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Point]
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Rectangle]
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Surface]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.Polygon]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.MultiLineString]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.MultiPoint]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.MultiPolygon]
+
+           [OpenLayers.Geometry.MultiPoint]^-[OpenLayers.Geometry.Curve]
+           [OpenLayers.Geometry.Curve]^-[OpenLayers.Geometry.LineString]
+           [OpenLayers.Geometry.LineString]^-[OpenLayers.Geometry.LinearRing]
+            -->
+            <img class="slide" src="images/geometry_hierarchy.png" alt="OpenLayers geometry's hierarchy" />
+
+            <div class="slide">                 
+                <h3>Note</h3>
+                <ul>                     
+                    <li>The <span class="spotlight">geometry</span> is
+                    rendered using the style indicated on the <span class="spotlight">feature</span>
+                    or in the <span class="spotlight">vector layer</span>
+                    style if not exists</li>             
+
+                    <li>OpenLayers implements the <a
+                    href="http://en.wikipedia.org/wiki/Simple_feature_access">Simple Feature
+                    Access</a> standard, which is a common storage model of
+                    geographical data.</li>                 
+                </ul>             
+            </div>
+        </section>
+
+        <section class="slide">
+            <h2>Renderers</h2>
+
+            <p class="slide">There exists different technologies to draw graphics in the browser (mainly
+                HTML5 <a href="http://en.wikipedia.org/wiki/Canvas_element">Canvas</a> element 
+                and <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a>)</p>
+
+            <p class="slide">A renderer abstracts the way a vector layer renders features (geometries)
+                in the browser without worry on the technology to use.</p>
+
+
+            <!--
+            [OpenLayers.Renderer]^-[OpenLayers.Renderer.Canvas]
+            [OpenLayers.Renderer]^-[OpenLayers.Renderer.Elements]
+            [OpenLayers.Renderer.Elements]^-[OpenLayers.Renderer.SVG]
+            [OpenLayers.Renderer.Elements]^-[OpenLayers.Renderer.NG]
+            [OpenLayers.Renderer.NG]^-[OpenLayers.Renderer.SVG2]
+            -->
+            <img class="slide" src="images/renderer_hierarchy.png" width="550" alt="OpenLayers renderer's hierarchy" />
+
+        </section>
+
+        <section class="slide">
+            <h2>Protocols & Formats</h2>
+
+            <p class="slide">
+                A <span class="spotlight">vector</span> layer can load data from many
+                <span class="spotlight">data source</span> (<em>HTTP, WFS, SOS, ...</em>) and with many 
+                <span class="spotlight">data formats</span> (<em>GeoJSON, GML, KML, ...</em>)
+            </p>
+
+            <ul class="slide">
+                <li>
+                    The <span class="spotlight">protocol</span> determines the way a vector layer
+                    communicates with a data source. It must be an instance of some of the 
+                    <span class="olclass">OpenLayers.Protocol</span> subclasses
+                </li>
+                <li>
+                    The <span class="spotlight">format</span> determines how features must
+                    be read or written. It must be an instance of some of the 
+                    <span class="olclass">OpenLayers.Format</span> subclasses
+                </li>
+            </ul>
+
+            <table>
+                <tr>
+                    <td>
+                        <!--
+                        [OpenLayers.Protocol]^-[OpenLayers.Protocol.HTTP]
+                        [OpenLayers.Protocol]^-[OpenLayers.Protocol.WFS]
+                        [OpenLayers.Protocol]^-[OpenLayers.Protocol.SOS]
+                        -->
+                        <img class="slide" src="images/protocol_hierarchy.png" alt="OpenLayers protocol's hierarchy" />
+                    </td>
+                    <td>
+                        <!--
+                        [OpenLayers.Format]^-[OpenLayers.Format.JSON]
+                        [OpenLayers.Format.JSON]^-[OpenLayers.Format.GeoJSON]
+                        [OpenLayers.Format]^-[OpenLayers.Format.XML]
+                        [OpenLayers.Format.XML]^-[OpenLayers.Format.GML]
+                        [OpenLayers.Format.GML]^-[OpenLayers.Format.WFS]
+                        [OpenLayers.Format.XML]^-[OpenLayers.Format.GeoRSS]
+                        -->
+                        <img class="slide" src="images/format_hierarchy.png" alt="OpenLayers format's hierarchy" />
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="slide">
+            <h2>Styles, Rules & Filters</h2>
+
+            <p>There are different ways to style a <span class="spotlight">feature</span>:</p>
+            <ul>
+                <li class="slide">Applying a <span class="spotlight">symbolizer hash</span> in the feature's
+                    <span class="olproperty">style</span> property:
+                                    <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var myStyle = {
+    fillColor: "#ee9900",
+    fillOpacity: 0.4, 
+    strokeWidth: 1,
+    fontColor: "#000000"
+};</textarea>
+                </li>
+                <li class="slide">Applying a <span class="spotlight">symbolizer hash</span> to layer's 
+                    <span class="olproperty">style</span> property</li>
+                <li class="slide">Create a complex <span class="olclass">OpenLayers.StyleMap</span> object 
+                    and attach it to the layer, in the <span class="olproperty">styleMap</span> property:
+
+                    <!--
+                    [OpenLayers.StyleMap]->*[OpenLayers.Style]
+                    [OpenLayers.Style]->*[OpenLayers.Rules]
+                    [OpenLayers.Style]->1[defaultStyle]
+                    [OpenLayers.Rules]->1[OpenLayers.Filter]
+                    [OpenLayers.Rules]->1[symbolizer]
+                    -->
+                    <img src="images/style_classes.png" alt="OpenLayers styles, rules and filters" />
+
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h2>Strategies</h2>
+
+            <p><span class="spotlight">Strategies</span> allows us to determine some aspects of the vector layer's behavior</p>
+            <ul class="slide">
+                <li>A <span class="spotlight">vector layer</span> can have any number 
+                    of <span class="spotlight">Strategies</span> attached</li>
+                <li><span class="spotlight">Strategies</span> must be added to 
+                    the <span class="olproperty">strategies</span> array property of 
+                    the <span class="olclass">OpenLayers.Layer.Vector</span> class
+                </li>
+            </ul>
+
+            <!--
+            [OpenLayers.Layer.Vector]->*[OpenLayers.Strategy]
+            [OpenLayers.Strategy]^-[OpenLayers.Strategy.BBOX]
+            [OpenLayers.Strategy]^-[OpenLayers.Strategy.Cluster]
+            [OpenLayers.Strategy]^-[OpenLayers.Strategy.Refresh]
+            -->
+            <img class="slide" height="300" src="images/vector_layer_strategies_hierarchy.png" alt="OpenLayers strategies hierarchy" />
+
+            <div class="slide">
+                <h4>Some common <span class="olproperty">Strategies</span>...</h4>
+                <ul>
+                    <li><span class="olclass">OpenLayers.Strategy.Refresh</span> refresh a layer automatically</li>
+                    <li><span class="olclass">OpenLayers.Strategy.Cluster</span> makes groups of features to avoid collisions</li>
+                    <li><span class="olclass">OpenLayers.Strategy.Fixed</span> loads layer's data only once</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h2>Let's make a summary...</h2>
+
+            <table>
+                <tr>
+                    <td>
+                        <img src="images/challenge_accepted.png" alt="Challenge Accepted" />
+                    </td>
+                    <td>
+                        <!--
+                        [OpenLayers.Layer.Vector]->1[OpenLayers.Renderer]
+                        [OpenLayers.Layer.Vector]->1[OpenLayers.StyleMap]
+                        [OpenLayers.Layer.Vector]++-has>*[OpenLayers.Feature.Vector]
+                        [OpenLayers.Feature.Vector]->1[OpenLayers.Geometry]
+                        [OpenLayers.Layer.Vector]->1[OpenLayers.Protocol]
+                        [OpenLayers.Protocol]->1[OpenLayers.Format]
+                        -->
+                        <img class="slide" src="images/vector_layers_summary_classes.png" alt="Vector layer summary set of classes" />
+                    </td>
+                </tr>
+            </table>
+
+            <div class="slide">
+                <p>When a layer must be drawn:</p>
+            
+                <ul>
+                    <li class="slide">The layer calls the <span class="olproperty">protocol</span> so it can load the data</li>
+                    <li class="slide">The <span class="olproperty">protocol</span> communicates with the data source 
+                        and reads the data</li>
+                    <li class="slide">The <span class="olproperty">protocol</span> uses the specified <span class="olproperty">format</span>
+                     to transform the data into <span class="olproperty">features</span> and add them to the layer</li>
+                    <li class="slide">The layer delegates to the <span class="olproperty">renderer</span> the task to 
+                        render the <span class="olproperty">features</span></li>
+                    <li class="slide">The <span class="olproperty">renderer</span> draws each feature using the appropriate 
+                        <span class="olproperty">geometry</span> and with the appropriate <span class="olproperty">style</span></li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Examples...</h2>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <p>...from the <strong><em>Chapter 3 - Vector Layers</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <ul>
+                <li>
+                    <em>Adding a GML layer</em>: 
+                    <span class="olsampledescription">Basic usage of a vector layer loading GML data</span>
+                </li>
+                <li>
+                    <em>Creates features programmatically</em>: 
+                    <span class="olsampledescription">Show how we can create new features without the need to read them</span>
+                </li>
+                <li>
+                    <em>Reading and creating features from a WKT</em>: 
+                    <span class="olsampledescription">How to get features using 
+                        <span class="olclass">OpenLayers.Format</span> directly</span>
+                </li>
+                <li>
+                    <em>Reading data using Potocols directly</em>: 
+                    <span class="olsampledescription">How to get features using 
+                        <span class="olclass">OpenLayers.Format</span> directly</span>
+                </li>
+                <li>
+                    <em>Using the cluster strategy</em>: 
+                    <span class="olsampledescription">Example on how to use the cluster strategy</span>
+                    <blockquote>A nice implementation of cluster strategy with 
+                        <a href="http://acuriousanimal.com/code/animatedCluster/">animations</a> on zoom change 
+                        can be found in the <a href="https://github.com/acanimal/AnimatedCluster">acanimal</a> 
+                        GitHub repository.</blockquote>
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h2>More examples...</h2>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <p>...from the <strong><em>Chapter 7 - Stylings</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <ul>
+                <li>
+                    <em>Styling features using symbolizers</em>: 
+                    <span class="olsampledescription">Basic usage of hash symbolizers</span>
+                </li>
+                <li>
+                    <em>Working with unique value rules</em>: 
+                    <span class="olsampledescription">A way to style features depending on its attribute values</span>
+                </li>
+                <li>
+                    <em>Defining custom rules to style features</em>: 
+                    <span class="olsampledescription">A sample working with styles, rules and filters</span>
+                </li>
+                <li>
+                    <em>Improving style using StyleMap and feature's attributes replacement</em>: 
+                    <span class="olsampledescription">Improving styling using the attribute replacement capabilities</span>
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1>Events</h1>
+        </section>
+
+        <section class="slide">
+            <h2>The truth about <span class="openlayers">OpenLayers</span>...</h2>
+
+            <div class="slide">
+                <h4>Most of the JavaScript code we write with OpenLayers is transformed
+                    into HTML elements !!!</h4>
+                <img src="images/omg-cat.gif" alt="OMG Cat"/>
+            </div>
+
+            <div class="slide">
+                <p>Next JavaScript code...</p>
+                <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var map = new OpenLayers.Map("ch1_simple_map");
+var osm = new OpenLayers.Layer.OSM();
+map.addLayer(osm);</textarea>
+            </div>
+
+            <div class="slide">
+                <p>becomes...</p>
+                <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">
+<div id="ch1_simple_map" style="width: 100%; height: 95%;" class="olMap">
+    <div id="OpenLayers.Map_2_OpenLayers_ViewPort" style="position: relative; overflow: hidden; width: 100%; height: 100%;" 
+            class="olMapViewport olControlDragPanActive olControlZoomBoxActive olControlPinchZoomActive olControlNavigationActive">
+        <div id="OpenLayers.Map_2_OpenLayers_Container" style="position: absolute; width: 100px; height: 100px; z-index: 749; left: 0px; top: 0px;">
+            <div id="OpenLayers.Layer.OSM_18" style="position: absolute; width: 100%; height: 100%; z-index: 100; left: 0%; top: 0%;" dir="ltr" 
+                    class="olLayerDiv olLayerGrid">
+                <img class="olTileImage" style="visibility: inherit; opacity: 1; position: absolute; left: 628%; top: 47%; width: 256%; height: 256%;" 
+                        src="http://c.tile.openstreetmap.org/3/4/3.png" crossorigin="anonymous">
+                ...
+                ...
+            </div>
+        </div>
+    </div>
+</div></textarea>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h2>Events</h2>
+
+            <p><span class="spotlight">Events</span> are like the nerves in our applications (action -> reaction)</p>
+            <ul>
+                <li class="slide">HTML elements can trigger events: <em>click</em>, <em>mouse enter</em>, etc</li>
+                <li class="slide">Most of the OpenLayers components triggers events:
+                    <ul>
+                        <li><span class="olclass">OpenLayers.Map</span>: <em>
+                                <span class="olproperty">move</span>, 
+                                <span class="olproperty">zoomend</span>, 
+                                <span class="olproperty">addlayer</span>, ...</em></li>
+                        <li><span class="olclass">OpenLayers.Layer</span>: <em>
+                                <span class="olproperty">loadstart</span>, 
+                                <span class="olproperty">loadend</span>, 
+                                <span class="olproperty">added</span>, ...</em></li>
+                        <li><span class="olclass">OpenLayers.Layer.Vector</span>: <em>
+                                <span class="olproperty">featuresadded</span>, 
+                                <span class="olproperty">featureremoved</span>, 
+                                <span class="olproperty">vertexmodified</span>, ...</em></li>
+                    </ul>
+                    <div class="slide">
+                        <blockquote>Check the API documentation (or source code) to know the available events
+                            on each OpenLayers class</blockquote>
+                    </div>
+                </li>
+            </ul>
+
+            <h4 class="slide">...and how OpenLayers components implements <span class="spotlight">events</span> ?</h4>
+            <ul>
+                <li class="slide">Many of the OpenLayers classes has an <span class="olproperty">event</span> property which 
+                    is an <span class="olclass">OpenLayers.Events</span> instance</li>
+                <li class="slide">The <span class="olclass">OpenLayers.Events</span> is a helper class which allows to 
+                    register listeners and trigger events to notify them</li>
+                <li class="slide">Events are triggered as <span class="olclass">OpenLayers.Event</span> instances</li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h2>Listening...</h2>
+
+            <h4 class="slide">How listen for DOM element events?</h4>
+            <div class="slide">
+                <p>
+                Given next HTML button:
+                <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">
+<button id="myButton"></button></textarea>
+                </p>
+
+                <p>
+                We can use this JavaScript code:
+                <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var element = document.getElementById("myButton"); 
+element.addEventListener("click", function (event) {
+    // Do something
+});</textarea>
+                </p>
+            </div>
+
+            <h4 class="slide">How listen for OpenLayers events?</h4>
+
+            <ul>
+                <li class="slide">Using the <span class="olmethod">events.on()</span> method:
+                    <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var map = new OpenLayers.Map("someDivId");
+map.events.on({
+    "zoomend": function (event) {
+        // Some code here
+    }
+});</textarea>
+                </li>
+                <li class="slide">Using the <span class="olmethod">events.register()</span> method:
+                    <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var map = new OpenLayers.Map("someDivId");
+map.events.register("zoomend", null, function (event) {
+    // Some code here
+});</textarea>
+                </li>
+            </ul>
+
+            <div class="slide">
+                <blockquote>Remember to unregister your listeners !!!</blockquote>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Examples...</h2>
+
+            <p>...from the <strong><em>Chapter 4 - Events</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>Creating a side by side map comparator</em>: 
+                    <span class="olsampledescription">Listening for Map events and synchronize two maps</span>
+                </li>
+
+                <li>
+                    <em>Implementing a work in progress indicator for map layers</em>: 
+                    <span class="olsampledescription">Practical use for listening on layer events</span>
+                </li>
+
+                <li>
+                    <em>Listening for vector layer features' events</em>: 
+                    <span class="olsampledescription">Working with events on vector layers</span>
+                </li>
+
+                <li>
+                    <em>Listening for non OpenLayers events</em>: 
+                    <span class="olsampledescription">Shows the use of <span class="olmethod">OpenLayers.Event.observe()</span> 
+                        method to listeningfor non OpenLayers components.</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="slide">
+            <h1>Controls</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Controls</h2>
+
+            <p><span class="spotlight">Controls</span> allows to interact with the <span class="spotlight">Map</span>...</p>
+            <div class="slide">
+                <blockquote>
+                    Controls can range from visible widgets (like a buttons) to actions (like the navigation or zoom controls)
+                </blockquote>
+            </div>
+
+            <ul>
+                <li class="slide">
+                    <span class="openlayers">OpenLayers</span> offers <span class="spotlight">controls</span> for 
+                    almost any required action: <em>navigation</em>, <em>zoom</em>, <em>feature selection</em>,
+                    <em>feature edition</em>, etc
+                </li>
+                <li class="slide">
+                    All <span class="spotlight">controls</span> inherits 
+                    from base class <span class="olclass">OpenLayers.Control</span>:
+                    <br/>
+                    <br/>
+                    <p class="slide">
+                        <!--
+                        [OpenLayers.Control]^-[OpenLayers.Control.Navigation]
+                        [OpenLayers.Control]^-[OpenLayers.Control.LayerSwitcher]
+                        [OpenLayers.Control]^-[OpenLayers.Control.DrawFeature]
+                        -->
+                        <img src="images/controls_hierarchy.png" width="90%" alt="OpenLayers control hierarchy"/>
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="slide">
+            <h2>Controls</h2>
+
+            <ul>
+                <li class="slide">A <span class="spotlight">Control</span> is added to (or removed from) the <span class="spotlight">Map</span>
+
+                    <div class="slide">
+                        <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var map = new OpenLayers.Map('map', { 
+    controls: [] 
+});
+var layerSwitcher = new OpenLayers.Control.LayerSwitcher();
+
+// Add the control
+map.addControl(layerSwitcher);
+
+// Remove the control
+map.removeControl(layerSwitcher);</textarea>
+                    </div>
+                </li>
+                
+                <li class="slide">A <span class="spotlight">Control</span> can be <span class="olproperty">activaded</span> or <span class="olproperty">deactivated</span>
+
+                    <div class="slide">
+                        <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+// Enable the control
+layerSwitcher.activate();
+
+// Disable the control
+layerSwitcher.deactivate();</textarea>
+                    </div>
+                </li>
+
+                <li class="slide">A <span class="spotlight">Control</span> can be placed
+                    outside the <span class="spotlight">Map</span> if you specify 
+                    a DOM element to hold it:
+
+                    <div class="slide">
+                        <br/>
+                        Given this HTML code:
+                        <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">
+Position: <div id="mouseposition" style="font-size: smaller;"></div></textarea>
+                
+                        <br/>
+                        We can use next JavaScript code:
+                        <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">
+var mousePosition = new OpenLayers.Control.MousePosition({
+    div: document.getElementById('mouseposition') 
+});</textarea>
+                    </div>
+                </li>
+
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1>Time for action...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>Examples...</h2>
+
+            <p>...from the <strong><em>Chapter 5 - Controls</em></strong> of the
+                <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> 
+                source code:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>Adding and removing controls</em>: 
+                    <span class="olsampledescription">Example on how to add and remove controls dynamically</span>
+                </li>
+                <li>
+                    <em>Adding a navigation history control</em>: 
+                    <span class="olsampledescription">Show usage for the navigation history control</span>
+                </li>
+                <li>
+                    <em>Editing features on multiple vector layers</em>: 
+                    <span class="olsampledescription">How to create features in vector layers with
+                        the <span class="olclass">OpenLayers.Control.EditingToolbar</span> control</span>
+                </li>
+                <li>
+                    <em>Getting feature information from data source</em>: 
+                    <span class="olsampledescription">usage of the <span class="olclass">OpenLayers.Control.GetFeature</span> control to get feature data from any source</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="slide">
+            <h1>References</h1>
+        </section>
+
+        <section class="slide">
+            <h2>References</h2>
+            <ul>
+                <li>OpenLayers Begginers</li>
+                <li>OpenLayers Cookbook</li>
+                <li>OpenLayers source code</li>
+                <li>OpenLayers API documentation</li>
+                <li>http://docs.openlayers.org/library/index.html</li>
+            </ul>
+        </section>  
+
+        <section class="slide">
+            <h2>Thanks for coming !!!</h2>
+
+            <img src="images/well_done_sir.gif" width="60%" alt="OpenLayers Presentation Weel Done Sir"/>
+        </section>
+
+        <section class="slide">
+            <h1>Questions ???</h1>
+        </section>
+
+        <!-- deck.navigation snippet -->
+        <a href="#" class="deck-prev-link" title="Previous">&#8592;</a>
+        <a href="#" class="deck-next-link" title="Next">&#8594;</a>
+
+        <!-- deck.status snippet -->
+        <p class="deck-status">
+            <span class="deck-status-current"></span>
+            /
+            <span class="deck-status-total"></span>
+        </p>
+
+        <!-- deck.goto snippet -->
+        <form action="." method="get" class="goto-form">
+            <label for="goto-slide">Go to slide:</label>
+            <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+            <datalist id="goto-datalist"></datalist>
+            <input type="submit" value="Go">
+        </form>
+
+        <!-- deck.hash snippet -->
+        <a href="." title="Permalink to this slide" class="deck-permalink">#</a>
+
+        <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="deckjs/jquery-1.7.2.min.js"><\/script>')</script>
+
+        <!-- Deck Core and extensions -->
+        <script src="deckjs/core/deck.core.js"></script>
+        <script src="deckjs/extensions/hash/deck.hash.js"></script>
+        <script src="deckjs/extensions/menu/deck.menu.js"></script>
+        <script src="deckjs/extensions/goto/deck.goto.js"></script>
+        <script src="deckjs/extensions/status/deck.status.js"></script>
+        <script src="deckjs/extensions/navigation/deck.navigation.js"></script>
+        <script src="deckjs/extensions/scale/deck.scale.js"></script>
+
+        <!-- Base codemiror code -->
+        <script src="deckjs/extensions/codemirror/codemirror.js"></script>
+        <!-- JavaScript Syntax highlighting Mode -->
+        <script src="deckjs/extensions/codemirror/mode/javascript/javascript.js"></script>
+        <script src="deckjs/extensions/codemirror/mode/xml/xml.js"></script>
+        <script src="deckjs/extensions/codemirror/mode/css/css.js"></script>
+        <script src="deckjs/extensions/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+        <!-- Plugin code -->
+        <script src="deckjs/extensions/codemirror/deck.codemirror.js"></script>
+
+        <!-- Initialize the deck -->
+        <script>
+            $(function() {
+                $.deck('.slide');
+            });
+        </script>
+
+    </body>
+</html>

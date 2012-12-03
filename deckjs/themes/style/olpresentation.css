@@ -1,0 +1,285 @@
+@charset "UTF-8";
+.deck-container {
+    font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+    font-size: 1.50em;
+
+    background: rgb(215, 215, 215);
+    background: -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background: -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+
+    color: #666;
+}
+.deck-container > .slide {
+    text-shadow: #aaa 0px 1px 0px,rgba(0, 0, 0, 0.2) 0 4px 6px;
+    background-color: #fff;
+
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+
+    -webkit-box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.7);
+    box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.7);
+}
+.deck-container > .slide .deck-before, .deck-container > .slide .deck-previous {
+    opacity: 0.4;
+}
+.deck-container > .slide .deck-before:not(.deck-child-current) .deck-before, 
+.deck-container > .slide .deck-before:not(.deck-child-current) .deck-previous, 
+.deck-container > .slide .deck-previous:not(.deck-child-current) .deck-before, 
+.deck-container > .slide .deck-previous:not(.deck-child-current) .deck-previous {
+    opacity: 1;
+}
+.deck-container > .slide .deck-child-current {
+    opacity: 1;
+}
+.deck-container .slide h1, .deck-container .slide h2, .deck-container .slide h3, 
+.deck-container .slide h4, .deck-container .slide h5, .deck-container .slide h6 {
+    font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+}
+.deck-container .slide h1 {
+    color: #333;
+}
+.deck-container .slide h2 {
+    color: #aaa;
+    border-bottom: 0;
+}
+.cssreflections .deck-container .slide h2 {
+    line-height: 1;
+}
+.deck-container .slide h3 {
+    color: #444;
+}
+/*.deck-container .slide pre {
+    border-color: #cde;
+    background: #fff;
+    position: relative;
+    z-index: auto;
+}
+.borderradius .deck-container .slide pre {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.csstransforms.boxshadow .deck-container .slide pre > :first-child:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: #fff;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.csstransforms.boxshadow .deck-container .slide pre:before, .csstransforms.boxshadow .deck-container .slide pre:after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    bottom: 15px;
+    width: 50%;
+    height: 20%;
+    max-width: 300px;
+    -webkit-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.7);
+}
+.csstransforms.boxshadow .deck-container .slide pre:before {
+    left: 10px;
+    -webkit-transform: rotate(-3deg);
+    -moz-transform: rotate(-3deg);
+    -ms-transform: rotate(-3deg);
+    -o-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+}
+.csstransforms.boxshadow .deck-container .slide pre:after {
+    right: 10px;
+    -webkit-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -ms-transform: rotate(3deg);
+    -o-transform: rotate(3deg);
+    transform: rotate(3deg);
+}
+.deck-container .slide code {
+    color: #789;
+}*/
+.deck-container .slide blockquote {
+    font-family: "Lucida Grande", "Trebuchet MS", Verdana, sans-serif;
+    font-style: italic;
+    font-size: 1.1em;
+    margin: 1em;
+    padding: 1em 2em .5em 2em;
+    color: #333;
+    background: #fff;
+    position: relative;
+    border: 1px solid #ddd;
+    z-index: auto;
+}
+.borderradius .deck-container .slide blockquote {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.boxshadow .deck-container .slide blockquote > :first-child:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    background: #fff;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.boxshadow .deck-container .slide blockquote:after {
+    content: "";
+    position: absolute;
+    z-index: -2;
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    right: 50%;
+    -moz-border-radius: 10px/100px;
+    border-radius: 10px/100px;
+    -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+.deck-container .slide blockquote p {
+    margin: 0;
+}
+.deck-container .slide blockquote cite {
+    font-size: .5em;
+    font-style: normal;
+    font-weight: bold;
+    color: #888;
+}
+.deck-container .slide blockquote:before {
+    content: "“";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 2.5em;
+    line-height: 1;
+    color: #666;
+    z-index: 1;
+}
+.deck-container .slide ::-moz-selection {
+    background: #08455f;
+    color: #fff;
+}
+.deck-container .slide ::selection {
+    background: #08455f;
+    color: #fff;
+}
+.deck-container .slide a, .deck-container .slide a:hover, .deck-container .slide a:focus, 
+.deck-container .slide a:active, .deck-container .slide a:visited {
+    color: #92d72f;
+    text-decoration: none;
+}
+.deck-container .slide a:hover, .deck-container .slide a:focus {
+    text-decoration: underline;
+}
+.deck-container .deck-prev-link, .deck-container .deck-next-link {
+    background: #fff;
+    opacity: 0.5;
+}
+.deck-container .deck-prev-link, .deck-container .deck-prev-link:hover, 
+.deck-container .deck-prev-link:focus, .deck-container .deck-prev-link:active, 
+.deck-container .deck-prev-link:visited, .deck-container .deck-next-link, 
+.deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus, 
+.deck-container .deck-next-link:active, .deck-container .deck-next-link:visited {
+    color: #999;
+}
+.deck-container .deck-prev-link:hover, .deck-container .deck-prev-link:focus, 
+.deck-container .deck-next-link:hover, .deck-container .deck-next-link:focus {
+    opacity: 1;
+    text-decoration: none;
+}
+.deck-container .deck-status {
+    font-size: 0.6666em;
+    color: #fff;
+    text-shadow: #aaa 0px 1px 0px,rgba(0, 0, 0, 0.2) 0 4px 4px;
+}
+.deck-container.deck-menu .slide {
+    background: transparent;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.rgba .deck-container.deck-menu .slide {
+    background: rgba(0, 0, 0, 0.1);
+}
+.deck-container.deck-menu .slide.deck-current, .rgba .deck-container.deck-menu .slide.deck-current, 
+.no-touch .deck-container.deck-menu .slide:hover {
+    background: #fff;
+}
+.deck-container .goto-form {
+    background: #fff;
+    border: 1px solid #cde;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.boxshadow .deck-container .goto-form {
+    -webkit-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 15px 10px -10px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+/*
+Improve some scale issues
+*/
+.csstransforms .deck-container.deck-scale:not(.deck-menu) > .slide {
+    -webkit-box-sizing: padding-box;
+    -moz-box-sizing: padding-box;
+    box-sizing: padding-box;
+    width: 90%;
+    margin: 0% 5%;
+}
+
+/* 
+OL Presentacion 
+*/
+.openlayers {
+    color: #0055cc;
+    text-shadow: #aaa 0px 1px 0px,rgba(0, 0, 0, 0.2) 0 28px 26px;
+}
+.spotlight {
+    color: #4fa2e9;
+}
+.spotlight2 {
+    color: #262;
+}
+.olclass {
+    color: #fb9f25;
+}
+.olproperty {
+    color: #ae81ff;
+}
+.olmethod {
+    color: #9Fcc55;
+}
+span.olsampledescription {
+    font-size: 0.85em;
+    color: #aaa;
+}
+.references {
+    margin-top: 40px;
+    border: 1px solid #999;
+    padding: 10px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.references h3 {
+    color: #ccc;
+}
+.references a, .references a:hover, 
+.references a:focus, .references a:active, .references a:visited {
+    color: #fb9f25;
+    text-decoration: none;
+}
+.references a:hover, .references a:focus {
+    text-decoration: underline;
+}
