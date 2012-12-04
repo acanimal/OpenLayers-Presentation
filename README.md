@@ -1,4 +1,4 @@
-#### You can view this presentation online at http://acanimal.github.com/OpenLayers-Presentatino
+#### You can view this presentation online at http://acanimal.github.com/OpenLayers-Presentation
 
 
 # OpenLayers Presentation 2012 #
