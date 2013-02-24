@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <!--        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
+
+        <title>Once Upon a Time ... OpenLayers</title>
+
+        <meta name="description" content="Once Upon a Time... OpenLayers. An in depth introduction to the OpenLayers web mapping framework.">
+        <meta name="author" content="Antonio Santiago">
+        <meta name="viewport" content="width=1024, user-scalable=no">
+
+        <!-- Core and extension CSS files -->
+        <link rel="stylesheet" href="deckjs/core/deck.core.css">
+        <link rel="stylesheet" href="deckjs/extensions/goto/deck.goto.css">
+        <link rel="stylesheet" href="deckjs/extensions/menu/deck.menu.css">
+        <link rel="stylesheet" href="deckjs/extensions/navigation/deck.navigation.css">
+        <link rel="stylesheet" href="deckjs/extensions/status/deck.status.css">
+        <link rel="stylesheet" href="deckjs/extensions/hash/deck.hash.css">
+        <link rel="stylesheet" href="deckjs/extensions/scale/deck.scale.css"> 
+        <link rel="stylesheet" href="deckjs/extensions/codemirror/deck.codemirror.css"> 
+
+        <!-- Codemirror theme -->
+        <link rel="stylesheet" href="deckjs/extensions/codemirror/themes/default.css">
+        <link rel="stylesheet" href="deckjs/extensions/codemirror/themes/xq-dark.css">
+
+        <!-- Transition theme. More available in /themes/transition/ or create your own. -->
+        <link rel="stylesheet" href="deckjs/themes/transition/horizontal-slide.css">
+
+        <!-- Style theme. More available in /themes/style/ or create your own. -->
+        <link rel="stylesheet" href="deckjs/themes/style/olpresentation.css">
+
+        <script src="deckjs/modernizr.custom.js"></script>
+    </head>
+
+<body class="deck-container">
+
+        <section class="slide">
+            <h1>Once Upon a Time... <span class="openlayers">OpenLayers</span></h1>
+        </section>
+
+        <section class="slide">
+            <h2>내 정보 ...</h2>
+            <ul>
+                <li class="slide">컴퓨터 과학 (직업과 취미 등)</li>
+                <li class="slide">나는 프로그래밍 하는 것과 학습하는 것을 사랑합니다.</li>
+                <li class="slide">현재는 <a href="http://www.meteo.cat">Servei Meteorològic de Catalunya</a>에서 일하고 있습니다.</li>
+                <li class="slide">과거에 나는 주로 GIS와 관련된 일부 기업에서 프리랜서로 근무했습니다.</li>
+                <li class="slide">
+                    나는 <a href="http://acuriousanimal.com/blog/2012/09/02/openlayers-cookbook-is-out/">OpenLayers Cookbook</a>의 저자입니다.
+                    <br/>
+                    <img src="images/7843OS_OpenLayer_Cookbook_cov_0.jpg" alt="OpenLayers Cookbook"/>
+                </li>
+            </ul>
+
+            <h3 class="slide">비밀 ...</h3>
+            <h2 class="slide">나는 <a href="http://acuriousanimal.com/">호기심 동물입니다</a> !!!</h2>
+        </section>
+
+        <section class="slide">
+            <h2>이 프리젠테이션에 대하여 ...</h2>
+            <ul>
+                <li class="slide">당신은 아래 주소에서 이 프리젠테이션을 다운로드 할 수 있습니다 <a href="https://github.com/acanimal/OpenLayers-Presentation">https://github.com/acanimal/OpenLayers-Presentation</a><br/>
+                    <a href="https://github.com/acanimal/OpenLayers-Presentation"></a></li>
+
+                <li class="slide">당신은 아래 주소에서 OpenLayers Cookbook 소스 코드 샘플의 마지막 버전을 다운로드 할 수 있습니다 : 
+                    <br/><a href="https://github.com/acanimal/Openlayers-Cookbook">https://github.com/acanimal/Openlayers-Cookbook</a></a></li>
+            </ul>
+
+            <div class="slide">
+                <blockquote>두 작품은 오픈되어 있습니다! <br>
+                    여기에서 다운로드도 받고 기여도 부탁드립니다!</blockquote>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h1><span class="openlayers">OpenLayers</span></h1>
+        </section>
+
+        <section class="slide">
+            <h2>역사</h2>
+
+            <div class="slide">
+                <h3>Google지도</h3>
+                <ul>
+                    <li>2005년 2월에 발표</li>
+                    <li>IMO, 2000 년대에 가장 영향력있는 응용 프로그램 중 하나</li>
+                    <li>대중에게 세계를 탐험 할 수있는 가능성을 제공합니다</li>
+                    <li>현재 GIS의 폭발적인 관심에 불씨를 지핌</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <h3>OpenLayers</h3>
+                <ul>
+                    <li>2006년 6월에 첫 번째 릴리스</li>
+                    <li>Google지도 및 Bing지도에 대안을 주었으며, MetaCarta 직원 그룹에 의해 만들어짐</li>
+                    <li>2007 <a href="http://www.openstreetmap.org/">OpenStreeMap</a> 에서 <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map_MediaWiki_Extension">SlippyMap</a>에 사용하기 시작</li>
+                </ul>
+            </div>
+
+            <div class="slide">
+                <div class="references">
+                    <h3>참고</h3>
+                    <p>OpenLayers 위키 <a href="http://trac.osgeo.org/openlayers/wiki/History">here</a> , 위키 백과 항목 <a href="http://en.wikipedia.org/wiki/OpenLayers">here</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h1>계속하기 전에 ...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>잊지마세요 ...</h2>
+
+            <div class="slide">
+                <blockquote>소스 코드는 학습 할 수 있는 가장 좋은 것입니다</blockquote>   
+                <img src="images/doubletake.gif" width="40%" alt="The code is the best place to learn"/>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h1><span class="openlayers">지도</span></h1>
+        </section>
+
+        <section class="slide">
+            <h2>지도</h2>
+
+            <p class="slide"><span class="spotlight">지도</span>는 웹 매핑 응용 프로그램의 중심
+                부분이며의 인스턴스로 표시됩니다 <span class="olclass">OpenLayers.Map의</span> 클래스입니다.</p>
+
+
+            <ul class="slide">
+                <li><span class="spotlight">지도</span>의 중요 속성 몇 가지 들 :  
+                     <span class="olproperty">프로젝션</span> , 
+                     <span class="olproperty">해상도</span> (줌 레벨), <span class="olproperty">단위</span> 등</li>
+                <li><span class="spotlight">지도</span>는 하나 이상의 <span class="spotlight">레이어</span>를 포함 합니다.</li>
+                <li><span class="spotlight">지도</span>는 하나 이상의 <span class="spotlight">컨트롤</span>을 포함 할 수 있습니다.</li>
+            </ul>
+            <div class="slide">
+                <blockquote>응용 프로그램은 하나 이상의 지도를 가질 수 있지만 <em><strong>지도 인스턴스에 첨부 된 레이어와 컨트롤이 다른 지도를 가질 수 없습니다</strong></em></blockquote>
+            </div>
+
+            <!-- yUML 
+            [Map|projection;units;...]-*>[Layers]
+            [Map|projection;units;...]-*>[Controls]
+            -->
+            <img class="slide" src="images/uml_map.png" alt="Map UML class diagram"/>
+
+            <div class="slide">
+                <h3>예</h3>
+                지도의 HTML 요소를 만듭니다
+                 <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">&lt;div id="myMap"&gt;&lt;/div&gt;</textarea>
+                OpenLayers.Map 인스턴스를 만듭니다.
+                <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">var map = new OpenLayers.Map("myMap");</textarea>
+            </div>
+            
+        </section>
+
+        <section class="slide">
+            <h2>지도</h2>
+
+            <h3>메서드</h3>
+            <p><span class="spotlight">지도</span>를 처리하는 메서드를 충분히 제공:</p>
+
+            <ul>
+                <li class="slide">
+                    <p><span class="spotlight">레이어</span></p>
+
+                    <p>
+                       <span class="olmethod">addLayer ()</span> , 
+                        <span class="olmethod">getLayer ()</span> , 
+                        <span class="olmethod">removeLayer ()</span> , ...
+                   </p>
+                </li>
+
+                <li class="slide">
+                    <p><span class="spotlight">컨트롤</span></p>
+
+                    <p>
+                       <span class="olmethod">addControl ()</span> , 
+                        <span class="olmethod">getControl ()</span> , 
+                        <span class="olmethod">removeCotnrol ()</span> , ...
+                   </p>
+                </li>
+
+                <li class="slide">
+                    <p>지도를 위치로 이동할 경우 사용합니다.</p>
+                    <p>
+                        <span class="olmethod">zoomTo()</span> , 
+                         <span class="olmethod">zoomIn()</span> , 
+                         <span class="olmethod">zoomOut()</span> , 
+                         <span class="olmethod">pan()</span> , 
+                         <span class="olmethod">panTo()</span> , ...
+                    </p>
+                </li>
+
+                <li class="slide">
+                    <p>지도의 현재 속성 값을 가져올 경우 사용합니다.</p>
+                    <p>
+                        <span class="olmethod">getZoom()</span> , 
+                         <span class="olmethod">getCenter ()</span> , 
+                         <span class="olmethod">getUnits ()</span> , 
+                         <span class="olmethod">getScale ()</span> , 
+                         <span class="olmethod">getProjection ()</span> , ...
+                    </p>
+                </li>
+            </ul>
+            
+        </section>
+
+        <section class="slide">
+            <h1>작업 시간 ...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>예제 ...</h2>
+
+            <p>...from <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> <strong><em>제 1 장 - 매핑의 기초</em></strong> 소스 코드:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>간단한 지도 만들기</em> : 
+                     <span class="olsampledescription">매우 간단하게 지도를 작성하는 방법</span>
+                </li>
+
+                <li>
+                    <em>지도 옵션 사용</em> : 
+                     <span class="olsampledescription">지도의 일부 속성을 사용하는 방법</span>
+                </li>
+
+                <li>
+                    <em>지도의 레이어 관리</em> : 
+                     <span class="olsampledescription">지도안에 레이어를 관리하는 방법</span>
+                </li>
+
+                <li>
+                    <em>지도를 위치 주변으로 이동</em> : 
+                     <span class="olsampledescription">지도의 표시영역을 조작하는 방법</span>
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1><span class="openlayers">레이어</span></h1>
+        </section>
+
+        <section class="slide">
+            <h2>레이어</h2>
+
+            <p class="slide"><span class="spotlight">레이어</span>는 우리가 <span class="spotlight">지도</span>에 표현하는 요소의 그룹/분류 입니다.</p>
+
+            <p class="slide"><span class="olclass">OpenLayers.Layer</span>는 모든 레이어의 기본 클래스이며, 상속 된 모든 클래스에 대한 몇 가지 일반적인 속성을 정의:</p>
+            
+            <div class="slide">
+                <ul>
+                    <li><span class="olproperty"><code>name</code></span> 모두 이름을 가지고 있습니다.(LayerSwitcher 컨트롤에서 사용됩니다.)</li>
+                    <li><span class="olproperty"><code>opacity</code></span> 투명도를 결정하는 0..1 범위 값</li>
+                    <li><span class="olproperty"><code>projection</code></span> 레이어에 포함 된 데이터의 투영</li>
+                    <li><span class="olproperty"><code>maxExtent</code></span> 데이터의 최대 범위</li>
+                    <li><span class="olproperty"><code>resolutions</code></span> 지도 해상도(지도 단위의 픽셀값)의 내림차순 목록</li>
+                </ul>
+
+                <!-- 
+                [OpenLayers.Layer|name;opacity;projection;resolutions;...]
+                -->
+                <img src="images/uml_layer.png" alt="Layer UML class diagram"/>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h2>레이어의 계층 구조</h2>
+
+            <p class="slide">우리는 레이어를 두 가지 카테고리로 분류 :</p>
+            <ul class="slide">
+                <li><span class="spotlight">래스터</span> (<em>Imagery</em>)</li>
+                <li><span class="spotlight">벡터</span> (<em>Features</em>)</li>
+            </ul>
+
+            <!-- yUML code
+            [Layer]^-[Raster Layer]
+            [Raster Layer]^-[WMS]
+            [Raster Layer]^-[Google]
+            [Raster Layer]^-[OSM]
+            [Raster Layer]^-[XYZ]
+            [Layer]^-[Vector Layer]
+            [Vector Layer]^-[WFS]
+            [Vector Layer]^-[GeoJSON]
+            [Vector Layer]^-[KML]
+            -->
+            <img class="slide" src="images/raster_vector_layers.png" alt="Raster and vector layers" />
+
+        </section>
+
+        <section class="slide">
+            <h2>베이스 레이어 와 오버레이</h2>
+
+            <div class="slide">
+                <p>OpenLayers는 레이어를 <span class="spotlight">베이스 레이어</span> 와 <span class="spotlight">오버레이</span> 두 종류로 분류 :</p>
+
+                <!-- yUML code
+                [Layer]^-[BaseLayer]
+                [Layer]^-[Overlay]
+                -->
+                <img src="images/baselayer_overlay.png" alt="Base layer vs overlays" />
+            </div>
+
+            <ul class="slide">
+                <li><span class="spotlight">베이스 레이어</span>는 지도의 여러 측면을 제어합니다. (<em><span class="spotlight">지도</span>에서 사용하는 프로젝션 등</em>)</li>
+                <li><span class="spotlight">베이스 레이어</span>는 함께 사용할 수 없습니다, 한 번에 하나만 표시 할 수 있습니다.</li>
+                <li>여기에 임의의 수 만큼 <span class="spotlight">오버레이</span> 시킬 수 있습니다 </li>
+                <li><span class="olclass">OpenLayers.Layer</span>에서 상속받은 <span class="olproperty"><code>isBaseLayer</code></span> 속성으로 레이어의 종류를 결정합니다.</li>
+                <li><span class="olclass">OpenLayers.Map</span> 클래스의 <span class="olproperty"><code>allOverlays</code></span> 속성으로 모든 레이어를 오버레이로 사용할 수 있습니다.</li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1>작업 시간 ...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>예제 ...</h2>
+
+            <p>...from <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> <strong><em>제 1 장 - 매핑의 기초</em></strong> 소스 코드:</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>간단한 지도 만들기</em> : 
+                     <span class="olsampledescription">이 기본 예제는 <span class="olclass">OpenLayers.Map</span>의 인스터스를 만드는 방법을 보여줍니다.</span>
+                </li>
+                <li>
+                    <em>베이스 레이어와 비 베이스 레이어</em> : 
+                     <span class="olsampledescription">이 예제는 <span class="olclass">OpenLayers.Layer</span>의 <span class="olproperty">isBaseLayer</span> 속성을 사용하는 방법을 보여줍니다.</span>
+                </li>
+                <li>
+                    <em>베이스 레이어를 사용 안하기</em> :
+                     <span class="olsampledescription">이 예제는 <span class="olclass">OpenLayers.Map의 </span> <span class="olproperty">allOverlays의</span> 속성을 사용 해 모든 레이어에 대해 오버레이 역할을 강제로 할당하는 방법을 보여줍니다.</span>
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1><span class="openlayers">래스터</span> 레이어</h1>
+        </section>
+
+        <section class="slide">
+            <h2>래스터 레이어</h2>
+
+            <ul class="slide">
+                <li><span class="spotlight">래스터</span> 레이어는 다른 서비스 제공 업체(Google,Bing,WMS 서버, OSM 등)에서 이미지(또는 <a href="http://en.wikipedia.org/wiki/Bitmap">비트 맵</a>)를 보여줍니다.</li>
+                <li>모든 <span class="spotlight">래스터</span> 레이어는 <span class="olclass">OpenLayers.Layer</span>를 상속 받으며, 두 가지 클래스로 분류 : 
+                    <ol class="slide">
+                        <li><span class="olclass">OpenLayers.Layer.Image</span> 클래스는 단일 이미지 파일에서 레이어를 만들 수 있습니다.</li>
+                        <li><span class="olclass">OpenLayers.Layer.Grid</span> 클래스는 지도 화면영역을 타일격자로 나누고 레이어의 나머지 부분에 대한 기본 기능을 제공합니다</li>
+                    </ol>
+                </li>
+            </ul>
+
+            <!--
+            [OpenLayers.Layer]^-[OpenLayers.Layer.Image]
+            [OpenLayers.Layer]^-[OpenLayers.Layer.HTTPRequest]
+            [OpenLayers.Layer.HTTPRequest]^-[OpenLayers.Layer.Grid]
+            [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.WMS]
+            [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.WMTS]
+            [OpenLayers.Layer.Grid]^-[OpenLayers.Layer.XYZ]
+            [OpenLayers.Layer.XYZ]^-[OpenLayers.Layer.OSM]
+            -->
+
+            <table>
+                <tbody><tr>
+                    <td>
+                        <div class="slide">
+                            <img src="images/raster_hierarchy_01.png" alt="OpenLayers raster layers hierarchy" />
+                        </div>
+                    </td>
+                    <td>
+                        <div class="slide">
+                            <img src="images/raster_hierarchy_02.png" alt="OpenLayers raster layers hierarchy" />            
+                        </div>
+                    </td>
+                </tr>
+            </tbody></table>
+
+        </section>
+
+        <section class="slide">
+            <h2>래스터 레이어</h2>
+
+            <table>
+                <tbody><tr>
+                    <td>
+                        <h4>Google지도</h4>
+                        <img src="images/raster_layer_gmaps.png" alt="OpenLayers raster Google layer" />
+                    </td>
+                    <td>
+                        <h4>Bing</h4>
+                        <img src="images/raster_layer_bing.png" alt="OpenLayers raster Bing layer" />            
+                    </td>
+                    <td>
+                        <h4>OpenStreetMap</h4>
+                        <img src="images/raster_layer_osm.png" alt="OpenLayers raster OSM layer" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>WMS 서버</h4>
+                        <img src="images/raster_layer_wms.png" alt="OpenLayers raster WMS layer"/>            
+                    </td>
+                    <td>
+                        <h4>MapQuest</h4>
+                        <img src="images/raster_layer_mapquest.png" alt="OpenLayers 래스터지도가 층">
+                    </td>
+                    <td>
+                        <h4>이미지 파일</h4>
+                        <img src="images/raster_layer_image.png" alt="OpenLayers raster layer from image file" />            
+                    </td>
+                </tr>
+            </tbody></table>
+
+        </section>
+
+        <section class="slide">
+            <h1>작업 시간 ...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>예제 ...</h2>
+
+            <p>...from <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a>의 <strong><em>제 2 장 - 래스터 레이어</em></strong> 의 소스 코드 :</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>Goole지도 이미지 사용</em> : 
+                    <span class="olsampledescription"><span class="olclass">OpenLayers.Map</span>의 인스턴스에서 Google지도 API V3 를 사용하는 방법을 보여줍니다.</span>
+                </li>
+                <li>
+                    <em>WMS 레이어 추가</em> : 
+                     <span class="olsampledescription">이 예제는 <span class="olclass">OpenLayers.Layer.WMS</span> 레이어를 생성하고 <span class="olproperty">isBaseLayer</span> 속성을 작성하는 방법을 보여 줍니다.</span>
+                </li>
+                <li>
+                    <em>레이어 불투명도 변경</em> :
+                     <span class="olsampledescription">레이어의 <span class="olproperty">불투명도</span> 속성을 변경하는 방법을 확인할 수 있습니다.</span>
+                </li>
+                <li>
+                    <em>WMS의 singleTile 모드</em> :
+                     <span class="olsampledescription">이 예제는 WMS 레이어에서 <span class="olproperty">singleTile</span> 모드를 사용하는 방법을 보여줍니다.</span>
+                </li>
+                <li>
+                    <em>레이어 데이터 버퍼링</em> :
+                     <span class="olsampledescription">지도 사용 시 <span class="olproperty">buffer</span> 속성을 사용하여 주변 타일을 미리 불러오는 방법을 보여줍니다</span>
+                         
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1><span class="openlayers">벡터</span> 레이어</h1>            
+        </section>
+
+        <section class="slide">
+            <h2>벡터 레이어</h2>
+
+            <div class="slide">
+                <p>
+                    <span class="spotlight">벡터</span> 레이어는 <span class="spotlight">데이터 소스</span>에서 <span class="spotlight">피쳐</span>를 불러오는 일을 할 수 있습니다 ...
+                </p>
+
+                <blockquote><span class="spotlight">피쳐</span>는 현실 세계에서 존재하는 것 들을 디지털로 표현 한 것: <em>도시, 강, 산, ...</em></blockquote>
+            </div>
+            <!--
+            [OpenLayers.Layer]^-[OpenLayers.Layer.Vector]
+            [OpenLayers.Layer]^-[OpenLayers.Layer.Markers]
+            [OpenLayers.Layer.Markers]^-[OpenLayers.Layer.Text]
+            [OpenLayers.Layer.Vector]^-[OpenLayers.Layer.WFS]
+            [OpenLayers.Layer.Markers]^-[OpenLayers.Layer.WFS]
+            -->
+
+            <img class="slide" src="images/vector_hierarchy.png" height="350" alt="OpenLayers vector layers hierarchy" />    
+
+            <div class="slide">
+                <h3>참고 사항</h3>
+                <ul>
+                    <li>OpenLayers 2.12 버전에서 <span class="olclass">OpenLayers.Layer.WFS</span> 는 <strong>더 이상 사용되지 않습니다!</strong>  
+                        대신에 <span class="olclass">OpenLayers.Layer.Vector</span> 클래스를 사용하면 간단하게 동일한 작업을 수행 할 수 있습니다.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h2>벡터 레이어</h2>
+
+            <table>
+                <tr>
+                    <td>
+                        <h4>WFS</h4>
+                        <img src="images/vector_layer_wfs.png" alt="OpenLayers vector layer WFS" />
+                    </td>
+                    <td>
+                        <h4>KML</h4>
+                        <img src="images/vector_layer_kml.png" alt="OpenLayers vector layer KML" />            
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Features</h4>
+                        <img src="images/vector_layer_features.png" alt="OpenLayers vector layer features" />            
+                    </td>
+                    <td>
+                        <h4>Clusters</h4>
+                        <img src="images/vector_layer_cluster.png" alt="OpenLayers vector layer with clustering" />
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="slide">
+            <h2>피쳐 </h2>
+
+            <ul class="slide">
+                <li><span class="spotlight">피쳐</span>는 <span class="spotlight">속성</span>을 가질 수 있습니다: <em>도시 이름, 인구 등</em></li>
+                <li><span class="spotlight">피쳐</span>는 시각적 <span class="spotlight">스타일</span>을 가질 수 있습니다: <em>pointRadius, lineWidth, ...</em> 
+                    (<span class="olproperty">OpenLayers.Feature.Vector.style</span> 상수 참고)</li>
+            </ul>
+
+            <!--
+            [OpenLayers.Feature|id;...]^-[OpenLayers.Feature.Vector|fid;attributes;style;bounds;geometry]
+            -->
+
+            <div class="slide">
+                <img src="images/feature_hierarchy.png" alt="OpenLayers feature's hierarchy" />
+
+                <ul>
+                    <li><span class="olclass">OpenLayers.Feature</span> 클래스는 <span class="spotlight">피쳐</span>의 기본을 정의합니다.</li>
+                    <li><span class="olclass">OpenLayers.Feature.Vector</span> 클래스는 <span class="spotlight">벡터 레이어</span>에서 우리가 실제로 사용 하게 될 클래스입니다.</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h2>지오메트리</h2>
+
+            <ul class="slide">
+                <li><span class="spotlight">피쳐</span>는 <span class="spotlight">지오메트리</span> 인스턴스로 표현됩니다: <em>점, 선, 면, ...</em> 
+                    이 인스턴스들은 <span class="olclass">OpenLayers.Geometry</span>의 하위 클래스여야 합니다.</li>
+            </ul>
+
+            <!--
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Collection]
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Point]
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Rectangle]
+           [OpenLayers.Geometry]^-[OpenLayers.Geometry.Surface]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.Polygon]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.MultiLineString]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.MultiPoint]
+           [OpenLayers.Geometry.Collection]^-[OpenLayers.Geometry.MultiPolygon]
+
+           [OpenLayers.Geometry.MultiPoint]^-[OpenLayers.Geometry.Curve]
+           [OpenLayers.Geometry.Curve]^-[OpenLayers.Geometry.LineString]
+           [OpenLayers.Geometry.LineString]^-[OpenLayers.Geometry.LinearRing]
+            -->
+            <img class="slide" src="images/geometry_hierarchy.png" alt="OpenLayers geometry's hierarchy" />
+
+            <div class="slide">                 
+                <h3>Note</h3>
+                <ul>      
+                     <li><span class="spotlight">지오메트리</span>는 <span class="spotlight">피쳐</span>의 스타일을 사용하여 표현되며, 
+                         없을 경우 에는 <span class="spotlight">벡터 레이어</span>의 스타일을 사용하여 표현합니다.</li>    
+                    <li>OpenLayers는 지리적 데이터의 일반적인 저장 모델인 <a href="http://en.wikipedia.org/wiki/Simple_feature_access">Simple Feature Access</a> 표준을 구현했습니다.</li>                 
+                </ul>             
+            </div>
+        </section>
+
+        <section class="slide">
+            <h2>Renderers</h2>
+            <p class="slide">브라우저에는 그래픽을 표현하는 다양한 기술이 존재합니다.(대부분 HTML5 <a href="http://en.wikipedia.org/wiki/Canvas_element">캔버스</a> 요소와 <a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a>)</p>
+            <p class="slide">렌더러는 추상 클래스이며, 브라우저에서 사용하는 기술을 제외한 벡터 레이어에서 피쳐(지오메트리)를 렌더링하는 방법을 담고 있습니다.</p>
+
+
+            <!--
+            [OpenLayers.Renderer]^-[OpenLayers.Renderer.Canvas]
+            [OpenLayers.Renderer]^-[OpenLayers.Renderer.Elements]
+            [OpenLayers.Renderer.Elements]^-[OpenLayers.Renderer.SVG]
+            [OpenLayers.Renderer.Elements]^-[OpenLayers.Renderer.NG]
+            [OpenLayers.Renderer.NG]^-[OpenLayers.Renderer.SVG2]
+            -->
+            <img class="slide" src="images/renderer_hierarchy.png" width="550" alt="OpenLayers renderer's hierarchy" />
+
+        </section>
+
+        <section class="slide">
+            <h2>프로토콜 및 포맷</h2>
+
+            <p class="slide"><span class="spotlight">벡터</span> 레이어는 많은 
+                <span class="spotlight">데이터 소스</span> (<em>HTTP, WFS, SOS, ...</em>) 에서 여러 
+                <span class="spotlight">데이터 포맷</span> (<em>GeoJSON, GML, KML, ...</em>) 으로 데이터를 로드 할 수 있습니다.</p>
+
+            <ul class="slide">
+                <li><span class="spotlight">프로토콜</span>은 <span class="olclass">OpenLayers.Protocol</span>의 일부 하위 클래스의 인스턴스여야 하며, 벡터 레이어가 데이터 소스와 통신하는 방식을 결정 합니다.</li>
+                <li><span class="spotlight">포맷</span>은 <span class="olclass">OpenLayers.Format</span>의 일부 하위 클래스의 인스턴스 여야하며, 피쳐를 읽거나 작성하는 방식을 결정합니다.</li>
+            </ul>
+
+            <table>
+                <tr>
+                    <td>
+                        <!--
+                        [OpenLayers.Protocol]^-[OpenLayers.Protocol.HTTP]
+                        [OpenLayers.Protocol]^-[OpenLayers.Protocol.WFS]
+                        [OpenLayers.Protocol]^-[OpenLayers.Protocol.SOS]
+                        -->
+                        <img class="slide" src="images/protocol_hierarchy.png" alt="OpenLayers protocol's hierarchy" />
+                    </td>
+                    <td>
+                        <!--
+                        [OpenLayers.Format]^-[OpenLayers.Format.JSON]
+                        [OpenLayers.Format.JSON]^-[OpenLayers.Format.GeoJSON]
+                        [OpenLayers.Format]^-[OpenLayers.Format.XML]
+                        [OpenLayers.Format.XML]^-[OpenLayers.Format.GML]
+                        [OpenLayers.Format.GML]^-[OpenLayers.Format.WFS]
+                        [OpenLayers.Format.XML]^-[OpenLayers.Format.GeoRSS]
+                        -->
+                        <img class="slide" src="images/format_hierarchy.png" alt="OpenLayers format's hierarchy" />
+                    </td>
+                </tr>
+            </table>
+
+        </section>
+
+        <section class="slide">
+            <h2>Styles, Rules & Filters</h2>
+
+            <p><span class="spotlight">피쳐</span>를 스타일하는 여러가지 방법이 있습니다:</p>
+            <ul>
+                <li class="slide"><span class="spotlight">심볼라이져 해시</span>를 피쳐들의 <span class="olproperty">style</span> 속성에 적용 하는 방법:
+                                    <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">var myStyle = {
+    fillColor: "#ee9900",
+    fillOpacity: 0.4, 
+    strokeWidth: 1,
+    fontColor: "#000000"
+};</textarea>
+                </li>
+                <li class="slide"><span class="spotlight">심볼라이져 해시</span>를 레이어들의 <span class="olproperty">style </span> 속성에 적용 하는 방법
+                <li class="slide">복잡하지만 <span class="olclass">OpenLayers.StyleMap</span> 객체를 만들어 레이어의 <span class="olproperty">styleMap</span> 청부하는 방법 :
+
+                    <!--
+                    [OpenLayers.StyleMap]->*[OpenLayers.Style]
+                    [OpenLayers.Style]->*[OpenLayers.Rules]
+                    [OpenLayers.Style]->1[defaultStyle]
+                    [OpenLayers.Rules]->1[OpenLayers.Filter]
+                    [OpenLayers.Rules]->1[symbolizer]
+                    -->
+                    <img src="images/style_classes.png" alt="OpenLayers styles, rules and filters" />
+
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h2>Strategies</h2>
+
+            <p><span class="spotlight">Strategies</span>는 벡터 레이어 일부 동작들에 대해 관찰 할 수 있습니다</p>
+            <ul class="slide">
+                <li><span class="spotlight">벡터 레이어</span>는 다수의 <span class="spotlight">Strategies</span>와 연결 될 수 있습니다</li>
+                <li><span class="spotlight">Strategies</span> 는 <span class="olclass">OpenLayers.Layer.Vector</span> 클래스 <span class="olproperty">strategies</span> 속성에 배열로 추가해야합니다</li>
+            </ul>
+
+            <!--
+            [OpenLayers.Layer.Vector]->*[OpenLayers.Strategy]
+            [OpenLayers.Strategy]^-[OpenLayers.Strategy.BBOX]
+            [OpenLayers.Strategy]^-[OpenLayers.Strategy.Cluster]
+            [OpenLayers.Strategy]^-[OpenLayers.Strategy.Refresh]
+            -->
+            <img class="slide" height="300" src="images/vector_layer_strategies_hierarchy.png" alt="OpenLayers strategies hierarchy" />
+
+            <div class="slide">
+                <h4>일반적인 <span class="olproperty">Strategies</span> ...</h4>
+                <ul>
+                    <li><span class="olclass">OpenLayers.Strategy.Refresh</span> 레이어를 자동으로 새로고침 합니다</li>
+                    <li><span class="olclass">OpenLayers.Strategy.Cluster</span> 피쳐끼리 겹치지 않도록 그룹으로 표현합니다</li>
+                    <li><span class="olclass">OpenLayers.Strategy.Fixed</span> 레이어의 데이터를 한번만 로드합니다</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h2>정리해 봅시다 ...</h2>
+
+            <table>
+                <tr>
+                    <td>
+                        <img src="images/challenge_accepted.png" alt="Challenge Accepted" />
+                    </td>
+                    <td>
+                        <!--
+                        [OpenLayers.Layer.Vector]->1[OpenLayers.Renderer]
+                        [OpenLayers.Layer.Vector]->1[OpenLayers.StyleMap]
+                        [OpenLayers.Layer.Vector]++-has>*[OpenLayers.Feature.Vector]
+                        [OpenLayers.Feature.Vector]->1[OpenLayers.Geometry]
+                        [OpenLayers.Layer.Vector]->1[OpenLayers.Protocol]
+                        [OpenLayers.Protocol]->1[OpenLayers.Format]
+                        -->
+                        <img class="slide" src="images/vector_layers_summary_classes.png" alt="Vector layer summary set of classes" />
+                    </td>
+                </tr>
+            </table>
+
+            <div class="slide">
+                <p>레이어에 그리는 경우 :</p>
+            
+                <ul>
+                    <li class="slide">레이어가 데이터를 로드해야 할 경우 <span class="olproperty">protocol</span>을 호출합니다</li>
+                    <li class="slide"><span class="olproperty">protocol</span>은 데이터 소스와 통신하고 데이터를 읽습니다</li>
+                    <li class="slide"><span class="olproperty">protocol</span>은 데이터를 지정된 <span class="olproperty">format</span>을 사용하여 <span class="olproperty">feature</span>로 변환하고, 레이어에 추가합니다.</li>
+                    <li class="slide">레이어는 <span class="olproperty">features</span> 렌더링 작업을 <span class="olproperty">renderer</span>에게 맡깁니다.</li>
+                    <li class="slide"><span class="olproperty">renderer</span>는 적합한 <span class="olproperty">geometry</span>와 <span class="olproperty">style</span>을 사용하여 각 피쳐를 그립니다</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h1>작업 시간 ...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>예제 ...</h2>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <p>...from <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> <strong><em>제 3 장 - 벡터 레이어</em></strong> 소스 코드 :</p>
+
+            <ul>
+                <li>
+                    <em>GML 레이어 추가하기</em> : 
+                     <span class="olsampledescription">GML 데이터를 불러온 벡터 레이어의 기본 사용</span>
+                </li>
+                <li>
+                    <em>프로그래밍 방식으로 피쳐 만들기</em> : 
+                     <span class="olsampledescription">새 피쳐를 어딘가에서 읽지 않고 우리가 직접 만들어 봅니다</span>
+                </li>
+                <li>
+                    <em>WKT를 읽어 피쳐 생성</em> : 
+                    <span class="olsampledescription"><span class="olclass">OpenLayers.Format</span>을 직접 사용해서 피쳐를 얻습니다</span>
+                </li>
+                <li>
+                    <em>Potocols을 직접 사용하여 데이터 읽기</em> : 
+                    <span class="olsampledescription"><span class="olclass">OpenLayers.Format</span>을 직접 사용해서 피쳐를 얻습니다</span>
+                </li>
+                <li>
+                    <em>클러스터 strategy 사용</em> : 
+                    <span class="olsampledescription">클러스터 strategy 사용하는 방법에 대한 예제</span>
+                    <blockquote><a href="https://github.com/acanimal/AnimatedCluster">acanimal</a> GitHub 저장소에 오시면, 확대축소 변경 <a href="http://acuriousanimal.com/code/animatedCluster/">애니메이션</a>에 대한 좋은 클러스터 strategy 구현 예제를 찾을 수 있습니다</blockquote>
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h2>더 많은 예제 ...</h2>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <p>...from <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> <strong><em>제 7 장 - Stylings</em></strong> 소스 코드 :</p>
+
+            <ul>
+                <li>
+                    <em>symbolizers 사용한 피쳐 스타일링</em> : 
+                     <span class="olsampledescription">해시 symbolizers의 기본 사용</span>
+                </li>
+                <li>
+                    <em>고유한 값으로 rule 정의하기</em> : 
+                     <span class="olsampledescription">피쳐의 속성 값에 따라 스타일링 하는 방법</span>
+                </li>
+                <li>
+                    <em>사용자 정의 rule로 피쳐 스타일링</em> : 
+                     <span class="olsampledescription">스타일, 규칙 및 필터 작업에 대한 예제</span>
+                </li>
+                <li>
+                    <em>StyleMap 및 피쳐의 속성을 바꿔 스타일 개선</em> : 
+                     <span class="olsampledescription">속성을 바꿔서 스타일 개선</span>
+                </li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1>이벤트</h1>
+        </section>
+
+        <section class="slide">
+            <h2><span class="openlayers">OpenLayers</span>에 대한 진실 ...</h2>
+
+            <div class="slide">
+                <h4>우리가 작성한 OpenLayers의 자바스크립트 코드의 대부분은 HTML 요소로 변환 됩니다 !!!</h4>
+                <img src="images/omg-cat.gif" alt="OMG Cat">
+            </div>
+
+            <div class="slide">
+                <p>아래의 자바 스크립트 코드가 ...</p>
+                <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">var map = new OpenLayers.Map("ch1_simple_map");
+var osm = new OpenLayers.Layer.OSM();
+map.addLayer(osm);</textarea>
+            </div>
+
+            <div class="slide">
+                <p>이렇게 됩니다 ...</p>
+                <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">&lt;div id="ch1_simple_map" style="width: 100%; height: 95%;" class="olMap"&gt;
+    &lt;div id="OpenLayers.Map_2_OpenLayers_ViewPort" style="position: relative; overflow: hidden; width: 100%; height: 100%;" 
+            class="olMapViewport olControlDragPanActive olControlZoomBoxActive olControlPinchZoomActive olControlNavigationActive"&gt;
+        &lt;div id="OpenLayers.Map_2_OpenLayers_Container" style="position: absolute; width: 100px; height: 100px; z-index: 749; left: 0px; top: 0px;"&gt;
+            &lt;div id="OpenLayers.Layer.OSM_18" style="position: absolute; width: 100%; height: 100%; z-index: 100; left: 0%; top: 0%;" dir="ltr" 
+                    class="olLayerDiv olLayerGrid"&gt;
+                &lt;img class="olTileImage" style="visibility: inherit; opacity: 1; position: absolute; left: 628%; top: 47%; width: 256%; height: 256%;" 
+                        src="http://c.tile.openstreetmap.org/3/4/3.png" crossorigin="anonymous"&gt;
+                ...
+                ...
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</textarea>
+            </div>
+
+        </section>
+
+        <section class="slide">
+            <h2>이벤트</h2>
+
+            <p><span class="spotlight">이벤트</span>는 응용 프로그램에서 신경과 같습니다 (동작 -&gt; 반응)</p>
+            <ul>
+                <li class="slide">HTML 요소는 트리거 이벤트를 가지고 있습니다: <em>클릭</em> , <em>마우스 입력</em> 등</li>
+                <li class="slide">대부분의 OpenLayers 구성 요소들은 트리거 이벤트를 가지고 있습니다::
+                    <ul>
+                        <li><span class="olclass">OpenLayers.Map</span> : <em><span class="olproperty">move</span>, <span class="olproperty">zoomend</span>, <span class="olproperty">addlayer</span>, ...</em></li>
+                        <li><span class="olclass">OpenLayers.Layer</span> : <em><span class="olproperty">loadstart</span>,<span class="olproperty">loadend</span>, <span class="olproperty">added</span> , ...</em></li>
+                        <li><span class="olclass">OpenLayers.Layer.Vector</span> : <em><span class="olproperty">featuresadded</span>, <span class="olproperty">featureremoved</span>,<span class="olproperty">vertexmodified</span>, ...</em></li>
+                    </ul>
+                    <div class="slide">
+                        <blockquote>각 OpenLayers 클래스에서 사용 가능한 이벤트를 알아보시려면 API 문서 (또는 소스 코드)를 확인하세요</blockquote>
+                    </div>
+                </li>
+            </ul>
+
+            <h4 class="slide">...그리고 OpenLayers 구성 요소의 <span class="spotlight">이벤트</span>를 어떻게 구현 하나요?</h4>
+            <ul>
+                <li class="slide">OpenLayers 클래스의 대부분은 <span class="olproperty">event</span>속성을 가지고 있으며, 이는 <span class="olclass">OpenLayers.Events</span>의 인스턴스 입니다</li>
+                <li class="slide"><span class="olclass">OpenLayers.Events</span>는 리스너 및 트리거 이벤트를 등록 하고, 알림을 제공하는 헬퍼 클래스입니다</li>
+                <li class="slide">이벤트가 <span class="olclass">OpenLayers.Event</span> 인스턴스로 실행됩니다</li>
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h2>Listening ...</h2>
+
+            <h4 class="slide">DOM 요소 이벤트를 어떻게 알수 있을까요?</h4>
+            <div class="slide">
+                <p>다음 HTML 버튼이 주어 졌을때 :
+                <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">&lt;button id="myButton"&gt;&lt;/button&gt;</textarea>
+                </p>
+
+                <p>
+                우리는 이와 같은 자바 스크립트 코드를 사용할 수 있습니다 :
+                <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">var element = document.getElementById("myButton"); 
+element.addEventListener("click", function (event) {
+    // Do something
+});</textarea>
+                </p>
+            </div>
+
+            <h4 class="slide">OpenLayers는 이벤트를 어떻게 알수 있을까요?</h4>
+
+            <ul>
+                <li class="slide"><span class="olmethod">events.on()</span> 메서드를 사용하는 방법:
+                    <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">var map = new OpenLayers.Map("someDivId");
+map.events.on({
+    "zoomend": function (event) {
+        // Some code here
+    }
+});</textarea>
+                </li>
+                <li class="slide"><span class="olmethod">events.register()</span>메서드를 사용하는 방법 :
+                    <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">var map = new OpenLayers.Map("someDivId");
+map.events.register("zoomend", null, function (event) {
+    // Some code here
+});</textarea>
+                </li>
+            </ul>
+
+            <div class="slide">
+                <blockquote>당신의 리스너들을 unregister하는 것을 잊지마세요!</blockquote>
+            </div>
+        </section>
+
+        <section class="slide">
+            <h1>작업 시간 ...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>예제 ...</h2>
+
+            <p>...from <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> <strong><em>제 4 장 - 이벤트</em></strong> 소스 코드 :</p>
+            <img src="images/see_examples.gif" alt="예제를 보려면 가자">
+            <ul>
+                <li>
+                    <em>나란히 놓고 비교하는 지도 만들기</em> : 
+                     <span class="olsampledescription">지도 이벤트를 리스너에 등록하고, 두개의 지도를 동기화 하기</span>
+                </li>
+
+                <li>
+                    <em>지도 레이어에 대한 진행률 표시기를 구현해 봅니다</em> : 
+                     <span class="olsampledescription">수신된 레이어 이벤트를 받아 응용하기</span>
+                </li>
+
+                <li>
+                    <em>벡터 레이어의 피쳐 이벤트 수신</em> : 
+                     <span class="olsampledescription">벡터 레이어의 이벤트로 작업하기</span>
+                </li>
+
+                <li>
+                    <em>비 OpenLayers의 이벤트 수신</em> : 
+                     <span class="olsampledescription"><span class="olmethod">OpenLayers.Event.observe()</span> 메소드를 사용하여,다른 구성 요소로 부터 이벤트를 수신하는 방법을 보여줍니다</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="slide">
+            <h1>컨트롤</h1>
+        </section>
+
+        <section class="slide">
+            <h2>컨트롤</h2>
+
+            <p><span class="spotlight">컨트롤</span>은 <span class="spotlight">지도</span> 와 상호 작용 할 수 있습니다 ...</p>
+            <div class="slide">
+                <blockquote>
+                    컨트롤은 visible widgets (버튼 등)에서 부터 actions (탐색 또는 줌 컨트롤 등)까지 다양한 일을 합니다.
+                </blockquote>
+            </div>
+
+            <ul>
+                <li class="slide">
+                    <span class="openlayers">OpenLayers</span>는 거희 모든 필수적인 동작에 대해서 <span class="spotlight">컨트롤</span> 을 제공 합니다 : <em>탐색</em>, <em>확대</em>, <em>피쳐 선택</em>, <em>피쳐 편집</em> 등
+                </li>
+                <li class="slide">
+                    모든 <span class="spotlight">컨트롤</span> 은 기본 클래스인 <span class="olclass">OpenLayers.Control</span> 을 상속받습니다:
+                    <br>
+                    <br>
+                    <p class="slide">
+                        <!--
+                        [OpenLayers.Control]^-[OpenLayers.Control.Navigation]
+                        [OpenLayers.Control]^-[OpenLayers.Control.LayerSwitcher]
+                        [OpenLayers.Control]^-[OpenLayers.Control.DrawFeature]
+                        -->
+                        <img src="images/controls_hierarchy.png" width="90%" alt="OpenLayers control hierarchy"/>
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="slide">
+            <h2>컨트롤</h2>
+
+            <ul>
+                <li class="slide"><span class="spotlight">컨트롤</span>은 <span class="spotlight">지도</span> 에 추가 (또는 제거) 됩니다.
+
+                    <div class="slide">
+                        <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">var map = new OpenLayers.Map('map', { 
+    controls: [] 
+});
+var layerSwitcher = new OpenLayers.Control.LayerSwitcher();
+
+// Add the control
+map.addControl(layerSwitcher);
+
+// Remove the control
+map.removeControl(layerSwitcher);</textarea>
+                    </div>
+                </li>
+                
+                <li class="slide"><span class="spotlight">컨트롤</span>은 <span class="olproperty">활성화</span> 또는 <span class="olproperty">비활성화</span> 할 수 있습니다 
+
+                    <div class="slide">
+                        <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">// Enable the control
+layerSwitcher.activate();
+
+// Disable the control
+layerSwitcher.deactivate();</textarea>
+                    </div>
+                </li>
+
+                <li class="slide"><span class="spotlight">컨트롤</span>은 표시 될 DOM 요소를 지정하여 줄 경우 <span class="spotlight">지도</span> 외부에 삽입 될 수 있습니다 :
+
+                    <div class="slide"><br/>
+                        다음 HTML 코드가 주어 졌을때 :
+                     
+                        <textarea name="code" class="code" mode="htmlmixed" style="display: none;" theme="xq-dark">Position: &lt;div id="mouseposition" style="font-size: smaller;"&gt;&lt;/div&gt;</textarea><br/>    
+                        우리는 다음 자바 스크립트 코드를 사용할 수 있습니다 :
+                        <textarea name="code" class="code" mode="javascript" style="display: none;" theme="xq-dark">var mousePosition = new OpenLayers.Control.MousePosition({
+    div: document.getElementById('mouseposition') 
+});</textarea>
+                    </div>
+                </li>
+
+            </ul>
+
+        </section>
+
+        <section class="slide">
+            <h1>작업 시간 ...</h1>
+        </section>
+
+        <section class="slide">
+            <h2>예제 ...</h2>
+
+            <p>...from  <a href="https://github.com/acanimal/Openlayers-Cookbook">OpenLayers Cookbook</a> <strong><em>제 5 장 - 컨트롤</em></strong> 소스 코드 :</p>
+
+            <img src="images/see_examples.gif" alt="Lets go to see the examples"/>
+
+            <ul>
+                <li>
+                    <em>컨트롤 추가,삭제</em> : 
+                     <span class="olsampledescription">동적으로 컨트롤을 추가하고 제거하는 방법에 대한 예</span>
+                </li>
+                <li>
+                    <em>탐색 기록 컨트롤 추가</em> : 
+                     <span class="olsampledescription">탐색 기록 컨트롤에 대한 사용법</span>
+                </li>
+                <li>
+                    <em>여러 벡터 레이어에서 피쳐 편집</em> : 
+                     <span class="olsampledescription"><span class="olclass">OpenLayers.Control.EditingToolbar</span> 컨트롤을 활용 해 벡터 레이어에 피쳐를 만드는 방법 </span>
+                </li>
+                <li>
+                    <em>데이터 소스로 부터 피쳐 정보를 얻기</em> : 
+                     <span class="olsampledescription"><span class="olclass">OpenLayers.Control.GetFeature</span> 컨트롤을 사용하여 모든 소스로부터 피쳐 데이터 얻기</span>
+                </li>
+            </ul>
+        </section>
+
+        <section class="slide">
+            <h1>참고</h1>
+        </section>
+
+        <section class="slide">
+            <h2>참고</h2>
+            <ul>
+                <li>OpenLayers Begginers</li>
+                <li>OpenLayers Cookbook</li>
+                <li>OpenLayers 소스 코드</li>
+                <li>OpenLayers API 문서</li>
+                <li>http://docs.openlayers.org/library/index.html</li>
+            </ul>
+        </section>  
+
+        <section class="slide">
+            <h2>와 주셔서 감사합니다!</h2>
+
+            <img src="images/well_done_sir.gif" width="60%" alt="OpenLayers Presentation Weel Done Sir"/>
+        </section>
+
+        <section class="slide">
+            <h1>질문이 있으십니까??</h1>
+        </section>
+
+        <!-- deck.navigation snippet -->
+        <a href="#" class="deck-prev-link" title="이전">← </a>
+        <a href="#" class="deck-next-link" title="다음">→</a>
+
+        <!-- deck.status snippet -->
+        <p class="deck-status">
+            <span class="deck-status-current"></span>
+            /
+            <span class="deck-status-total"></span>
+        </p>
+
+        <!-- deck.goto snippet -->
+        <form action="." method="get" class="goto-form">
+            <label for="goto-slide">슬라이드로 이동 :</label>
+            <input type="text" name="slidenum" id="goto-slide" list="goto-datalist">
+            <datalist id="goto-datalist"></datalist>
+            <input type="submit" value="Go">
+        </form>
+
+        <!-- deck.hash snippet -->
+        <a href="." title="이 슬라이드에 블로그 바로 가기" class="deck-permalink">#</a>
+
+        <!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="deckjs/jquery-1.7.2.min.js"><\/script>')</script>
+
+        <!-- Deck Core and extensions -->
+        <script src="deckjs/core/deck.core.js"></script>
+        <script src="deckjs/extensions/hash/deck.hash.js"></script>
+        <script src="deckjs/extensions/menu/deck.menu.js"></script>
+        <script src="deckjs/extensions/goto/deck.goto.js"></script>
+        <script src="deckjs/extensions/status/deck.status.js"></script>
+        <script src="deckjs/extensions/navigation/deck.navigation.js"></script>
+        <script src="deckjs/extensions/scale/deck.scale.js"></script>
+
+        <!-- Base codemiror code -->
+        <script src="deckjs/extensions/codemirror/codemirror.js"></script>
+        <!-- JavaScript Syntax highlighting Mode -->
+        <script src="deckjs/extensions/codemirror/mode/javascript/javascript.js"></script>
+        <script src="deckjs/extensions/codemirror/mode/xml/xml.js"></script>
+        <script src="deckjs/extensions/codemirror/mode/css/css.js"></script>
+        <script src="deckjs/extensions/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+        <!-- Plugin code -->
+        <script src="deckjs/extensions/codemirror/deck.codemirror.js"></script>
+
+        <!-- Initialize the deck -->
+        <script>
+            $(function() {
+                $.deck('.slide');
+            });
+        </script>
+
+</body>
+</html>
